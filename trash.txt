@@ -1,0 +1,6 @@
+<Canvas style={{height:h*0.5}}>
+              <Suspense fallback={0}>
+                <OrbitControls></OrbitControls>
+                <Model id="delorean"></Model>
+              </Suspense>
+            </Canvas>

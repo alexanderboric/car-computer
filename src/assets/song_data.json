@@ -1,0 +1,11 @@
+{
+    "song": [
+        { 
+            "title": "Song Title",
+            "artist": "Artist",
+            "album":"Album",
+            "image":"Image Path"
+        }
+      
+    ]
+ }
