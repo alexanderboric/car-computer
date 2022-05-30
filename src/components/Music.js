@@ -5,6 +5,7 @@ import cover from '../assets/images/cover.jpeg';
 import cover2 from '../assets/images/cover2.jpeg';
 import './Music.css';
 import '../App.css';
+import './Glitch.css'
 
 const timelinesize= 15; //size of the timeline in Percent of the Heigth
 const spacingLeft=40;// distance from cover art and timeline to the navbar
@@ -49,6 +50,10 @@ export default class Music extends Component {
           
           <div style={{textAlign:'left',height:"70vh", width:"45%",margin:40 ,display:'flex',flexDirection:'column', justifyContent:'flex-end'}} >
             
+
+            <div className='glitch-wrapper'>
+              <h1 className="glitch" data-text="Test">Test</h1>
+            </div>
             <button onClick={()=>{ this.state.image==cover? this.setState({image:cover2}): this.setState({image:cover})}}>manipulate State</button>
             <h1 className='Title-Text'>{this.state.title}</h1>
             <h1 className="Normal-Text">{this.state.artist}</h1>
