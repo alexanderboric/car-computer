@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import icons from "../assets/svg-icons";
 import "../App.css";
+import './Navbar.css';
 
 
 

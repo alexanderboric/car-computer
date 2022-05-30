@@ -2,9 +2,9 @@
 import React, { Component, useState } from 'react';
 import { getByTitle } from '@testing-library/react';
 import cover from '../assets/images/cover.jpeg';
-import cover2 from '../assets/images/cover2.jpeg'
-import songdata from '../assets/song_data.json'
-import '../App.css'
+import cover2 from '../assets/images/cover2.jpeg';
+import './Music.css';
+import '../App.css';
 
 const timelinesize= 15; //size of the timeline in Percent of the Heigth
 const spacingLeft=40;// distance from cover art and timeline to the navbar
@@ -16,7 +16,7 @@ export default class Music extends Component {
   constructor(props) {
     super(props);
 
-
+    // Der State wird hinterher mit den Daten vom Esp 32 erneuert
     this.state = {
       title:"2055",
       artist:"Sleepy Hallow",

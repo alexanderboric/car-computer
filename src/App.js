@@ -9,18 +9,7 @@ import Settings from './components/Settings'
 import Radio from './components/Radio'
 import Manager from './components/Manager';
 
-
-
-
-
-
-
 export default function App() {
-  
-  
-
-
-  
   return (
     <Manager></Manager>
   );

@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import "../App.css"
+import './Navbar.css'
 
 import icons from '../assets/svg-icons/index';
 import NavbarButton from './NavbarButtons';
