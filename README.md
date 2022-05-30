@@ -6,3 +6,4 @@ esp32 ist seperat von der jetzigen Website, welche später als Web-App auf dem P
 Inspiration: 
 
 https://codepen.io/iiiiiiiiiiiiiiiiiiiiii/pen/RwRRQjJ
+https://codepen.io/fariztiger/pen/JjrPgLw
