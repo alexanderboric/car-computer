@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import "../App.css"
 import './Navbar.css'
 
@@ -10,28 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
 
-
-
-  /*funct ( ){
-    // alert("function wurde gerufen")
-    this.props.onClick()
-  }*/
-
   let navigate = useNavigate();
 
- /*  useEffect(()=>{
-    /* if (props) {
-      props.onClick();
-    } 
-    props.onClick(page);
-  },[page]); */
-  
-
-  
-
-  //render() {
-    
-    
     return(
 
         <div className='Sidenav'>
