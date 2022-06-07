@@ -4,6 +4,7 @@ import './Navbar.css'
 
 import icons from '../assets/svg-icons/index';
 import NavbarButton from './NavbarButtons';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -17,12 +18,14 @@ export default function Navbar(props) {
     this.props.onClick()
   }*/
 
-  useEffect(()=>{
+  let navigate = useNavigate();
+
+ /*  useEffect(()=>{
     /* if (props) {
       props.onClick();
-    } */
+    } 
     props.onClick(page);
-  },[page]);
+  },[page]); */
   
 
   
@@ -33,11 +36,11 @@ export default function Navbar(props) {
     return(
 
         <div className='Sidenav'>
-            <NavbarButton src={icons.home} onClick={()=>setPage("home")}></NavbarButton>
-            <NavbarButton src={icons.music} onClick={()=>setPage("music")}></NavbarButton>
-            <NavbarButton src={icons.map} onClick={()=>setPage("navigation")}></NavbarButton>
-            <NavbarButton src={icons.home} onClick={()=>setPage("home")}></NavbarButton>
-            <NavbarButton src={icons.settings} onClick={()=>setPage("settings")}></NavbarButton>
+            <NavbarButton src={icons.home} onClick={()=>navigate("home")}></NavbarButton>
+            <NavbarButton src={icons.music} onClick={()=>navigate("music")}></NavbarButton>
+            <NavbarButton src={icons.map} onClick={()=>navigate("navigation")}></NavbarButton>
+            <NavbarButton src={icons.home} onClick={()=>navigate("home")}></NavbarButton>
+            <NavbarButton src={icons.settings} onClick={()=>navigate("settings")}></NavbarButton>
 
         </div>
     )
