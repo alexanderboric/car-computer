@@ -13,6 +13,7 @@ import Music from './components/Music';
 import Navigation from './components/Navigation';
 import Radio from './components/Radio';
 import Settings from './components/Settings';
+import Component404 from './components/404';
 
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="navigation" element={<Navigation />} />
           <Route path="radio" element={<Radio />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="*" element={<Component404 />}/>
         </Route>
       </Routes>
     </BrowserRouter>
