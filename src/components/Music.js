@@ -1,6 +1,5 @@
 
-import React, { Component, useState } from 'react';
-import { getByTitle } from '@testing-library/react';
+import React, { Component } from 'react';
 import cover from '../assets/images/cover.jpeg';
 import cover2 from '../assets/images/cover2.jpeg';
 import './Music.css';
