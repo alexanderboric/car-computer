@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 export default function Navbar(props) {
 
 
-  const [page, setPage] = useState("music");
 
   /*funct ( ){
     // alert("function wurde gerufen")
