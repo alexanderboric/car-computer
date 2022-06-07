@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/alexanderboric/Desktop/Projeket Auto/car-computer'
+make: Leaving directory `/Users/alexanderboric/Desktop/Projeket Auto/car-computer'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
