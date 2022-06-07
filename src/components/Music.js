@@ -37,7 +37,7 @@ export default class Music extends Component {
     return(
       <div  style={{width:"100%", height:"100%", position:'absolute',}}>
          <div className='Music-Background-Image-Container' >
-           <img className="Music-Background-Image" src={this.state.image}></img>
+           <img className="Music-Background-Image" src={this.state.image} alt="Music background"></img>
          </div>
 
         <div style={{ width:"100%",height:100-timelinesize+"%", display:"flex",  alignItems:'center'}}>
