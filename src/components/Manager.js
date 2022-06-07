@@ -18,10 +18,9 @@ export default class Manager extends Component{
             page: <Home></Home>
         }
       }
-      asignNavbar = () => {
-        const childelement= this.navbar.current;
+      asignNavbar = (page) => {
         // this.setState(this.state.page, childelement.state.page);
-        switch (childelement.state.page) {
+        switch (page) {
             case "home":
                 this.setState({page:<Home></Home>})
                 break;
