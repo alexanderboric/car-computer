@@ -1,13 +1,7 @@
 import '../App.css';
-import ReactDOM from "react-dom";
-import React, { useRef, useState, Suspense, Component, } from 'react';
+import React, { Component, } from 'react';
 
-import Home from './Home';
-import Music from './Music';
 import Navbar from './Navbar';
-import Settings from './Settings';
-import Radio from './Radio';
-import Navigation from './Navigation';
 import { Outlet } from 'react-router-dom';
 
 export default class Manager extends Component {
