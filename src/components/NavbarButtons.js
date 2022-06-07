@@ -16,7 +16,7 @@ export default class NavbarButton extends Component{
         
         return(
         <div className="Navbar-Buttons" onClick={this.props.onClick}>
-            <img src={this.props.src} className="Navbar-Button-Images" ></img>
+            <img src={this.props.src} className="Navbar-Button-Images" alt="Navbar Button"></img>
             
             
         </div>
