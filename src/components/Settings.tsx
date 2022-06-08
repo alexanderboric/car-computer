@@ -7,6 +7,8 @@ import {
 	Stack,
 	Title,
 	UnstyledButton,
+	Switch,
+	useMantineColorScheme,
 } from "@mantine/core";
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
@@ -14,6 +16,10 @@ import "../App.css";
 import { MdChevronRight } from "react-icons/md";
 
 export default function Settings() {
+
+
+	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
 	return (
 		<>
 			<SimpleGrid mt={"sm"} cols={2}>
@@ -26,7 +32,7 @@ export default function Settings() {
 							backgroundColor:
 								theme.colorScheme === "dark"
 									? theme.colors.dark[6]
-									: theme.colors.dark[2],
+									: theme.colors.gray[1],
 						})}
 					>
 						<Stack spacing={5}>
@@ -44,16 +50,7 @@ export default function Settings() {
 								</Group>
 							</UnstyledButton>
 							<Divider />
-							<UnstyledButton
-								sx={(theme) => ({
-									fontSize: theme.fontSizes.md,
-									fontWeight: 500,
-								})}
-								component={Link}
-								to="/settings/appearance"
-							>
-								Appearance
-							</UnstyledButton>
+							<Switch label="Dark mode" checked={colorScheme == "dark"} onChange={() => toggleColorScheme()}/>
 							<Divider />
 						</Stack>
 					</Paper>
