@@ -1,14 +1,22 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Manager from './components/Manager';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
+
 
 export default function App() {
+
+  const [colorScheme, setColorScheme] = useState("dark");
+  const toggleColorScheme = (value) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+
   return (
-    <MantineProvider theme={{ fontFamily: 'Open Sans' }} withGlobalStyles>
-      <Manager />
-    </MantineProvider>
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles>
+        <Manager />
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }
 
