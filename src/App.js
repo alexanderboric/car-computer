@@ -13,7 +13,10 @@ export default function App() {
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles defaultProps={{
+                Notification: { radius: "lg" },
+                Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
+              }}>
         <Manager />
       </MantineProvider>
     </ColorSchemeProvider>

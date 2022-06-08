@@ -25,8 +25,10 @@ ReactDOM.render(
           <Route path="music" element={<Music />} />
           <Route path="navigation" element={<Navigation />} />
           <Route path="radio" element={<Radio />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="*" element={<Component404 />}/>
+          <Route path="settings" element={<Settings />} >
+            <Route path="appearance" element={<Settings />} />
+          </Route>
+          <Route path="*" element={<Component404 />} />
         </Route>
       </Routes>
     </BrowserRouter>
