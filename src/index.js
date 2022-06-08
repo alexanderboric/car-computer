@@ -12,8 +12,8 @@ import Home from './components/Home';
 import Music from './components/Music';
 import Navigation from './components/Navigation';
 import Radio from './components/Radio';
-import Settings from './components/Settings';
 import Component404 from './components/404';
+import Settings from './components/Settings';
 
 
 ReactDOM.render(
