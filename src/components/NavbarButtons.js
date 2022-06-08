@@ -1,7 +1,8 @@
 import React from "react";
 import "../App.css";
 import './Navbar.css';
-import { useMantineColorScheme } from '@mantine/core';
+import { Box, useMantineColorScheme } from '@mantine/core';
+import { Link } from "react-router-dom";
 
 
 
@@ -14,12 +15,12 @@ export default function NavbarButton(props) {
 
   return (
 
-    <div className="Navbar-Buttons" onClick={props.onClick}>
+    <Box className="Navbar-Buttons" component={Link} to={props.link}>
       <img src={props.src} className="Navbar-Button-Images" style={{ filter: dark ? "invert(1)" : "invert(0)" }} alt="Navbar Button"></img>
 
 
 
-    </div>
+    </Box>
   )
 
 
