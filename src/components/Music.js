@@ -57,7 +57,7 @@ export default class Music extends Component {
             <h1 className='Title-Text'>{this.state.title}</h1>
             <h1 className="Normal-Text">{this.state.artist}</h1>
             <h1 className="Normal-Text">{this.state.album}</h1>
-           
+            
           </div>
           
         </div>
