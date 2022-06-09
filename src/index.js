@@ -14,8 +14,8 @@ import Music from './components/Music';
 import Navigation from './components/Navigation';
 import Radio from './components/Radio';
 import Component404 from './components/404';
-import Settings from './components/Settings';
-import AppearanceSettings from './components/settingspages/Appearance';
+import Settings from './components/settings/Settings';
+import AppearanceSettings from './components/settings/settingspages/Appearance';
 
 ReactDOM.render(
   <React.StrictMode>

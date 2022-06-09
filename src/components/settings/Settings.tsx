@@ -12,7 +12,6 @@ import {
 } from "@mantine/core";
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
-import "../App.css";
 import { MdChevronRight } from "react-icons/md";
 
 export default function Settings() {
