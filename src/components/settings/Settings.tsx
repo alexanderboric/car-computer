@@ -34,7 +34,7 @@ export default function Settings() {
 						})}
 					>
 						<Stack spacing={5}>
-							<SettingsButton pageLink={"appearance"}  />
+							<SettingsButton pageLink={"appearance"} label={"Appearance"}  />
 							<Divider />
 							<Switch
 								label="Dark mode"

@@ -3,12 +3,11 @@ import * as React from "react";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-export default function SettingsButton({ pageLink }: { pageLink: string }) {
+export default function SettingsButton({ pageLink, label }: { pageLink: string, label: string }) {
 	return (
 		<>
 			<UnstyledButton
 				sx={(theme) => ({
-					fontSize: theme.fontSizes.md,
 					fontWeight: 500,
 				})}
                 
@@ -16,7 +15,7 @@ export default function SettingsButton({ pageLink }: { pageLink: string }) {
 				to={"/settings/" + pageLink}
 			>
 				<Group position="apart">
-					<Text>Appearance</Text>
+					<Text size={"xl"}>{label}</Text>
 					<MdChevronRight />
 				</Group>
 			</UnstyledButton>
