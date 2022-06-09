@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import './assets/fonts/walk_the_moon/walkthemoon.ttf';
 import './assets/fonts/ethnocentric/ethnocentric rg.otf';
 import './assets/fonts/biger_over/bBigerOver.ttf';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Redirect } from 'react-router-dom';
 import Home from './components/Home';
 import Music from './components/Music';
 import Navigation from './components/Navigation';
@@ -20,6 +20,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} >
+          <Redirect to="/home" />
           <Route path="home" element={<Home />} />
           <Route path="music" element={<Music />} />
           <Route path="navigation" element={<Navigation />} />
