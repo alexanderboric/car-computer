@@ -15,6 +15,7 @@ import Navigation from './components/Navigation';
 import Radio from './components/Radio';
 import Component404 from './components/404';
 import Settings from './components/Settings';
+import AppearanceSettings from './components/settingspages/Appearance';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,7 +27,7 @@ ReactDOM.render(
           <Route path="navigation" element={<Navigation />} />
           <Route path="radio" element={<Radio />} />
           <Route path="settings" element={<Settings />} >
-            <Route path="appearance" element={<Settings />} />
+            <Route path="appearance" element={<AppearanceSettings />} />
           </Route>
           <Route path="*" element={<Component404 />} />
         </Route>

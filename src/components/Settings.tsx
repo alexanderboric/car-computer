@@ -16,8 +16,6 @@ import "../App.css";
 import { MdChevronRight } from "react-icons/md";
 
 export default function Settings() {
-
-
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
 	return (
@@ -44,13 +42,17 @@ export default function Settings() {
 								component={Link}
 								to="/settings/appearance"
 							>
-								<Group align="apart" grow style={{width: "125%"}}>
+								<Group position="apart">
 									<Text>Appearance</Text>
-                  <MdChevronRight />
+									<MdChevronRight />
 								</Group>
 							</UnstyledButton>
 							<Divider />
-							<Switch label="Dark mode" checked={colorScheme === "dark"} onChange={() => toggleColorScheme()}/>
+							<Switch
+								label="Dark mode"
+								checked={colorScheme === "dark"}
+								onChange={() => toggleColorScheme()}
+							/>
 							<Divider />
 						</Stack>
 					</Paper>
