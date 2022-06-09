@@ -21,7 +21,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} >
-          <Route path="home" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="music" element={<Music />} />
           <Route path="navigation" element={<Navigation />} />
           <Route path="radio" element={<Radio />} />
