@@ -17,10 +17,10 @@ export default function Navbar(props) {
         sx={(theme) => ({
           backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
         })}>
-            <NavbarButton src={icons.home} link="home"></NavbarButton>
+            <NavbarButton src={icons.home} link="/"></NavbarButton>
             <NavbarButton src={icons.music} link="music"></NavbarButton>
             <NavbarButton src={icons.map} link="navigation"></NavbarButton>
-            <NavbarButton src={icons.home} link="home"></NavbarButton>
+            <NavbarButton src={icons.home} link="/"></NavbarButton>
             <NavbarButton src={icons.settings} link="settings"></NavbarButton>
 
         </Box>
