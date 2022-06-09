@@ -50,7 +50,7 @@ export default function Settings() {
 								</Group>
 							</UnstyledButton>
 							<Divider />
-							<Switch label="Dark mode" checked={colorScheme == "dark"} onChange={() => toggleColorScheme()}/>
+							<Switch label="Dark mode" checked={colorScheme === "dark"} onChange={() => toggleColorScheme()}/>
 							<Divider />
 						</Stack>
 					</Paper>
