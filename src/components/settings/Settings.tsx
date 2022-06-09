@@ -13,6 +13,7 @@ import {
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MdChevronRight } from "react-icons/md";
+import SettingsButton from "./SettingsButton";
 
 export default function Settings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -33,19 +34,7 @@ export default function Settings() {
 						})}
 					>
 						<Stack spacing={5}>
-							<UnstyledButton
-								sx={(theme) => ({
-									fontSize: theme.fontSizes.md,
-									fontWeight: 500,
-								})}
-								component={Link}
-								to="/settings/appearance"
-							>
-								<Group position="apart">
-									<Text>Appearance</Text>
-									<MdChevronRight />
-								</Group>
-							</UnstyledButton>
+							<SettingsButton pageLink={"appearance"}  />
 							<Divider />
 							<Switch
 								label="Dark mode"
