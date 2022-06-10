@@ -44,7 +44,7 @@ export default function SettingsTextInput({
 									size="xl"
 									placeholder={text}
 									value={input}
-									onChange={(event: any) => setInput(event.currentTarget.value)}
+									onChange={(event: any) => /* setInput(event.currentTarget.value) */{}}
 									mt="xl"
 								/>
 								<Button
@@ -60,10 +60,8 @@ export default function SettingsTextInput({
 								</Button>
 								<OnScreenKeyboard
 									text={text}
-									onChange={async (newText) => {
-										await setInput(newText);
-                                        console.log(newText);
-                                        console.log(input);
+									onChange={(newText) => {
+										setInput(newText);
 									}}
 								/>
 							</Stack>
