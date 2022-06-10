@@ -6,7 +6,7 @@ import {
 } from "@mantine/core";
 import * as React from "react";
 import { Outlet } from "react-router-dom";
-import SettingsButton from "./SettingsButton";
+import SettingsPageButton from "./SettingsPageButton";
 import SettingsContainer from "./SettingsContainer";
 
 export default function Settings() {
@@ -17,7 +17,7 @@ export default function Settings() {
 				<Stack ml={"xl"} mr={"xl"}>
 					<Title>Settings</Title>
 					<SettingsContainer>
-						<SettingsButton
+						<SettingsPageButton
 							pageLink={"appearance"}
 							label={"Appearance"} /* icon={<MdPreview />} */
 						/>

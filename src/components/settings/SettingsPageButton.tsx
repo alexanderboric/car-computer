@@ -3,7 +3,7 @@ import * as React from "react";
 import { MdChevronRight } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 
-export default function SettingsButton({
+export default function SettingsPageButton({
 	pageLink,
 	label,
     icon
