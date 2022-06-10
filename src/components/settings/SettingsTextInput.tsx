@@ -26,6 +26,7 @@ export default function SettingsTextInput({
 	const theme = useMantineTheme();
 	const modals = useModals();
 	const [input, setInput] = useState(text);
+	const inputField = React.useRef<HTMLInputElement>(null);
 
 	return (
 		<>
@@ -41,10 +42,13 @@ export default function SettingsTextInput({
 						children: (
 							<Stack spacing="xl">
 								<TextInput
+									ref={inputField}
 									size="xl"
 									placeholder={text}
 									value={input}
-									onChange={(event: any) => /* setInput(event.currentTarget.value) */{}}
+									onChange={(
+										event: any
+									) => setInput(event.currentTarget.value)}
 									mt="xl"
 								/>
 								<Button
@@ -61,7 +65,9 @@ export default function SettingsTextInput({
 								<OnScreenKeyboard
 									text={text}
 									onChange={(newText) => {
-										setInput(newText);
+										/* setInput(newText); */
+                                        inputField.current.value = newText;
+                                        inputField.current.dispatchEvent(new Event('input', {bubbles: true}));
 									}}
 								/>
 							</Stack>
