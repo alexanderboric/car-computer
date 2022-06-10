@@ -14,7 +14,15 @@ export default function AppearanceSettings() {
 					checked={colorScheme === "dark"}
 					onSwitch={() => toggleColorScheme()}
 				/>
-                <Divider />
+				<Divider />
+			</SettingsContainer>
+			<SettingsContainer label="Background">
+				<SettingsSwitch
+					label={"Use Background Image"}
+					checked={false}
+					onSwitch={() => {}}
+				/>
+				<Divider />
 			</SettingsContainer>
 		</SettingsPage>
 	);

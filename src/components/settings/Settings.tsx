@@ -22,6 +22,10 @@ export default function Settings() {
 							label={"Appearance"} /* icon={<MdPreview />} */
 						/>
 						<Divider />
+						<SettingsPageButton
+							pageLink={"connectivity"}
+							label={"Connectivity"} /* icon={<MdWifi />} */
+							/>
 					</SettingsContainer>
 				</Stack>
 				<Outlet />

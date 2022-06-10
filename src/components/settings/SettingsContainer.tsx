@@ -28,7 +28,7 @@ export default function SettingsContainer({
 					<Stack spacing={5}>{children}</Stack>
 				</Paper>
 				<Group ml="sm">
-					<Text>{bottomText}</Text>
+					<Text align="left">{bottomText}</Text>
 				</Group>
 			</Stack>
 		</>

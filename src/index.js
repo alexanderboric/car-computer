@@ -16,6 +16,7 @@ import Radio from './components/Radio';
 import Component404 from './components/404';
 import Settings from './components/settings/Settings';
 import AppearanceSettings from './components/settings/settingspages/Appearance';
+import ConnectivityPage from './components/settings/settingspages/Connectivity';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.render(
           <Route path="radio" element={<Radio />} />
           <Route path="settings" element={<Settings />} >
             <Route path="appearance" element={<AppearanceSettings />} />
+            <Route path="connectivity" element={<ConnectivityPage />} />
           </Route>
           <Route path="*" element={<Component404 />} />
         </Route>
