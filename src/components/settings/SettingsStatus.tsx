@@ -3,7 +3,6 @@ import {
 	UnstyledButton,
 	Text,
 	useMantineTheme,
-	Switch,
     Loader,
 } from "@mantine/core";
 import * as React from "react";
