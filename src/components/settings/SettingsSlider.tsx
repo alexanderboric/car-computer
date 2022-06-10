@@ -22,6 +22,11 @@ export default function SettingsSlider({
 	onChange: (val: number) => void;
 }) {
 	const theme = useMantineTheme();
+    const [input, setInput] = React.useState(value);
+
+    React.useEffect(() => {
+        onChange(input);
+    }, [input, onChange]);
 
 	return (
 		<>
@@ -32,7 +37,7 @@ export default function SettingsSlider({
 							<Text size="xl">{label}</Text>
 						</Group>
                         <Group grow>
-                        <Slider size="xl" min={min} max={max} defaultValue={value} onChange={(event:any) => onChange(event.currentTarget.value)}/>
+                        <Slider size="xl" min={min} max={max} value={input} onChange={setInput}/>
                         </Group>
                     </Stack>
 				</Group>
