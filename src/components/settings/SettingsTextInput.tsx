@@ -28,6 +28,7 @@ export default function SettingsTextInput({
 	const [input, setInput] = useState(text);
 	const inputField = React.useRef<HTMLInputElement>(null);
 
+
 	return (
 		<>
 			<UnstyledButton
