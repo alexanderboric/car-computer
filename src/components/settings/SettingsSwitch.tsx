@@ -20,7 +20,7 @@ export default function SettingsSwitch({
 					<Group>
 						<Text size="xl">{label}</Text>
 					</Group>
-					<Switch checked={checked} onChange={(event:InputEvent) => onSwitch((event.currentTarget as HTMLInputElement).checked)} />
+					<Switch size="md" checked={checked} onChange={(event:InputEvent) => onSwitch((event.currentTarget as HTMLInputElement).checked)} />
 				</Group>
 			</UnstyledButton>
 		</>
