@@ -24,7 +24,7 @@ export default function SettingsPage({
 		<>
 			<Stack ml={"xl"} mr={"xl"}>
 				<Group mt={"md"}>
-					<UnstyledButton onClick={() => navigate(-1)}>
+					<UnstyledButton onClick={() => navigate("../")}>
 						<Group noWrap spacing={"xs"}>
 							<MdChevronLeft
 								style={{ color: theme.colors.blue[6] }}
