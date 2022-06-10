@@ -2064,18 +2064,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@^18.0.12":
   version "18.0.12"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.12.tgz"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^18.0.12":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
   integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
   dependencies:
     "@types/prop-types" "*"
@@ -7681,6 +7672,11 @@ react-scripts@5.0.0:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-simple-keyboard@^3.4.150:
+  version "3.4.150"
+  resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-3.4.150.tgz#ae6d5650482d26eb6947873a12d16d60fb1ed87e"
+  integrity sha512-sTXmgc+CWYQTjCMtgBAMZDcVewTWBkRDiAtIUjr/MUanWna4DNSli3Uwx+Qd63xV0slRjGrrfV48Mm4+OP9fMg==
 
 react-textarea-autosize@^8.3.2:
   version "8.3.4"
