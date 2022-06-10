@@ -42,9 +42,10 @@ export default function SettingsTextInput({
 							<Stack spacing="xl">
 								<TextInput
 									size="xl"
-									placeholder={input}
+									placeholder={text}
+                                    value={input}
 									data-autofocus
-									onChange={setInput}
+									/* onChange={setInput} */
 									mt="xl"
 								/>
 								<Button
