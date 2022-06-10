@@ -5,6 +5,9 @@ import {
 	useMantineTheme,
 	TextInput,
 	Button,
+	Space,
+	Title,
+	Stack,
 } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import * as React from "react";
@@ -22,7 +25,7 @@ export default function SettingsTextInput({
 }) {
 	const theme = useMantineTheme();
 	const modals = useModals();
-    const [input, setInput] = useState(text);
+	const [input, setInput] = useState(text);
 
 	return (
 		<>
@@ -32,21 +35,30 @@ export default function SettingsTextInput({
 				style={{ borderRadius: theme.radius.md }}
 				onClick={() => {
 					const id = modals.openModal({
-						title: label,
+						title: <Title>{label}</Title>,
+						size: "xl",
+						centered: true,
 						children: (
-							<>
-								<TextInput placeholder={input} data-autofocus onChange={setInput} />
+							<Stack spacing="xl">
+								<TextInput
+									size="xl"
+									placeholder={input}
+									data-autofocus
+									onChange={setInput}
+									mt="xl"
+								/>
 								<Button
+									mt="xl"
 									fullWidth
 									onClick={() => {
 										modals.closeModal(id);
-                                        onChange(input);
+										onChange(input);
 									}}
-									mt="md"
+									size="xl"
 								>
 									Save
 								</Button>
-							</>
+							</Stack>
 						),
 					});
 				}}
@@ -55,11 +67,11 @@ export default function SettingsTextInput({
 					<Group>
 						<Text size="xl">{label}</Text>
 					</Group>
-					<Group>
+					<Group spacing={5}>
 						<Text weight={550} size="xl">
 							{text}
 						</Text>
-                        <MdChevronRight />
+						<MdChevronRight size={20} />
 					</Group>
 				</Group>
 			</UnstyledButton>
