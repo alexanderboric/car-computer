@@ -43,9 +43,8 @@ export default function SettingsTextInput({
 								<TextInput
 									size="xl"
 									placeholder={text}
-                                    value={input}
-									data-autofocus
-									/* onChange={setInput} */
+									value={input}
+									onChange={(event: any) => setInput(event.currentTarget.value)}
 									mt="xl"
 								/>
 								<Button
@@ -59,7 +58,14 @@ export default function SettingsTextInput({
 								>
 									Save
 								</Button>
-                                <OnScreenKeyboard text={text} onChange={(text) => setInput(text)} />
+								<OnScreenKeyboard
+									text={text}
+									onChange={async (newText) => {
+										await setInput(newText);
+                                        console.log(newText);
+                                        console.log(input);
+									}}
+								/>
 							</Stack>
 						),
 					});
