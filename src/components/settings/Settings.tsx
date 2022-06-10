@@ -1,14 +1,8 @@
 import {
 	Divider,
-	Text,
-	Group,
-	Paper,
 	SimpleGrid,
 	Stack,
 	Title,
-	UnstyledButton,
-	Switch,
-	useMantineColorScheme,
 } from "@mantine/core";
 import * as React from "react";
 import { Outlet } from "react-router-dom";
