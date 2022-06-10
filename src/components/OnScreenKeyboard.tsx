@@ -6,9 +6,11 @@ import { BsShift, BsShiftFill } from "react-icons/bs";
 export default function OnScreenKeyboard({
 	text,
 	onChange,
+    allowEnter
 }: {
 	text: string;
 	onChange: (value: string) => void;
+    allowEnter?: boolean;
 }) {
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
@@ -18,7 +20,28 @@ export default function OnScreenKeyboard({
 		onChange(input);
 	}, [input, onChange]);
 
-	const keyPress = (key: string) => {};
+	const keyPress = (key: string) => {
+        switch (key) {
+            case "backspace":
+                setInput(input.slice(0, -1));
+                break;
+            case "shift":
+                setShift(!shift);
+                break;
+            case "symbols":
+                setSymbols(!symbols);
+                break;
+            case "enter":
+                if (allowEnter) {
+                    setInput(input + "\n");
+                }
+                break;
+            default:
+                setInput(input + key);
+                break;
+
+        }
+    };
 
 	const keyButton = (
 		lowerCase?: string,
