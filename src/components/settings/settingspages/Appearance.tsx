@@ -1,10 +1,20 @@
+import { useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
+import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
+import SettingsSwitch from "../SettingsSwitch";
 
 export default function AppearanceSettings() {
-    return (
-        <SettingsPage title={"Appearance"}>
-            <h1>Hallo</h1>
-        </SettingsPage>
-    )
+	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+	return (
+		<SettingsPage title={"Appearance"}>
+			<SettingsContainer label="Theme">
+				<SettingsSwitch
+					label={"Dark Mode"}
+					checked={colorScheme === "dark"}
+					onSwitch={() => toggleColorScheme()}
+				/>
+			</SettingsContainer>
+		</SettingsPage>
+	);
 }

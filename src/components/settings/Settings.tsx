@@ -11,13 +11,11 @@ import {
 	useMantineColorScheme,
 } from "@mantine/core";
 import * as React from "react";
-import { Link, Outlet } from "react-router-dom";
-import { MdAddAlert, MdChevronRight, MdPreview } from "react-icons/md";
+import { Outlet } from "react-router-dom";
 import SettingsButton from "./SettingsButton";
 import SettingsContainer from "./SettingsContainer";
 
 export default function Settings() {
-	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
 	return (
 		<>
@@ -28,12 +26,6 @@ export default function Settings() {
 						<SettingsButton
 							pageLink={"appearance"}
 							label={"Appearance"} /* icon={<MdPreview />} */
-						/>
-						<Divider />
-						<Switch
-							label="Dark mode"
-							checked={colorScheme === "dark"}
-							onChange={() => toggleColorScheme()}
 						/>
 						<Divider />
 					</SettingsContainer>
