@@ -47,9 +47,7 @@ export default function SettingsTextInput({
 									size="xl"
 									placeholder={text}
 									value={input}
-									onChange={(
-										event: any
-									) => setInput(event.currentTarget.value)}
+									onChange={setInput}
 									mt="xl"
 								/>
 								<Button
