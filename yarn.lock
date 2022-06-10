@@ -7673,11 +7673,6 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-simple-keyboard@^3.4.150:
-  version "3.4.150"
-  resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-3.4.150.tgz#ae6d5650482d26eb6947873a12d16d60fb1ed87e"
-  integrity sha512-sTXmgc+CWYQTjCMtgBAMZDcVewTWBkRDiAtIUjr/MUanWna4DNSli3Uwx+Qd63xV0slRjGrrfV48Mm4+OP9fMg==
-
 react-textarea-autosize@^8.3.2:
   version "8.3.4"
   resolved "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.3.4.tgz"
