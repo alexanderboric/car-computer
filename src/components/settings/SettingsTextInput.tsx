@@ -68,6 +68,7 @@ export default function SettingsTextInput({
 										/* setInput(newText); */
                                         inputField.current.value = newText;
                                         inputField.current.dispatchEvent(new Event('input', {bubbles: true}));
+                                        // todo: make event working
 									}}
 								/>
 							</Stack>
