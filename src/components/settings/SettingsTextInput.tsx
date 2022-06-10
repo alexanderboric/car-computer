@@ -58,7 +58,7 @@ export default function SettingsTextInput({
 								>
 									Save
 								</Button>
-                                <OnScreenKeyboard onChange={(text) => setInput(text)} />
+                                <OnScreenKeyboard text={text} onChange={(text) => setInput(text)} />
 							</Stack>
 						),
 					});
