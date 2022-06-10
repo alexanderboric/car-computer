@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { MdChevronRight } from "react-icons/md";
+import { MdAddAlert, MdChevronRight, MdPreview } from "react-icons/md";
 import SettingsButton from "./SettingsButton";
 
 export default function Settings() {
@@ -34,7 +34,7 @@ export default function Settings() {
 						})}
 					>
 						<Stack spacing={5}>
-							<SettingsButton pageLink={"appearance"} label={"Appearance"}  />
+							<SettingsButton pageLink={"appearance"} label={"Appearance"} /* icon={<MdPreview />} */ />
 							<Divider />
 							<Switch
 								label="Dark mode"
