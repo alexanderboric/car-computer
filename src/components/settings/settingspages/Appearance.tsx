@@ -1,4 +1,4 @@
-import { useMantineColorScheme } from "@mantine/core";
+import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
 import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
@@ -14,6 +14,7 @@ export default function AppearanceSettings() {
 					checked={colorScheme === "dark"}
 					onSwitch={() => toggleColorScheme()}
 				/>
+                <Divider />
 			</SettingsContainer>
 		</SettingsPage>
 	);
