@@ -15,7 +15,7 @@ export default function Manager() {
 
   return (
     <>
-      <div className="App" style={{ display: 'flex' }}  >
+      <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
         <Navbar></Navbar>
 
 
