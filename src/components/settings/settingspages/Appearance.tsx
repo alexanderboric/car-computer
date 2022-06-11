@@ -4,6 +4,7 @@ import { BackgroundContext, OSKSettingsContext, OverallAppearanceContext } from 
 import OnScreenKeyboard from "../../OnScreenKeyboard";
 import SettingsButton from "../SettingsButton";
 import SettingsContainer from "../SettingsContainer";
+import SettingsMultiSelect from "../SettingsMultiSelect";
 import SettingsPage from "../SettingsPage";
 import SettingsSelect from "../SettingsSelect";
 import SettingsSlider from "../SettingsSlider";
@@ -30,6 +31,11 @@ export default function AppearanceSettings() {
 					{ value: "Monaco, Courier", label: "Monaco" },
 					{ value: "Greycliff CF", label: "Greycliff" },
 				]} onChange={setFontFamily} />
+				<Divider />
+				<SettingsMultiSelect label={"Test"} selected={[]} values={[
+					{ value: "test", label: "Test" },
+					{ value: "test2", label: "Test 2" },
+				]} onChange={() => {}} />
 			</SettingsContainer>
 
 			<SettingsContainer label="Background">
