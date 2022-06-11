@@ -11,10 +11,12 @@ export default function OnScreenKeyboard({
 	text,
 	onChange,
 	allowEnter,
+	onClose
 }: {
 	text: string;
 	onChange: (value: string) => void;
 	allowEnter?: boolean;
+	onClose?: () => void;
 }) {
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
@@ -210,7 +212,7 @@ export default function OnScreenKeyboard({
 				transitionTimingFunction={"ease"}
 				size={"lg"}
 				opened={true}
-				onClose={() => {}}
+				onClose={onClose}
 				withOverlay={false}
 			>
 				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>
