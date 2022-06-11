@@ -58,7 +58,7 @@ export default function AppearanceSettings() {
 				]} onChange={setButtonSize} />
 				<Divider />
 				<SettingsButton label={"Show Keyboard"} onClick={() => setShowOSK(true)} />
-				{showOSK && <OnScreenKeyboard text={""} onChange={() => {}} onClose={() => {setShowOSK(false)}} />}
+				{showOSK && <OnScreenKeyboard text={""} onChange={() => {}} onClose={() => {setShowOSK(false)}} closeOnTap />}
 			</SettingsContainer>
 		</SettingsPage>
 	);
