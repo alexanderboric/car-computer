@@ -11,7 +11,7 @@ import * as React from "react";
 import { useState } from "react";
 import { MdChevronRight } from "react-icons/md";
 
-export default function SettingsMultiSelect({
+export default function SettingsSelect({
 	label,
 	value,
     values,
