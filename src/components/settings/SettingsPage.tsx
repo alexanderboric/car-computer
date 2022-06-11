@@ -22,7 +22,7 @@ export default function SettingsPage({
 
 	return (
 		<>
-			<Stack ml={"xl"} mr={"xl"}>
+			<Stack ml={"xl"} mr={"xl"} mb={"xl"}>
 				<Group mt={"md"}>
 					<UnstyledButton onClick={() => navigate("../")}>
 						<Group noWrap spacing={"xs"}>
