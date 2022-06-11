@@ -1,6 +1,8 @@
 import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
 import { BackgroundContext, OSKSettingsContext } from "../../../lib/context";
+import OnScreenKeyboard from "../../OnScreenKeyboard";
+import SettingsButton from "../SettingsButton";
 import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
 import SettingsSelect from "../SettingsSelect";
@@ -11,6 +13,7 @@ export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 	const { blur, setBlur, useImage, setUseImage, homeScreenOnly, setHomeScreenOnly } = React.useContext(BackgroundContext);
 	const { buttonSize, setButtonSize, buttonRadius, setButtonRadius } = React.useContext(OSKSettingsContext);
+	const [showOSK, setShowOSK] = React.useState(false);
 	return (
 		<SettingsPage title={"Appearance"}>
 			<SettingsContainer label="Theme">
@@ -53,6 +56,9 @@ export default function AppearanceSettings() {
 					{ label: "Large", value: 3 },
 					{ label: "Extra Large", value: 4 }
 				]} onChange={setButtonSize} />
+				<Divider />
+				<SettingsButton label={"Show Keyboard"} onClick={() => setShowOSK(true)} />
+				{showOSK && <OnScreenKeyboard text={""} onChange={() => {}} onClose={() => {setShowOSK(false)}} />}
 			</SettingsContainer>
 		</SettingsPage>
 	);
