@@ -11,12 +11,14 @@ export default function OnScreenKeyboard({
 	text,
 	onChange,
 	allowEnter,
-	onClose
+	onClose,
+	closeOnTap
 }: {
 	text: string;
 	onChange: (value: string) => void;
 	allowEnter?: boolean;
 	onClose?: () => void;
+	closeOnTap?: boolean;
 }) {
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
@@ -210,6 +212,7 @@ export default function OnScreenKeyboard({
 				transition={"slide-up"}
 				transitionDuration={400}
 				transitionTimingFunction={"ease"}
+				closeOnClickOutside={closeOnTap}
 				size={"lg"}
 				opened={true}
 				onClose={onClose}
