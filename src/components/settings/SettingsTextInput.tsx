@@ -38,7 +38,7 @@ export default function SettingsTextInput({
 					const id = modals.openModal({
 						title: <Title>{label}</Title>,
 						size: "xl",
-						centered: true,
+						centered: false,
 						children: (
 							<Stack spacing="xl">
 								<TextInput
