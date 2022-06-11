@@ -54,7 +54,7 @@ export default function OnScreenKeyboard({
 	) => {
 		return (
 			<Button
-				size="sm"
+				size="xl"
 				variant="default"
 				onClick={() => {
 					if (key) {
@@ -71,7 +71,7 @@ export default function OnScreenKeyboard({
 
 	const keyRow = (
 		<>
-			<Group position="apart">
+			<Group position="center">
 				{keyButton("1", "1")}
 				{keyButton("2", "2")}
 				{keyButton("3", "3")}
@@ -85,7 +85,7 @@ export default function OnScreenKeyboard({
 
 				{keyButton(undefined, undefined, "backspace", <MdBackspace />)}
 			</Group>
-			<Group position="apart">
+			<Group position="center">
 				{keyButton("q", "Q")}
 				{keyButton("w", "W")}
 				{keyButton("e", "E")}
@@ -98,7 +98,7 @@ export default function OnScreenKeyboard({
 				{keyButton("p", "P")}
 				{keyButton("ü", "Ü")}
 			</Group>
-			<Group position="apart">
+			<Group position="center">
 				{keyButton("a", "A")}
 				{keyButton("s", "S")}
 				{keyButton("d", "D")}
@@ -111,7 +111,7 @@ export default function OnScreenKeyboard({
 				{keyButton("ö", "Ö")}
 				{keyButton("ä", "Ä")}
 			</Group>
-			<Group position="apart">
+			<Group position="center">
 				{keyButton(
 					undefined,
 					undefined,
@@ -129,7 +129,7 @@ export default function OnScreenKeyboard({
 				{keyButton(".", ":")}
 				{keyButton("-", "_")}
 			</Group>
-			<Group position="apart">
+			<Group position="center">
 				{keyButton(undefined, undefined, "symbol", <MdOutlineEmojiEmotions />)}
 				{keyButton("SPACE", "SPACE", "space", undefined)}
 				{keyButton(undefined, undefined, "enter", <MdSubdirectoryArrowLeft />)}
@@ -140,9 +140,9 @@ export default function OnScreenKeyboard({
 
 	return (
 		<>
-			{/* <Drawer position="bottom" opened={true} onClose={() => {}}> */}
-				<Stack>{symbols ? symbolRow : keyRow}</Stack>
-			{/* </Drawer> */}
+			<Drawer position="bottom" size={"lg"} opened={true} onClose={() => {}}>
+				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>{symbols ? symbolRow : keyRow}</Stack>
+			</Drawer>
 		</>
 	);
 }
