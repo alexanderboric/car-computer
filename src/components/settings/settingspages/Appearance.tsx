@@ -1,6 +1,6 @@
 import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
-import { BackgroundContext, OSKSettingsContext } from "../../../lib/context";
+import { BackgroundContext, OSKSettingsContext, OverallAppearanceContext } from "../../../lib/context";
 import OnScreenKeyboard from "../../OnScreenKeyboard";
 import SettingsButton from "../SettingsButton";
 import SettingsContainer from "../SettingsContainer";
@@ -13,6 +13,7 @@ export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 	const { blur, setBlur, useImage, setUseImage, homeScreenOnly, setHomeScreenOnly } = React.useContext(BackgroundContext);
 	const { buttonSize, setButtonSize, buttonRadius, setButtonRadius } = React.useContext(OSKSettingsContext);
+	const { fontFamily, setFontFamily } = React.useContext(OverallAppearanceContext);
 	const [showOSK, setShowOSK] = React.useState(false);
 	return (
 		<SettingsPage title={"Appearance"}>
@@ -22,6 +23,11 @@ export default function AppearanceSettings() {
 					checked={colorScheme === "dark"}
 					onSwitch={() => toggleColorScheme()}
 				/>
+				<Divider />
+				<SettingsSelect label={"Font"} value={fontFamily} values={[
+					{ value: "default", label: "Default" },
+					{ value: "Verdana, sand-serif", label: "Verdana" },
+				]} onChange={setFontFamily} />
 			</SettingsContainer>
 
 			<SettingsContainer label="Background">
