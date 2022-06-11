@@ -18,8 +18,8 @@ export default function SettingsSelect({
 	onChange,
 }: {
 	label: string;
-	value: string;
-	values: { value: string; label: string | React.ReactNode }[];
+	value: any;
+	values: { value: any; label: string | React.ReactNode }[];
 	onChange: (text: string) => void;
 }) {
 	const theme = useMantineTheme();
