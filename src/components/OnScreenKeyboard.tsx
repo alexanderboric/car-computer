@@ -130,7 +130,7 @@ export default function OnScreenKeyboard({
 				{keyButton("-", "_")}
 			</Group>
 			<Group position="center">
-				{keyButton(undefined, undefined, "symbol", <MdOutlineEmojiEmotions />)}
+				{keyButton(undefined, undefined, "symbol", <>#+=</>)}
 				{keyButton("SPACE", "SPACE", "space", undefined)}
 				{keyButton(undefined, undefined, "enter", <MdSubdirectoryArrowLeft />)}
 			</Group>
@@ -192,7 +192,7 @@ export default function OnScreenKeyboard({
 				{keyButton("-", "_")}
 			</Group>
 			<Group position="center">
-				{keyButton(undefined, undefined, "symbol", <MdOutlineEmojiEmotions />)}
+				{keyButton(undefined, undefined, "symbol", <>#+=</>)}
 				{keyButton("SPACE", "SPACE", "space", undefined)}
 				{keyButton(undefined, undefined, "enter", <MdSubdirectoryArrowLeft />)}
 			</Group>
