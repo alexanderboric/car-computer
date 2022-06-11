@@ -45,7 +45,7 @@
   .Music-Background-Image{
    
     width:130%;
-    filter:blur(60px) brightness(0.8);
+    filter:blur(45px) brightness(0.8);
     justify-self: center;
 
   }
