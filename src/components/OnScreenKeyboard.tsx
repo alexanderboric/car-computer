@@ -1,10 +1,11 @@
-import { Button, Drawer, Group, Stack } from "@mantine/core";
+import { Button, Drawer, Group, MANTINE_SIZES, Stack } from "@mantine/core";
 import * as React from "react";
 import {
 	MdBackspace,
 	MdSubdirectoryArrowLeft,
 } from "react-icons/md";
 import { BsShift, BsShiftFill } from "react-icons/bs";
+import { OSKSettingsContext } from "../lib/context";
 
 export default function OnScreenKeyboard({
 	text,
@@ -18,6 +19,7 @@ export default function OnScreenKeyboard({
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
 	const [symbols, setSymbols] = React.useState(false);
+	const { buttonSize, buttonRadius } = React.useContext(OSKSettingsContext);
 
 	React.useEffect(() => {
 		onChange(input);
@@ -53,7 +55,8 @@ export default function OnScreenKeyboard({
 	) => {
 		return (
 			<Button
-				size="xl"
+				size={MANTINE_SIZES[buttonSize]}
+				radius={MANTINE_SIZES[buttonRadius]}
 				variant="default"
 				onClick={() => {
 					if (key) {

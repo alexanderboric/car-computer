@@ -1,6 +1,6 @@
 import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
-import { BackgroundContext } from "../../../lib/context";
+import { BackgroundContext, OSKSettingsContext } from "../../../lib/context";
 import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
 import SettingsSelect from "../SettingsSelect";
@@ -10,6 +10,7 @@ import SettingsSwitch from "../SettingsSwitch";
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 	const { blur, setBlur, useImage, setUseImage, homeScreenOnly, setHomeScreenOnly } = React.useContext(BackgroundContext);
+	const { buttonSize, setButtonSize, buttonRadius, setButtonRadius } = React.useContext(OSKSettingsContext);
 	return (
 		<SettingsPage title={"Appearance"}>
 			<SettingsContainer label="Theme">
@@ -37,13 +38,13 @@ export default function AppearanceSettings() {
 			</SettingsContainer>
 
 			<SettingsContainer label="On Screen Keyboard" bottomText="On Screen Keyboard will appear whenever text input is required.">
-				<SettingsSelect label={"Radius"} value={"md"} values={[
-					{ label: "Extra Small", value: "xs" },
-					{ label: "Small", value: "sm" },
-					{ label: "Medium", value: "md" },
-					{ label: "Large", value: "lg" },
-					{ label: "Extra Large", value: "xl" }
-				]} onChange={() => {}} />
+				<SettingsSelect label={"Radius"} value={buttonRadius} values={[
+					{ label: "Extra Small", value: 0 },
+					{ label: "Small", value: 1 },
+					{ label: "Medium", value: 2 },
+					{ label: "Large", value: 3 },
+					{ label: "Extra Large", value: 4 }
+				]} onChange={setButtonRadius} />
 			</SettingsContainer>
 		</SettingsPage>
 	);
