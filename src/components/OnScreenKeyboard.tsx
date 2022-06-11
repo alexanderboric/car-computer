@@ -140,7 +140,7 @@ export default function OnScreenKeyboard({
 
 	return (
 		<>
-			<Drawer position="bottom" size={"lg"} opened={true} onClose={() => {}}>
+			<Drawer position="bottom" size={"lg"} opened={true} onClose={() => {}} withOverlay={false}>
 				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>{symbols ? symbolRow : keyRow}</Stack>
 			</Drawer>
 		</>
