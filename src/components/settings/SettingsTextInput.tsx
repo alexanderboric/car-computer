@@ -28,7 +28,6 @@ export default function SettingsTextInput({
 	const [input, setInput] = useState(text);
 	const inputField = React.useRef<HTMLInputElement>(null);
 
-
 	return (
 		<>
 			<UnstyledButton
@@ -46,8 +45,10 @@ export default function SettingsTextInput({
 									ref={inputField}
 									size="xl"
 									placeholder={text}
-									value={input}
-									onChange={setInput}
+									defaultValue={input}
+									onChange={(event: InputEvent) => {
+										setInput((event.currentTarget as HTMLInputElement).value);
+									}}
 									mt="xl"
 								/>
 								<Button
@@ -64,11 +65,10 @@ export default function SettingsTextInput({
 								<OnScreenKeyboard
 									text={text}
 									onChange={(newText) => {
-										/* setInput(newText); */
-                                        inputField.current.value = newText;
-                                        inputField.current.dispatchEvent(new Event('input', {bubbles: true}));
-                                        // todo: make event working
+										inputField.current.value = newText;
+										setInput(newText);
 									}}
+									/* onChange={setInput} */
 								/>
 							</Stack>
 						),
