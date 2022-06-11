@@ -38,7 +38,7 @@ export default function AppearanceSettings() {
 			</SettingsContainer>
 
 			<SettingsContainer label="On Screen Keyboard" bottomText="On Screen Keyboard will appear whenever text input is required.">
-				<SettingsSelect label={"Radius"} value={buttonRadius} values={[
+				<SettingsSelect label={"Button Radius"} value={buttonRadius} values={[
 					{ label: "Extra Small", value: 0 },
 					{ label: "Small", value: 1 },
 					{ label: "Medium", value: 2 },
@@ -46,7 +46,7 @@ export default function AppearanceSettings() {
 					{ label: "Extra Large", value: 4 }
 				]} onChange={setButtonRadius} />
 				<Divider />
-				<SettingsSelect label={"Size"} value={buttonSize} values={[
+				<SettingsSelect label={"Button Size"} value={buttonSize} values={[
 					{ label: "Extra Small", value: 0 },
 					{ label: "Small", value: 1 },
 					{ label: "Medium", value: 2 },
