@@ -26,7 +26,9 @@ export default function AppearanceSettings() {
 				<Divider />
 				<SettingsSelect label={"Font"} value={fontFamily} values={[
 					{ value: "default", label: "Default" },
-					{ value: "Verdana, sand-serif", label: "Verdana" },
+					{ value: "Verdana, sans-serif", label: "Verdana" },
+					{ value: "Monaco, Courier", label: "Monaco" },
+					{ value: "Greycliff CF", label: "Greycliff" },
 				]} onChange={setFontFamily} />
 			</SettingsContainer>
 
