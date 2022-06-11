@@ -14,17 +14,19 @@ import { MdChevronRight } from "react-icons/md";
 export default function SettingsSelect({
 	label,
 	value,
-    values,
+	values,
 	onChange,
 }: {
 	label: string;
 	value: string;
-    values: { value: string, label: string | React.ReactNode }[];
+	values: { value: string; label: string | React.ReactNode }[];
 	onChange: (text: string) => void;
 }) {
 	const theme = useMantineTheme();
 	const modals = useModals();
-	const [selectedLabel, setSelectedLabel] = useState(values.find(v => v.value === value).label);
+	const [selectedLabel, setSelectedLabel] = useState(
+		values.find((v) => v.value === value).label
+	);
 
 	return (
 		<>
@@ -38,10 +40,18 @@ export default function SettingsSelect({
 						size: "xl",
 						centered: false,
 						children: (
-							<SegmentedControl orientation="vertical" size="xl" value={value} data={values} onChange={(val: string) => {
-                                setSelectedLabel(values.find(v => v.value === val).label);
-                                onChange(val);
-                            }}/>
+								<SegmentedControl
+									orientation="vertical"
+									size="xl"
+									fullWidth
+									value={value}
+									data={values}
+									onChange={(val: string) => {
+										setSelectedLabel(values.find((v) => v.value === val).label);
+										onChange(val);
+										modals.closeModal(id);
+									}}
+								/>
 						),
 					});
 				}}
