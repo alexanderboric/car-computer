@@ -45,6 +45,14 @@ export default function AppearanceSettings() {
 					{ label: "Large", value: 3 },
 					{ label: "Extra Large", value: 4 }
 				]} onChange={setButtonRadius} />
+				<Divider />
+				<SettingsSelect label={"Size"} value={buttonSize} values={[
+					{ label: "Extra Small", value: 0 },
+					{ label: "Small", value: 1 },
+					{ label: "Medium", value: 2 },
+					{ label: "Large", value: 3 },
+					{ label: "Extra Large", value: 4 }
+				]} onChange={setButtonSize} />
 			</SettingsContainer>
 		</SettingsPage>
 	);
