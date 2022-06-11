@@ -24,9 +24,7 @@ export default function SettingsSelect({
 }) {
 	const theme = useMantineTheme();
 	const modals = useModals();
-	const [selectedLabel, setSelectedLabel] = useState(
-		values.find((v) => v.value === value).label
-	);
+	const [input, setInput] = useState(value);
 
 	return (
 		<>
@@ -40,18 +38,18 @@ export default function SettingsSelect({
 						size: "xl",
 						centered: false,
 						children: (
-								<SegmentedControl
-									orientation="vertical"
-									size="xl"
-									fullWidth
-									value={value}
-									data={values}
-									onChange={(val: string) => {
-										setSelectedLabel(values.find((v) => v.value === val).label);
-										onChange(val);
-										modals.closeModal(id);
-									}}
-								/>
+							<SegmentedControl
+								orientation="vertical"
+								size="xl"
+								fullWidth
+								value={input}
+								data={values}
+								onChange={(val: string) => {
+									setInput(val);
+									onChange(val);
+									modals.closeModal(id);
+								}}
+							/>
 						),
 					});
 				}}
@@ -62,7 +60,7 @@ export default function SettingsSelect({
 					</Group>
 					<Group spacing={5}>
 						<Text weight={550} size="xl">
-							{selectedLabel}
+							{values.find((v) => v.value === input)?.label}
 						</Text>
 						<MdChevronRight size={20} />
 					</Group>
