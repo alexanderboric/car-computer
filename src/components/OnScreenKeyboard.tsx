@@ -2,7 +2,6 @@ import { Button, Drawer, Group, Stack } from "@mantine/core";
 import * as React from "react";
 import {
 	MdBackspace,
-	MdOutlineEmojiEmotions,
 	MdSubdirectoryArrowLeft,
 } from "react-icons/md";
 import { BsShift, BsShiftFill } from "react-icons/bs";
@@ -203,6 +202,9 @@ export default function OnScreenKeyboard({
 		<>
 			<Drawer
 				position="bottom"
+				transition={"slide-up"}
+				transitionDuration={400}
+				transitionTimingFunction={"ease"}
 				size={"lg"}
 				opened={true}
 				onClose={() => {}}
