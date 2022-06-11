@@ -218,6 +218,7 @@ export default function OnScreenKeyboard({
 				onClose={onClose}
 				withOverlay={closeOnTap ? true : false}
 				overlayOpacity={0}
+				trapFocus={false}
 			>
 				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>
 					{symbols ? symbolRow : keyRow}
