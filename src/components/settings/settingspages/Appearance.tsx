@@ -8,7 +8,7 @@ import SettingsSwitch from "../SettingsSwitch";
 
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-	const { blur, setBlur, useImage, setUseImage } = React.useContext(BackgroundContext);
+	const { blur, setBlur, useImage, setUseImage, homeScreenOnly, setHomeScreenOnly } = React.useContext(BackgroundContext);
 	return (
 		<SettingsPage title={"Appearance"}>
 			<SettingsContainer label="Theme">
@@ -27,6 +27,8 @@ export default function AppearanceSettings() {
 						setUseImage(val);
 					}}
 				/>
+				<Divider />
+				<SettingsSwitch label={"HomeScreen only"} checked={homeScreenOnly} onSwitch={setHomeScreenOnly} />
 				<Divider />
 				<SettingsSlider label={"Background Blur"} min={0} max={100} value={blur} onChange={(num) => {
 					setBlur(num);

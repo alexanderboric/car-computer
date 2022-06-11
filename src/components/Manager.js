@@ -10,7 +10,8 @@ import { BackgroundContext } from '../lib/context';
 export default function Manager() {
 
   const [useBackgroundImage, setUseBackgroundImage] = useState(false);
-  const [backgroundImageBlur, setBackgroundImageBlur] = useState(50);
+  const [backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly] = useState(true);
+  const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
 
   return (
     <>
@@ -23,8 +24,8 @@ export default function Manager() {
                     
                 </div> */}
         <div style={{ height: "100%" }}>
-          <BackgroundContext.Provider value={{ useImage:useBackgroundImage, setUseImage:setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur}}  >
-            {useBackgroundImage && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
+          <BackgroundContext.Provider value={{ useImage:useBackgroundImage, setUseImage:setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur, homeScreenOnly: backgroundImageHomeScreenOnly, setHomeScreenOnly: setBackgroundImageHomeScreenOnly }}  >
+            {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
             <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
               <Outlet />
             </div>
