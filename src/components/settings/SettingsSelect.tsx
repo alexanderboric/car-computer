@@ -20,7 +20,7 @@ export default function SettingsSelect({
 	label: string;
 	value: any;
 	values: { value: any; label: string | React.ReactNode }[];
-	onChange: (text: string) => void;
+	onChange: (value: any) => void;
 }) {
 	const theme = useMantineTheme();
 	const modals = useModals();
