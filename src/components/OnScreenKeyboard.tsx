@@ -32,7 +32,7 @@ export default function OnScreenKeyboard({
 			case "shift":
 				setShift(!shift);
 				break;
-			case "symbols":
+			case "symbol":
 				setSymbols(!symbols);
 				break;
 			case "enter":
@@ -136,12 +136,81 @@ export default function OnScreenKeyboard({
 			</Group>
 		</>
 	);
-	const symbolRow = <></>;
+	const symbolRow = (
+		<>
+			<Group position="center">
+				{keyButton("1", "1")}
+				{keyButton("2", "2")}
+				{keyButton("3", "3")}
+				{keyButton("4", "4")}
+				{keyButton("5", "5")}
+				{keyButton("6", "6")}
+				{keyButton("7", "7")}
+				{keyButton("8", "8")}
+				{keyButton("9", "9")}
+				{keyButton("0", "0")}
+
+				{keyButton(undefined, undefined, "backspace", <MdBackspace />)}
+			</Group>
+			<Group position="center">
+				{keyButton("-", "-")}
+				{keyButton("/", "/")}
+				{keyButton(":", ":")}
+				{keyButton(";", ";")}
+				{keyButton(".", ".")}
+				{keyButton(",", ",")}
+				{keyButton("€", "€")}
+				{keyButton("&", "&")}
+				{keyButton("@", "@")}
+				{keyButton("\"", "\"")}
+				{keyButton("#", "#")}
+			</Group>
+			<Group position="center">
+				{keyButton("!", "!")}
+				{keyButton("?", "?")}
+				{keyButton("§", "§")}
+				{keyButton("$", "$")}
+				{keyButton("%", "%")}
+				{keyButton("(", "(")}
+				{keyButton(")", ")")}
+				{keyButton("[", "[")}
+				{keyButton("]", "]")}
+				{keyButton("{", "{")}
+				{keyButton("}", "}")}
+			</Group>
+			<Group position="center">
+				{keyButton("+", "+")}
+				{keyButton("-", "-")}
+				{keyButton("=", "=")}
+				{keyButton("<", "<")}
+				{keyButton(">", ">")}
+				{keyButton("´", "´")}
+				{keyButton("`", "`")}
+				{keyButton("'", "'")}
+				{keyButton("^", "^")}
+				{keyButton("°", "°")}
+				{keyButton("-", "_")}
+			</Group>
+			<Group position="center">
+				{keyButton(undefined, undefined, "symbol", <MdOutlineEmojiEmotions />)}
+				{keyButton("SPACE", "SPACE", "space", undefined)}
+				{keyButton(undefined, undefined, "enter", <MdSubdirectoryArrowLeft />)}
+			</Group>
+		</>
+	);
 
 	return (
 		<>
-			<Drawer position="bottom" size={"lg"} opened={true} onClose={() => {}} withOverlay={false}>
-				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>{symbols ? symbolRow : keyRow}</Stack>
+			<Drawer
+				position="bottom"
+				size={"lg"}
+				opened={true}
+				onClose={() => {}}
+				withOverlay={false}
+			>
+				<Stack spacing={"xs"} mr={"xl"} ml={"xl"} mt={-30}>
+					{symbols ? symbolRow : keyRow}
+				</Stack>
 			</Drawer>
 		</>
 	);
