@@ -1,5 +1,5 @@
 import '../App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 import Navbar from './Navbar';
@@ -13,6 +13,27 @@ export default function Manager() {
   const [backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly] = useState(true);
   const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
 
+  useEffect(() => {
+    fetch('/api/settings/get?setting=useBackgroundImage')
+      .then(res => res.json())
+      .then(data => {
+        setUseBackgroundImage(data.value);
+      });
+    fetch('/api/settings/get?setting=backgroundImageHomeScreenOnly')
+      .then(res => res.json())
+      .then(data => {
+        setBackgroundImageHomeScreenOnly(data.value);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/settings/set?setting=useBackgroundImage&value=' + useBackgroundImage);
+  }, [useBackgroundImage]);
+
+  useEffect(() => {
+    fetch('/api/settings/set?setting=backgroundImageBlur&value=' + backgroundImageBlur);
+  }, [backgroundImageBlur]);
+
   return (
     <>
       <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
@@ -24,7 +45,7 @@ export default function Manager() {
                     
                 </div> */}
         <div style={{ height: "100%" }}>
-          <BackgroundContext.Provider value={{ useImage:useBackgroundImage, setUseImage:setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur, homeScreenOnly: backgroundImageHomeScreenOnly, setHomeScreenOnly: setBackgroundImageHomeScreenOnly }}  >
+          <BackgroundContext.Provider value={{ useImage: useBackgroundImage, setUseImage: setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur, homeScreenOnly: backgroundImageHomeScreenOnly, setHomeScreenOnly: setBackgroundImageHomeScreenOnly }}  >
             {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
             <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
               <Outlet />
