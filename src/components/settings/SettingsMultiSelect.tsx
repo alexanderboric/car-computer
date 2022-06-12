@@ -25,7 +25,7 @@ export default function SettingsMultiSelect({
 }) {
 	const theme = useMantineTheme();
 	const modals = useModals();
-	const [input, setInput] = useState(selected);
+	const [input, setInput] = useState<any[]>(selected);
 
 	return (
 		<>
@@ -38,7 +38,7 @@ export default function SettingsMultiSelect({
 						title: <Title>{label}</Title>,
 						size: "xl",
 						centered: false,
-						children: <CheckboxGroup orientation="vertical" size="xl" value={input} onChange={setInput}>
+						children: <CheckboxGroup orientation="vertical" size="xl" defaultValue={input} onChange={setInput}>
                             {values.map(({ value:val, label:lab }) => <Checkbox value={val} label={lab} />)}
                         </CheckboxGroup>,
 					});
@@ -50,7 +50,7 @@ export default function SettingsMultiSelect({
 					</Group>
 					<Group spacing={5}>
 						<Text weight={550} size="xl">
-							{input.map((v) => v.label).join(", ")}
+							{input.map((val) => values.find((v) => v.value === val)?.label).join(", ")}
 						</Text>
 						<MdChevronRight size={20} />
 					</Group>
