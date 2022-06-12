@@ -7,6 +7,7 @@ import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
 import SettingsSelect from "../SettingsSelect";
 import SettingsSlider from "../SettingsSlider";
+import SettingsStatus from "../SettingsStatus";
 import SettingsSwitch from "../SettingsSwitch";
 
 export default function AppearanceSettings() {
@@ -15,6 +16,20 @@ export default function AppearanceSettings() {
 	const { buttonSize, setButtonSize, buttonRadius, setButtonRadius } = React.useContext(OSKSettingsContext);
 	const { fontFamily, setFontFamily } = React.useContext(OverallAppearanceContext);
 	const [showOSK, setShowOSK] = React.useState(false);
+
+	const [greeting, setGreeting] = React.useState("");
+	const [greetingLoaded, setGreetingLoaded] = React.useState(false);
+
+	React.useEffect(() => {
+		const fetchData = async () => {
+			fetch("/api/greeting?name=John").then(res => res.json()).then(data => {
+				setGreeting(data.greeting);
+				setGreetingLoaded(true);
+			});
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<SettingsPage title={"Appearance"}>
 			<SettingsContainer label="Theme">
@@ -30,6 +45,8 @@ export default function AppearanceSettings() {
 					{ value: "Monaco, Courier", label: "Monaco" },
 					{ value: "Greycliff CF", label: "Greycliff" },
 				]} onChange={setFontFamily} />
+				<Divider />
+				<SettingsStatus label={"Test"} status={greeting} loading={!greetingLoaded} />
 			</SettingsContainer>
 
 			<SettingsContainer label="Background">
