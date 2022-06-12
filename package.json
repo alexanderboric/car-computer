@@ -65,5 +65,7 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.0"
-  }
+  },
+  "proxy": "http://localhost:3001"
+
 }
