@@ -17,22 +17,19 @@ export default function Manager() {
     fetch('/api/settings/get?setting=useBackgroundImage')
       .then(res => res.json())
       .then(data => {
-        setUseBackgroundImage(data.value);
+        console.log("data");
+        console.log(data);
+        setUseBackgroundImage(data.value === 'true');
       });
-    fetch('/api/settings/get?setting=backgroundImageHomeScreenOnly')
+    fetch('/api/settings/get?setting=backgroundImageBlur')
       .then(res => res.json())
       .then(data => {
-        setBackgroundImageHomeScreenOnly(data.value);
+        console.log("data");
+        console.log(data);
+        console.log(typeof(Number(data.value)));
+        setBackgroundImageBlur(Number(data.value));
       });
   }, []);
-
-  useEffect(() => {
-    fetch('/api/settings/set?setting=useBackgroundImage&value=' + useBackgroundImage);
-  }, [useBackgroundImage]);
-
-  useEffect(() => {
-    fetch('/api/settings/set?setting=backgroundImageBlur&value=' + backgroundImageBlur);
-  }, [backgroundImageBlur]);
 
   return (
     <>

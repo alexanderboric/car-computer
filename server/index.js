@@ -13,14 +13,14 @@ app.get('/api/greeting', (req, res) => {
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
-app.get('api/settings/get', (req, res) => {
+app.get('/api/settings/get', (req, res) => {
   const setting = req.query.setting;
   res.setHeader('Content-Type', 'application/json');
   if (!setting) {
     res.send(JSON.stringify({ error: 'No setting provided' }));
   } else {
     let settings = readSettings();
-    if (settings.includes(setting)) {
+    if (setting in settings) {
       res.send(JSON.stringify({ setting: setting, value: settings[setting] }));
     } else {
       res.send(JSON.stringify({ error: 'Setting not found' }));
@@ -28,7 +28,7 @@ app.get('api/settings/get', (req, res) => {
   }
 });
 
-app.get('api/settings/set', (req, res) => {
+app.get('/api/settings/set', (req, res) => {
   const setting = req.query.setting;
   const value = req.query.value;
   res.setHeader('Content-Type', 'application/json');
@@ -55,5 +55,5 @@ function readSettings() {
 }
 
 function writeSettings(settings) {
-  fs.writeFileSync('./settings.json', JSON.stringify({settings}));
+  fs.writeFileSync('./settings.json', JSON.stringify(settings));
 }
