@@ -44,6 +44,11 @@ app.get('/api/settings/set', (req, res) => {
   }
 });
 
+app.get('/api/settings/getAll', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(readSettings());
+});
+
 app.listen(3001, () =>
   console.log('Express server is running on localhost:3001')
 );

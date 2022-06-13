@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
-import { BackgroundImage } from '@mantine/core';
+import { BackgroundImage, LoadingOverlay } from '@mantine/core';
 import { BackgroundContext } from '../lib/context';
 
 export default function Manager() {
@@ -12,27 +12,43 @@ export default function Manager() {
   const [useBackgroundImage, setUseBackgroundImage] = useState(false);
   const [backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly] = useState(true);
   const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch('/api/settings/get?setting=useBackgroundImage')
+    fetch('/api/settings/getAll')
       .then(res => res.json())
       .then(data => {
-        console.log("data");
-        console.log(data);
-        setUseBackgroundImage(data.value === 'true');
-      });
-    fetch('/api/settings/get?setting=backgroundImageBlur')
-      .then(res => res.json())
-      .then(data => {
-        console.log("data");
-        console.log(data);
-        console.log(typeof(Number(data.value)));
-        setBackgroundImageBlur(Number(data.value));
+
+
+        /* -- Insert Settings Here -- */
+        setUseBackgroundImage(data.useBackgroundImage === 'true');
+        setBackgroundImageBlur(Number(data.backgroundImageBlur));
+        setBackgroundImageHomeScreenOnly(data.backgroundImageHomeScreenOnly === 'true');
+        /* -- Insert Settings Here -- */
+
+
+        setSettingsLoaded(true);
       });
   }, []);
 
+
+
+  /* -- Insert Settings Effects Here -- */
+  useEffect(() => {
+    fetch('/api/settings/set?setting=useBackgroundImage&value=' + useBackgroundImage);
+  }, [useBackgroundImage]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=backgroundImageBlur&value=' + backgroundImageBlur);
+  }, [backgroundImageBlur]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=backgroundImageHomeScreenOnly&value=' + backgroundImageHomeScreenOnly);
+  }, [backgroundImageHomeScreenOnly]);
+  /* -- Insert Settings Effects Here -- */
+
+
   return (
     <>
+    {settingsLoaded ? (
       <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
         <Navbar></Navbar>
 
@@ -50,6 +66,11 @@ export default function Manager() {
           </BackgroundContext.Provider>
         </div>
       </div>
+      ) : (
+      <>
+        <LoadingOverlay />
+      </>
+      )}
     </>
   )
 

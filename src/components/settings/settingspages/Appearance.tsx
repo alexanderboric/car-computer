@@ -55,7 +55,6 @@ export default function AppearanceSettings() {
 					checked={useImage}
 					onSwitch={(val) => {
 						setUseImage(val);
-						fetch("/api/settings/set?setting=useBackgroundImage&value=" + val);
 					}}
 				/>
 				<Divider />
@@ -63,7 +62,6 @@ export default function AppearanceSettings() {
 				<Divider />
 				<SettingsSlider label={"Background Blur"} min={0} max={100} value={blur} onChange={(num) => {
 					setBlur(num);
-					fetch("/api/settings/set?setting=backgroundImageBlur&value=" + num);
 				}} />
 			</SettingsContainer>
 
