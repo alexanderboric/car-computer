@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
 import { BackgroundImage, LoadingOverlay, useMantineColorScheme } from '@mantine/core';
-import { BackgroundContext, OSKSettingsContext } from '../lib/context';
+import { BackgroundContext, OSKSettingsContext, OverallAppearanceContext } from '../lib/context';
 
 export default function Manager() {
 
@@ -14,6 +14,7 @@ export default function Manager() {
   const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { fontFamily, setFontFamily } = React.useContext(OverallAppearanceContext);
 
 
   const [OSKButtonSize, setOSKButtonSize] = useState(4);
@@ -31,6 +32,7 @@ export default function Manager() {
         setBackgroundImageHomeScreenOnly(data.backgroundImageHomeScreenOnly === 'true');
         setOSKButtonSize(Number(data.OSKButtonSize));
         setOSKButtonRadius(Number(data.OSKButtonRadius));
+        setFontFamily(data.fontFamily);
         if (colorScheme !== data.colorScheme) {
           toggleColorScheme();
         }
@@ -63,6 +65,9 @@ export default function Manager() {
   useEffect(() => {
     fetch('/api/settings/set?setting=OSKButtonRadius&value=' + OSKButtonRadius);
   }, [OSKButtonRadius]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=fontFamily&value=' + fontFamily);
+  }, [fontFamily]);
   /* -- Insert Settings Effects Here -- */
 
 
