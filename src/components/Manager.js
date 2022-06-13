@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
 import { BackgroundImage, LoadingOverlay, useMantineColorScheme } from '@mantine/core';
-import { BackgroundContext } from '../lib/context';
+import { BackgroundContext, OSKSettingsContext } from '../lib/context';
 
 export default function Manager() {
 
@@ -14,6 +14,10 @@ export default function Manager() {
   const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
+
+  const [OSKButtonSize, setOSKButtonSize] = useState(4);
+  const [OSKButtonRadius, setOSKButtonRadius] = useState(1);
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -33,7 +37,7 @@ export default function Manager() {
 
         setSettingsLoaded(true);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -56,28 +60,30 @@ export default function Manager() {
 
   return (
     <>
-    {settingsLoaded ? (
-      <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
-        <Navbar></Navbar>
+      {settingsLoaded ? (
+        <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
+          <Navbar></Navbar>
 
 
-        {/* <div style={{ justifyContent:'center',position:'absolute',right:0,top:0, width:"91%", height:"100%"}}>
+          {/* <div style={{ justifyContent:'center',position:'absolute',right:0,top:0, width:"91%", height:"100%"}}>
                     {this.state.page}
                     
                 </div> */}
-        <div style={{ height: "100%" }}>
-          <BackgroundContext.Provider value={{ useImage: useBackgroundImage, setUseImage: setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur, homeScreenOnly: backgroundImageHomeScreenOnly, setHomeScreenOnly: setBackgroundImageHomeScreenOnly }}  >
-            {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
-            <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
-              <Outlet />
-            </div>
-          </BackgroundContext.Provider>
+          <div style={{ height: "100%" }}>
+            <OSKSettingsContext.Provider value={{ buttonSize: OSKButtonSize, setButtonSize: setOSKButtonSize, buttonRadius: OSKButtonRadius, setButtonRadius: setOSKButtonRadius }}>
+              <BackgroundContext.Provider value={{ useImage: useBackgroundImage, setUseImage: setUseBackgroundImage, blur: backgroundImageBlur, setBlur: setBackgroundImageBlur, homeScreenOnly: backgroundImageHomeScreenOnly, setHomeScreenOnly: setBackgroundImageHomeScreenOnly }}  >
+                {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
+                <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
+                  <Outlet />
+                </div>
+              </BackgroundContext.Provider>
+            </OSKSettingsContext.Provider>
+          </div>
         </div>
-      </div>
       ) : (
-      <>
-        <LoadingOverlay />
-      </>
+        <>
+          <LoadingOverlay />
+        </>
       )}
     </>
   )

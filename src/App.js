@@ -4,15 +4,13 @@ import React, { useState } from 'react';
 import Manager from './components/Manager';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
-import { OSKSettingsContext, OverallAppearanceContext } from './lib/context';
+import { OverallAppearanceContext } from './lib/context';
 
 
 export default function App() {
 
   const [colorScheme, setColorScheme] = useState("dark");
   const [fontFamily, setFontFamily] = useState("default");
-  const [OSKButtonSize, setOSKButtonSize] = useState(4);
-  const [OSKButtonRadius, setOSKButtonRadius] = useState(1);
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
@@ -26,11 +24,9 @@ export default function App() {
           Notification: { radius: "lg" },
           Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
         }}>
-          <OSKSettingsContext.Provider value={{ buttonSize: OSKButtonSize, setButtonSize: setOSKButtonSize, buttonRadius: OSKButtonRadius, setButtonRadius: setOSKButtonRadius }}>
-            <ModalsProvider>
-              <Manager />
-            </ModalsProvider>
-          </OSKSettingsContext.Provider>
+          <ModalsProvider>
+            <Manager />
+          </ModalsProvider>
         </MantineProvider>
       </OverallAppearanceContext.Provider>
     </ColorSchemeProvider>
