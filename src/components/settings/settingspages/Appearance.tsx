@@ -58,7 +58,7 @@ export default function AppearanceSettings() {
 					}}
 				/>
 				<Divider />
-				<SettingsSwitch label={"HomeScreen only"} checked={homeScreenOnly} onSwitch={setHomeScreenOnly} />
+				<SettingsSwitch label={"HomeScreen only"} disabled={!useImage} checked={homeScreenOnly} onSwitch={setHomeScreenOnly} />
 				<Divider />
 				<SettingsSlider label={"Background Blur"} min={0} max={100} value={blur} onChange={(num) => {
 					setBlur(num);
