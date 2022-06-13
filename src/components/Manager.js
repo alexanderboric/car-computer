@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
-import { BackgroundImage, LoadingOverlay } from '@mantine/core';
+import { BackgroundImage, LoadingOverlay, useMantineColorScheme } from '@mantine/core';
 import { BackgroundContext } from '../lib/context';
 
 export default function Manager() {
@@ -13,6 +13,7 @@ export default function Manager() {
   const [backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly] = useState(true);
   const [backgroundImageBlur, setBackgroundImageBlur] = useState(35);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -24,6 +25,9 @@ export default function Manager() {
         setUseBackgroundImage(data.useBackgroundImage === 'true');
         setBackgroundImageBlur(Number(data.backgroundImageBlur));
         setBackgroundImageHomeScreenOnly(data.backgroundImageHomeScreenOnly === 'true');
+        if (colorScheme !== data.colorScheme) {
+          toggleColorScheme();
+        }
         /* -- Insert Settings Here -- */
 
 
@@ -43,6 +47,9 @@ export default function Manager() {
   useEffect(() => {
     fetch('/api/settings/set?setting=backgroundImageHomeScreenOnly&value=' + backgroundImageHomeScreenOnly);
   }, [backgroundImageHomeScreenOnly]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=colorScheme&value=' + colorScheme);
+  }, [colorScheme]);
   /* -- Insert Settings Effects Here -- */
 
 
