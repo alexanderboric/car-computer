@@ -4,10 +4,12 @@ import * as React from "react";
 export default function SettingsSwitch({
 	label,
     checked,
+	disabled,
     onSwitch
 }: {
 	label: string;
     checked?: boolean;
+	disabled?: boolean;
     onSwitch: (state: boolean) => void;
 }) {
 
@@ -20,7 +22,7 @@ export default function SettingsSwitch({
 					<Group>
 						<Text size="xl">{label}</Text>
 					</Group>
-					<Switch size="md" checked={checked} onChange={(event:InputEvent) => onSwitch((event.currentTarget as HTMLInputElement).checked)} />
+					<Switch size="md" checked={checked} disabled={disabled} onChange={(event:InputEvent) => onSwitch((event.currentTarget as HTMLInputElement).checked)} />
 				</Group>
 			</UnstyledButton>
 		</>
