@@ -13,12 +13,14 @@ export default function SettingsSlider({
 	min,
 	max,
 	value,
+	disabled,
     onChange
 }: {
     label: string;
 	min: number;
 	max: number;
     value: number;
+	disabled?: boolean;
 	onChange: (val: number) => void;
 }) {
 	const theme = useMantineTheme();
@@ -37,7 +39,7 @@ export default function SettingsSlider({
 							<Text size="xl">{label}</Text>
 						</Group>
                         <Group grow>
-                        <Slider size="lg" min={min} max={max} value={input} onChange={setInput}/>
+                        <Slider size="lg" min={min} disabled={disabled} max={max} value={input} onChange={setInput}/>
                         </Group>
                     </Stack>
 				</Group>
