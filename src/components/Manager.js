@@ -29,6 +29,8 @@ export default function Manager() {
         setUseBackgroundImage(data.useBackgroundImage === 'true');
         setBackgroundImageBlur(Number(data.backgroundImageBlur));
         setBackgroundImageHomeScreenOnly(data.backgroundImageHomeScreenOnly === 'true');
+        setOSKButtonSize(Number(data.OSKButtonSize));
+        setOSKButtonRadius(Number(data.OSKButtonRadius));
         if (colorScheme !== data.colorScheme) {
           toggleColorScheme();
         }
@@ -55,6 +57,12 @@ export default function Manager() {
   useEffect(() => {
     fetch('/api/settings/set?setting=colorScheme&value=' + colorScheme);
   }, [colorScheme]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=OSKButtonSize&value=' + OSKButtonSize);
+  }, [OSKButtonSize]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=OSKButtonRadius&value=' + OSKButtonRadius);
+  }, [OSKButtonRadius]);
   /* -- Insert Settings Effects Here -- */
 
 
