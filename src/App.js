@@ -57,7 +57,7 @@ export default function App() {
         /* -- Color Scheme -- */
 
         /* -- Open Drop -- */
-        setEnableOpenDrop(data.enableOpenDrop);
+        setEnableOpenDrop(data.enableOpenDrop === 'true');
         setOpenDropDisplayName(data.openDropDisplayName);
         /* -- Open Drop -- */
 
