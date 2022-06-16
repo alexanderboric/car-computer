@@ -41,6 +41,7 @@ app.get('/api/settings/set', (req, res) => {
     settings[setting] = value;
     writeSettings(settings);
     res.send(JSON.stringify({ setting: setting, value: value }));
+    processSettingsEvents(setting, value);
   }
 });
 
@@ -103,6 +104,21 @@ function startOpenDrop() {
 
 }
 
+function stopOpenDrop() {
+  openDropThread.kill();
+}
+
 if (readSettings()["enableOpenDrop"] === "true") {
   startOpenDrop();
+}
+
+function processSettingsEvents(setting, value) {
+  if (setting === "enableOpenDrop") {
+    if (value === "true") {
+      stopOpenDrop();
+      startOpenDrop();
+    } else {
+      stopOpenDrop();
+    }
+  }
 }
