@@ -49,6 +49,15 @@ app.get('/api/settings/getAll', (req, res) => {
   res.send(readSettings());
 });
 
+app.get('/api/opendrop/status', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (!openDropThread || exited) {
+    res.send(JSON.stringify({ value: "Offline" }));
+  } else {
+    res.send(JSON.stringify({ value: "Online" }));
+  }
+});
+
 app.listen(3001, () =>
   console.log('Express server is running on localhost:3001')
 );
@@ -61,4 +70,39 @@ function readSettings() {
 
 function writeSettings(settings) {
   fs.writeFileSync('./settings.json', JSON.stringify(settings));
+}
+
+let openDropThread;
+let exited;
+
+function startOpenDrop() {
+
+  exited = false;
+
+  const { spawn } = require("child_process");
+
+  openDropThread = spawn("opendrop", ["receive", "-n", String(readSettings()["opendropDisplayName"])]);
+
+  openDropThread.stdout.on("data", data => {
+    console.log(`OpenDrop: ${data}`);
+  });
+
+  openDropThread.stderr.on("data", data => {
+    console.log(`OpenDrop: ${data}`);
+  });
+
+  openDropThread.on('error', (error) => {
+    console.log(`OpenDrop: ${error.message}`);
+  });
+
+  openDropThread.on("close", code => {
+    console.log(`OpenDrop exited with code ${code}`);
+    exited = true;
+  });
+
+
+}
+
+if (readSettings()["enableOpenDrop"] === "true") {
+  startOpenDrop();
 }
