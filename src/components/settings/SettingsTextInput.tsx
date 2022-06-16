@@ -48,6 +48,7 @@ export default function SettingsTextInput({
 									defaultValue={input}
 									onChange={(event: InputEvent) => {
 										setInput((event.currentTarget as HTMLInputElement).value);
+										console.log((event.currentTarget as HTMLInputElement).value);
 									}}
 									mt="xl"
 								/>
