@@ -30,15 +30,30 @@ export default function App() {
 
 
         /* -- Insert Settings Here -- */
+
+        
+        /* -- Background -- */
         setUseBackgroundImage(data.useBackgroundImage === 'true');
         setBackgroundImageBlur(Number(data.backgroundImageBlur));
         setBackgroundImageHomeScreenOnly(data.backgroundImageHomeScreenOnly === 'true');
+        /* -- Background -- */
+
+        /* -- On Screen Keyboard -- */
         setOSKButtonSize(Number(data.OSKButtonSize));
         setOSKButtonRadius(Number(data.OSKButtonRadius));
+        /* -- On Screen Keyboard -- */
+
+        /* -- Font -- */
         setFontFamily(data.fontFamily);
+        /* -- Font -- */
+
+        /* -- Color Scheme -- */
         if (colorScheme !== data.colorScheme) {
           toggleColorScheme();
         }
+        /* -- Color Scheme -- */
+
+
         /* -- Insert Settings Here -- */
 
 
