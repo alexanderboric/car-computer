@@ -80,7 +80,32 @@ export default function App() {
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <SettingsContext.Provider value={{ fontFamily: fontFamily, setFontFamily: setFontFamily, OSKButtonSize: OSKButtonSize, setOSKButtonSize: setOSKButtonSize, OSKButtonRadius: OSKButtonRadius, setOSKButtonRadius: setOSKButtonRadius, useBackgroundImage: useBackgroundImage, setUseBackgroundImage: setUseBackgroundImage, backgroundImageBlur: backgroundImageBlur, setBackgroundImageBlur: setBackgroundImageBlur, backgroundImageHomeScreenOnly: backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly: setBackgroundImageHomeScreenOnly, settingsLoaded: settingsLoaded }}>
+      <SettingsContext.Provider value={{
+        /* -- Font -- */
+        fontFamily: fontFamily,
+        setFontFamily: setFontFamily,
+        /* -- Font -- */
+
+        /* -- On Screen Keyboard -- */
+        OSKButtonSize: OSKButtonSize,
+        setOSKButtonSize: setOSKButtonSize,
+        OSKButtonRadius: OSKButtonRadius,
+        setOSKButtonRadius: setOSKButtonRadius,
+        /* -- On Screen Keyboard -- */
+
+        /* -- Background Image -- */
+        useBackgroundImage: useBackgroundImage,
+        setUseBackgroundImage: setUseBackgroundImage,
+        backgroundImageBlur: backgroundImageBlur,
+        setBackgroundImageBlur: setBackgroundImageBlur,
+        backgroundImageHomeScreenOnly: backgroundImageHomeScreenOnly,
+        setBackgroundImageHomeScreenOnly: setBackgroundImageHomeScreenOnly,
+        /* -- Background Image -- */
+
+        /* -- Misc -- */
+        settingsLoaded: settingsLoaded
+        /* -- Misc -- */
+      }}>
         <MantineProvider theme={{
           colorScheme,
           fontFamily: fontFamily !== "default" ? fontFamily : undefined,
