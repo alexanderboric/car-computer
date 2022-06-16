@@ -22,6 +22,13 @@ export const SettingsContext = createContext({
     setFontFamily: (font: string) => { },
     /* -- Font -- */
 
+    /* -- OpenDrop -- */
+    enableOpenDrop: false,
+    setEnableOpenDrop: (enable: boolean) => { },
+    openDropDisplayName: null,
+    setOpenDropDisplayName: (displayName: string) => { },
+    /* -- OpenDrop -- */
+
     /* -- Misc -- */
     settingsLoaded: false
     /* -- Misc -- */

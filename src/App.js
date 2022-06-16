@@ -23,6 +23,9 @@ export default function App() {
   const [OSKButtonSize, setOSKButtonSize] = useState(4);
   const [OSKButtonRadius, setOSKButtonRadius] = useState(1);
 
+  const [enableOpenDrop, setEnableOpenDrop] = useState(false);
+  const [openDropDisplayName, setOpenDropDisplayName] = useState("Jarvis");
+
   useEffect(() => {
     fetch('/api/settings/getAll')
       .then(res => res.json())
@@ -31,7 +34,7 @@ export default function App() {
 
         /* -- Insert Settings Here -- */
 
-        
+
         /* -- Background -- */
         setUseBackgroundImage(data.useBackgroundImage === 'true');
         setBackgroundImageBlur(Number(data.backgroundImageBlur));
@@ -52,6 +55,11 @@ export default function App() {
           toggleColorScheme();
         }
         /* -- Color Scheme -- */
+
+        /* -- Open Drop -- */
+        setEnableOpenDrop(data.enableOpenDrop);
+        setOpenDropDisplayName(data.openDropDisplayName);
+        /* -- Open Drop -- */
 
 
         /* -- Insert Settings Here -- */
@@ -86,6 +94,12 @@ export default function App() {
   useEffect(() => {
     fetch('/api/settings/set?setting=fontFamily&value=' + fontFamily);
   }, [fontFamily]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=enableOpenDrop&value=' + enableOpenDrop);
+  }, [enableOpenDrop]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=openDropDisplayName&value=' + openDropDisplayName);
+  }, [openDropDisplayName]);
   /* -- Insert Settings Effects Here -- */
 
 
@@ -116,6 +130,13 @@ export default function App() {
         backgroundImageHomeScreenOnly: backgroundImageHomeScreenOnly,
         setBackgroundImageHomeScreenOnly: setBackgroundImageHomeScreenOnly,
         /* -- Background Image -- */
+
+        /* -- Open Drop -- */
+        enableOpenDrop: enableOpenDrop,
+        setEnableOpenDrop: setEnableOpenDrop,
+        openDropDisplayName: openDropDisplayName,
+        setOpenDropDisplayName: setOpenDropDisplayName,
+        /* -- Open Drop -- */
 
         /* -- Misc -- */
         settingsLoaded: settingsLoaded

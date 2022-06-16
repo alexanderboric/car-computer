@@ -81,7 +81,7 @@ function startOpenDrop() {
 
   const { spawn } = require("child_process");
 
-  openDropThread = spawn("opendrop", ["receive", "-n", String(readSettings()["opendropDisplayName"])]);
+  openDropThread = spawn("opendrop", ["receive", "-n", String(readSettings()["openDropDisplayName"])]);
 
   openDropThread.stdout.on("data", data => {
     console.log(`OpenDrop: ${data}`);
