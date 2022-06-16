@@ -1,5 +1,3 @@
 import { createContext } from "react";
 
-export const BackgroundContext = createContext({ useImage: false, setUseImage: (useImage: boolean) => {}, blur: 50, setBlur: (blur: number) => {}, homeScreenOnly: true, setHomeScreenOnly: (homeScreenOnly: boolean) => {} });
-export const OSKSettingsContext = createContext({ buttonSize: 4, setButtonSize: (size: number) => {}, buttonRadius: 1, setButtonRadius: (radius: number) => {}});
-export const OverallAppearanceContext = createContext({ fontFamily: null, setFontFamily: (font: string) => {} });
+export const SettingsContext = createContext({useBackgroundImage: false, setUseBackgroundImage: (useImage: boolean) => {}, backgroundImageBlur: 50, setBackgroundImageBlur: (blur: number) => {}, backgroundImageHomeScreenOnly: true, setBackgroundImageHomeScreenOnly: (homeScreenOnly: boolean) => {}, buttonSize: 4, setButtonSize: (size: number) => {}, buttonRadius: 1, setButtonRadius: (radius: number) => {}, fontFamily: null, setFontFamily: (font: string) => {}, settingsLoaded: false});

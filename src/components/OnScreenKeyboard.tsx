@@ -5,7 +5,7 @@ import {
 	MdSubdirectoryArrowLeft,
 } from "react-icons/md";
 import { BsShift, BsShiftFill } from "react-icons/bs";
-import { OSKSettingsContext } from "../lib/context";
+import { SettingsContext } from "../lib/context";
 
 export default function OnScreenKeyboard({
 	text,
@@ -23,7 +23,7 @@ export default function OnScreenKeyboard({
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
 	const [symbols, setSymbols] = React.useState(false);
-	const { buttonSize, buttonRadius } = React.useContext(OSKSettingsContext);
+	const { buttonSize, buttonRadius } = React.useContext(SettingsContext);
 
 	React.useEffect(() => {
 		onChange(input);

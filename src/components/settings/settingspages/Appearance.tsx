@@ -1,6 +1,6 @@
 import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
-import { BackgroundContext, OSKSettingsContext, OverallAppearanceContext } from "../../../lib/context";
+import { SettingsContext } from "../../../lib/context";
 import OnScreenKeyboard from "../../OnScreenKeyboard";
 import SettingsButton from "../SettingsButton";
 import SettingsContainer from "../SettingsContainer";
@@ -12,9 +12,7 @@ import SettingsSwitch from "../SettingsSwitch";
 
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-	const { blur, setBlur, useImage, setUseImage, homeScreenOnly, setHomeScreenOnly } = React.useContext(BackgroundContext);
-	const { buttonSize, setButtonSize, buttonRadius, setButtonRadius } = React.useContext(OSKSettingsContext);
-	const { fontFamily, setFontFamily } = React.useContext(OverallAppearanceContext);
+	const { backgroundImageBlur, setBackgroundImageBlur, useBackgroundImage, setUseBackgroundImage, backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly, buttonSize, setButtonSize, buttonRadius, setButtonRadius, fontFamily, setFontFamily } = React.useContext(SettingsContext);
 	const [showOSK, setShowOSK] = React.useState(false);
 
 	const [greeting, setGreeting] = React.useState("");
@@ -52,16 +50,16 @@ export default function AppearanceSettings() {
 			<SettingsContainer label="Background">
 				<SettingsSwitch
 					label={"Use Background Image"}
-					checked={useImage}
+					checked={useBackgroundImage}
 					onSwitch={(val) => {
-						setUseImage(val);
+						setUseBackgroundImage(val);
 					}}
 				/>
 				<Divider />
-				<SettingsSwitch label={"HomeScreen only"} disabled={!useImage} checked={homeScreenOnly} onSwitch={setHomeScreenOnly} />
+				<SettingsSwitch label={"HomeScreen only"} disabled={!useBackgroundImage} checked={backgroundImageHomeScreenOnly} onSwitch={setBackgroundImageHomeScreenOnly} />
 				<Divider />
-				<SettingsSlider label={"Background Blur"} disabled={!useImage} min={0} max={100} value={blur} onChange={(num) => {
-					setBlur(num);
+				<SettingsSlider label={"Background Blur"} disabled={!useBackgroundImage} min={0} max={100} value={backgroundImageBlur} onChange={(num) => {
+					setBackgroundImageBlur(num);
 				}} />
 			</SettingsContainer>
 
