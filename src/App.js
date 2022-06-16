@@ -80,7 +80,7 @@ export default function App() {
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <SettingsContext.Provider value={{ fontFamily: fontFamily, setFontFamily: setFontFamily, buttonSize: OSKButtonSize, setButtonSize: setOSKButtonSize, buttonRadius: OSKButtonRadius, setButtonRadius: setOSKButtonRadius, useBackgroundImage: useBackgroundImage, setUseBackgroundImage: setUseBackgroundImage, backgroundImageBlur: backgroundImageBlur, setBackgroundImageBlur: setBackgroundImageBlur, backgroundImageHomeScreenOnly: backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly: setBackgroundImageHomeScreenOnly, settingsLoaded: settingsLoaded }}>
+      <SettingsContext.Provider value={{ fontFamily: fontFamily, setFontFamily: setFontFamily, OSKButtonSize: OSKButtonSize, setOSKButtonSize: setOSKButtonSize, OSKButtonRadius: OSKButtonRadius, setOSKButtonRadius: setOSKButtonRadius, useBackgroundImage: useBackgroundImage, setUseBackgroundImage: setUseBackgroundImage, backgroundImageBlur: backgroundImageBlur, setBackgroundImageBlur: setBackgroundImageBlur, backgroundImageHomeScreenOnly: backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly: setBackgroundImageHomeScreenOnly, settingsLoaded: settingsLoaded }}>
         <MantineProvider theme={{
           colorScheme,
           fontFamily: fontFamily !== "default" ? fontFamily : undefined,

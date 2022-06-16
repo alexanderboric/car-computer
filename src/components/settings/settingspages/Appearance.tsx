@@ -12,7 +12,7 @@ import SettingsSwitch from "../SettingsSwitch";
 
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-	const { backgroundImageBlur, setBackgroundImageBlur, useBackgroundImage, setUseBackgroundImage, backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly, buttonSize, setButtonSize, buttonRadius, setButtonRadius, fontFamily, setFontFamily } = React.useContext(SettingsContext);
+	const { backgroundImageBlur, setBackgroundImageBlur, useBackgroundImage, setUseBackgroundImage, backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly, OSKButtonSize: buttonSize, setOSKButtonSize: setButtonSize, OSKButtonRadius: buttonRadius, setOSKButtonRadius: setButtonRadius, fontFamily, setFontFamily } = React.useContext(SettingsContext);
 	const [showOSK, setShowOSK] = React.useState(false);
 
 	const [greeting, setGreeting] = React.useState("");

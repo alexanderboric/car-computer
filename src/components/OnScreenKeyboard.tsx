@@ -23,7 +23,7 @@ export default function OnScreenKeyboard({
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
 	const [symbols, setSymbols] = React.useState(false);
-	const { buttonSize, buttonRadius } = React.useContext(SettingsContext);
+	const { OSKButtonSize: buttonSize, OSKButtonRadius: buttonRadius } = React.useContext(SettingsContext);
 
 	React.useEffect(() => {
 		onChange(input);

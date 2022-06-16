@@ -11,10 +11,10 @@ export const SettingsContext = createContext({
     /* -- Background Image -- */
 
     /* -- On Screen Keyboard -- */
-    buttonSize: 4,
-    setButtonSize: (size: number) => { },
-    buttonRadius: 1,
-    setButtonRadius: (radius: number) => { },
+    OSKButtonSize: 4,
+    setOSKButtonSize: (size: number) => { },
+    OSKButtonRadius: 1,
+    setOSKButtonRadius: (radius: number) => { },
     /* -- On Screen Keyboard -- */
 
     /* -- Font -- */
