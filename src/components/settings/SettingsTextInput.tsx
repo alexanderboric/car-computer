@@ -30,6 +30,7 @@ export default function SettingsTextInput({
 
 	React.useEffect(() => {
 		onChange(input);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [input]);
 
 	return (
