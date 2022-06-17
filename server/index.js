@@ -52,10 +52,10 @@ app.get('/api/settings/getAll', (req, res) => {
 
 app.get('/api/opendrop/status', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  if (!openDropThread || exited) {
+  if (!openDropThread) {
     res.send(JSON.stringify({ value: "Offline" }));
   } else {
-    res.send(JSON.stringify({ value: "Online" }));
+    res.send(JSON.stringify({ value: openDropStatus }));
   }
 });
 
@@ -74,11 +74,11 @@ function writeSettings(settings) {
 }
 
 let openDropThread;
-let exited;
+let openDropStatus = "Offline";
 
 function startOpenDrop() {
 
-  exited = false;
+  openDropStatus = "Booting";
 
   const { spawn } = require("child_process");
 
@@ -90,15 +90,17 @@ function startOpenDrop() {
 
   openDropThread.stderr.on("data", data => {
     console.log(`OpenDrop: ${data}`);
+    openDropStatus = "Online";
   });
 
   openDropThread.on('error', (error) => {
     console.log(`OpenDrop: ${error.message}`);
+    openDropStatus = "Errored";
   });
 
   openDropThread.on("close", code => {
     console.log(`OpenDrop exited with code ${code}`);
-    exited = true;
+    openDropStatus = "Offline";
   });
 
 
