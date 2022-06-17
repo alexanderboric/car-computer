@@ -1,4 +1,5 @@
 import { Divider } from "@mantine/core";
+import { useInterval } from "@mantine/hooks";
 import * as React from "react";
 import { SettingsContext } from "../../../lib/context";
 import SettingsContainer from "../SettingsContainer";
@@ -13,13 +14,14 @@ export default function ConnectivityPage() {
 	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName} = React.useContext(SettingsContext);
 
 	React.useEffect(() => {
-		const fetchData = async () => {
-			fetch("/api/opendrop/status").then(res => res.json()).then(data => {
-				setOpenDropStatus(data.value);
-			});
-		};
-		fetchData();
+		openDropStatusInterval.start();
 	}, []);
+
+	const openDropStatusInterval = useInterval(() => {
+		fetch("/api/opendrop/status").then(res => res.json()).then(data => {
+			setOpenDropStatus(data.value);
+		});
+	}, 2500);
 
 
 	return (
