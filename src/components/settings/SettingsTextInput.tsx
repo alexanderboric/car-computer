@@ -56,6 +56,7 @@ export default function SettingsTextInput({
 										console.log((event.currentTarget as HTMLInputElement).value);
 									}}
 									mt="xl"
+									readOnly
 								/>
 								<Button
 									mt="xl"
