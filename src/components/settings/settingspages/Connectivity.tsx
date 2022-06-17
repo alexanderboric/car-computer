@@ -15,6 +15,7 @@ export default function ConnectivityPage() {
 
 	React.useEffect(() => {
 		openDropStatusInterval.start();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const openDropStatusInterval = useInterval(() => {
