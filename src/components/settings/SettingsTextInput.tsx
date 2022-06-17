@@ -28,6 +28,10 @@ export default function SettingsTextInput({
 	const [input, setInput] = useState(text);
 	const inputField = React.useRef<HTMLInputElement>(null);
 
+	React.useEffect(() => {
+		onChange(input);
+	}, [input]);
+
 	return (
 		<>
 			<UnstyledButton
@@ -57,7 +61,7 @@ export default function SettingsTextInput({
 									fullWidth
 									onClick={() => {
 										modals.closeModal(id);
-										onChange(input);
+										/* onChange(input); */
 									}}
 									size="xl"
 								>
