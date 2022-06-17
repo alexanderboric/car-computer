@@ -49,6 +49,7 @@ export default function SettingsTextInput({
 								<TextInput
 									ref={inputField}
 									size="xl"
+									radius="md"
 									placeholder={text}
 									defaultValue={input}
 									onChange={(event: InputEvent) => {
@@ -60,6 +61,8 @@ export default function SettingsTextInput({
 								/>
 								<Button
 									mt="xl"
+									radius="md"
+									variant="default"
 									fullWidth
 									onClick={() => {
 										modals.closeModal(id);
