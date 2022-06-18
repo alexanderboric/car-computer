@@ -6,6 +6,7 @@ import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
 import SettingsPageButton from "../SettingsPageButton";
 import SettingsStatus from "../SettingsStatus";
+import SettingsStatusPageButton from "../SettingsStatusPageButton";
 import SettingsSwitch from "../SettingsSwitch";
 import SettingsTextInput from "../SettingsTextInput";
 
@@ -36,6 +37,7 @@ export default function ConnectivityPage() {
 			<SettingsPage title={"Connectivity"}>
 				<SettingsContainer label="WLAN">
 					<SettingsSwitch label="Enable WLAN" checked={true} onSwitch={() => {}} />
+					<SettingsStatusPageButton label="Network" status="Disconnected" pageLink="wifi" />
 				</SettingsContainer>
 
 				<SettingsContainer label="OpenDrop" bottomText="OpenDrop is an open AirDrop implementation. Please note that this feature is experimental and might have to be restarted to work correctly.">
