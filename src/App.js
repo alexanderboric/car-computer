@@ -30,6 +30,7 @@ export default function App() {
   const [networks, setNetworks] = useState([]);
   const [filteredNetworks, setFilteredNetworks] = useState([]);
   const [currentNetworks, setCurrentNetworks] = useState([]);
+  const [savedNetworks, setSavedNetworks] = useState([]);
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -180,7 +181,10 @@ export default function App() {
                     arr.push(data.value[i]);
                   }
                 }
-                setFilteredNetworks(arr.filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid)));
+                setFilteredNetworks(arr.
+                  filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid))
+                  .filter((v) => !savedNetworks.find((w) => w.ssid === v.ssid))
+                  );
               });
           },
           networks: networks,
@@ -201,6 +205,17 @@ export default function App() {
               });
           },
           connectedNetworks: currentNetworks,
+          savedWifiNetworks: savedNetworks,
+          refetchSavedWifiNetworks: () => {
+            fetch('/api/wifi/saved')
+              .then(res => res.json())
+              .then(data => {
+                setSavedNetworks(data.value);
+              });
+          },
+          saveNetwork: (network) => {
+            fetch('/api/wifi/save?network=' + JSON.stringify(network));
+          },
           start: () => {
             fetch('/api/wifi/start');
           },

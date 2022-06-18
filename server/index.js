@@ -131,6 +131,21 @@ app.get('/api/wifi/current', (req, res) => {
   });
 });
 
+app.get('/api/wifi/saved', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ value: readSavedNetworks() }));
+});
+
+app.get('/api/wifi/save', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (req.query.network) {
+    writeSavedNetworks([req.query.network, ...readSavedNetworks()]);
+    res.send(JSON.stringify({ value: "Saved" }));
+  } else {
+    res.send(JSON.stringify({ error: "No network provided" }));
+  }
+});
+
 
 function isWifiRunning() {
   return wifiStatus;
@@ -156,6 +171,14 @@ function readSettings() {
 
 function writeSettings(settings) {
   fs.writeFileSync('./settings.json', JSON.stringify(settings));
+}
+
+function readSavedNetworks() {
+  return JSON.parse(fs.readFileSync('./savedNetworks.json'));
+}
+
+function writeSavedNetworks(networks) {
+  fs.writeFileSync('./savedNetworks.json', JSON.stringify(networks));
 }
 
 let openDropThread;

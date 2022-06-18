@@ -11,3 +11,8 @@ export type WifiNetwork = {
     security_flags: string[],
     mode: string,
 }
+
+export type SavedWifiNetwork = {
+    ssid: string,
+    password: string,
+}
