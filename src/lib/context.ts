@@ -33,3 +33,6 @@ export const SettingsContext = createContext({
     settingsLoaded: false
     /* -- Misc -- */
 });
+
+
+export const WifiContext = createContext({});
