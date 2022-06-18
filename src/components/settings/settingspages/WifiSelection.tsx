@@ -5,7 +5,7 @@ import SettingsPage from "../SettingsPage";
 export default function WifiSelectionPage() {
 	return (
 		<>
-			<SettingsPage title={"WLAN Selection"}>
+			<SettingsPage title={"WLAN Selection"} backLink="/settings/connectivity">
                 <SettingsContainer label="My Networks">
                 </SettingsContainer>
                 <SettingsContainer label="Available Networks">
