@@ -66,6 +66,81 @@ app.get('/api/opendrop/restart', (req, res) => {
   res.send(JSON.stringify({ value: "Restarted" }));
 });
 
+
+
+
+const wifi = require('node-wifi');
+app.get('/api/wifi/status', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ value: isWifiRunning() }));
+});
+
+app.get('api/wifi/start', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (isWifiRunning()) {
+    res.send(JSON.stringify({ error: "Already running" }));
+    return;
+  }
+  wifi.init({
+    iface: null,
+  });
+  res.send(JSON.stringify({ value: "Started" }));
+});
+
+app.get('/api/wifi/stop', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if(!isWifiRunning()) {
+    res.send(JSON.stringify({ error: "Not running" }));
+    return;
+  }
+  wifi.disconnect(error => {
+    if (error) {
+      res.send(JSON.stringify({ error: error }));
+    } else {
+      wifi.init = null;
+      res.send(JSON.stringify({ value: "Stopped" }));
+    }
+  });
+});
+
+app.get('/api/wifi/networks', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if(!isWifiRunning()) {
+    res.send(JSON.stringify({ error: "Not running" }));
+    return;
+  }
+  wifi.scan((error, networks) => {
+    if (error) {
+      res.send(JSON.stringify({ error: error }));
+    } else {
+      res.send(JSON.stringify({ value: networks }));
+    }
+  });
+});
+
+app.get('/api/wifi/current', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if(!isWifiRunning()) {
+    res.send(JSON.stringify({ error: "Not running" }));
+    return;
+  }
+  wifi.getCurrentConnections((error, currentConnections) => {
+    if (error) {
+      res.send(JSON.stringify({ error: error }));
+    } else {
+      res.send(JSON.stringify({ value: currentConnections }));
+    }
+  });
+});
+
+
+function isWifiRunning() {
+  return wifi.init? true : false;
+}
+
+
+
+
 app.listen(3001, () =>
   console.log('Express server is running on localhost:3001')
 );
