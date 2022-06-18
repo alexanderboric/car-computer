@@ -37,7 +37,7 @@ export default function ConnectivityPage() {
 				<SettingsContainer label="WLAN">
 					<SettingsSwitch label="Enable WLAN" checked={true} onSwitch={() => {}} />
 					<Divider />
-					<SettingsStatusPageButton label="Network" status="Disconnected" pageLink="wifi" />
+					<SettingsStatusPageButton disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
 				</SettingsContainer>
 
 				<SettingsContainer label="OpenDrop" bottomText="OpenDrop is an open AirDrop implementation. Please note that this feature is experimental and might have to be restarted to work correctly.">
