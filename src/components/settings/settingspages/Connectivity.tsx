@@ -36,7 +36,14 @@ export default function ConnectivityPage() {
 		<>
 			<SettingsPage title={"Connectivity"}>
 				<SettingsContainer label="WLAN">
-					<SettingsSwitch label="Enable WLAN" checked={enableWifi} onSwitch={setEnableWifi} />
+					<SettingsSwitch label="Enable WLAN" checked={enableWifi} onSwitch={(val) => {
+						setEnableWifi(val);
+						if (val) {
+							start();
+						} else {
+							stop();
+						}
+					}} />
 					<Divider />
 					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
 					<Divider />

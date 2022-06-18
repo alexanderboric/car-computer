@@ -68,14 +68,14 @@ app.get('/api/opendrop/restart', (req, res) => {
 
 
 
-
+let wifiStatus = false;
 const wifi = require('node-wifi');
 app.get('/api/wifi/status', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({ value: isWifiRunning() }));
 });
 
-app.get('api/wifi/start', (req, res) => {
+app.get('/api/wifi/start', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   if (isWifiRunning()) {
     res.send(JSON.stringify({ error: "Already running" }));
@@ -84,6 +84,7 @@ app.get('api/wifi/start', (req, res) => {
   wifi.init({
     iface: null,
   });
+  wifiStatus = true;
   res.send(JSON.stringify({ value: "Started" }));
 });
 
@@ -93,6 +94,7 @@ app.get('/api/wifi/stop', (req, res) => {
     res.send(JSON.stringify({ error: "Not running" }));
     return;
   }
+  wifiStatus = false;
   wifi.disconnect(error => {
     wifi.init = null;
     res.send(JSON.stringify({ value: "Stopped" }));
@@ -131,7 +133,7 @@ app.get('/api/wifi/current', (req, res) => {
 
 
 function isWifiRunning() {
-  return wifi.init ? true : false;
+  return wifiStatus;
 }
 
 
@@ -139,6 +141,7 @@ if (readSettings()["enableWifi"] === "true") {
   wifi.init({
     iface: null,
   });
+  wifiStatus = true;
 }
 
 app.listen(3001, () =>
