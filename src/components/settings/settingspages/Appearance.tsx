@@ -2,13 +2,13 @@ import { Divider, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
 import { SettingsContext } from "../../../lib/context";
 import OnScreenKeyboard from "../../OnScreenKeyboard";
-import SettingsButton from "../SettingsButton";
+import SettingsButton from "../elements/SettingsButton";
 import SettingsContainer from "../organization/SettingsContainer";
 import SettingsPage from "../organization/SettingsPage";
-import SettingsSelect from "../SettingsSelect";
-import SettingsSlider from "../SettingsSlider";
-import SettingsStatus from "../SettingsStatus";
-import SettingsSwitch from "../SettingsSwitch";
+import SettingsSelect from "../elements/SettingsSelect";
+import SettingsSlider from "../elements/SettingsSlider";
+import SettingsStatus from "../elements/SettingsStatus";
+import SettingsSwitch from "../elements/SettingsSwitch";
 
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();

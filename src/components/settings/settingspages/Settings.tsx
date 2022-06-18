@@ -6,7 +6,7 @@ import {
 } from "@mantine/core";
 import * as React from "react";
 import { Outlet } from "react-router-dom";
-import SettingsPageButton from "../SettingsPageButton";
+import SettingsPageButton from "../elements/SettingsPageButton";
 import SettingsContainer from "../organization/SettingsContainer";
 import ActionlessIcon from "../../ActionlessIcon";
 import { MdPalette, MdWifi } from "react-icons/md";

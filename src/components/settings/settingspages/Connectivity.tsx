@@ -4,10 +4,10 @@ import * as React from "react";
 import { SettingsContext } from "../../../lib/context";
 import SettingsContainer from "../organization/SettingsContainer";
 import SettingsPage from "../organization/SettingsPage";
-import SettingsStatus from "../SettingsStatus";
-import SettingsStatusPageButton from "../SettingsStatusPageButton";
-import SettingsSwitch from "../SettingsSwitch";
-import SettingsTextInput from "../SettingsTextInput";
+import SettingsStatus from "../elements/SettingsStatus";
+import SettingsStatusPageButton from "../elements/SettingsStatusPageButton";
+import SettingsSwitch from "../elements/SettingsSwitch";
+import SettingsTextInput from "../elements/SettingsTextInput";
 
 export default function ConnectivityPage() {
 

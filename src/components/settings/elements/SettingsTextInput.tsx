@@ -12,7 +12,7 @@ import { useModals } from "@mantine/modals";
 import * as React from "react";
 import { useState } from "react";
 import { MdChevronRight } from "react-icons/md";
-import OnScreenKeyboard from "../OnScreenKeyboard";
+import OnScreenKeyboard from "../../OnScreenKeyboard";
 
 export default function SettingsTextInput({
 	label,
