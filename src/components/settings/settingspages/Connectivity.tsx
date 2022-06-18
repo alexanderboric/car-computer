@@ -4,6 +4,7 @@ import * as React from "react";
 import { SettingsContext } from "../../../lib/context";
 import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
+import SettingsPageButton from "../SettingsPageButton";
 import SettingsStatus from "../SettingsStatus";
 import SettingsSwitch from "../SettingsSwitch";
 import SettingsTextInput from "../SettingsTextInput";
@@ -33,6 +34,10 @@ export default function ConnectivityPage() {
 	return (
 		<>
 			<SettingsPage title={"Connectivity"}>
+				<SettingsContainer label="WLAN">
+					<SettingsSwitch label="Enable WLAN" checked={true} onSwitch={() => {}} />
+				</SettingsContainer>
+
 				<SettingsContainer label="OpenDrop" bottomText="OpenDrop is an open AirDrop implementation. Please note that this feature is experimental and might have to be restarted to work correctly.">
                     <SettingsSwitch label={"Enable OpenDrop"} checked={enableOpenDrop} onSwitch={setEnableOpenDrop} />
                     <Divider />
