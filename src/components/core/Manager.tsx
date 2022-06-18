@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
 import { BackgroundImage, LoadingOverlay } from '@mantine/core';
-import { SettingsContext } from '../lib/context';
+import { SettingsContext } from '../../lib/context';
 import * as React from 'react';
 
 export default function Manager() {

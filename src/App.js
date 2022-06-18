@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-import Manager from './components/Manager';
+import Manager from './components/core/Manager';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { SettingsContext } from './lib/context';
