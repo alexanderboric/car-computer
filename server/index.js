@@ -139,7 +139,11 @@ function isWifiRunning() {
 }
 
 
-
+if (readSettings()["enableWifi"] === "true") {
+  wifi.init({
+    iface: null,
+  });
+}
 
 app.listen(3001, () =>
   console.log('Express server is running on localhost:3001')
