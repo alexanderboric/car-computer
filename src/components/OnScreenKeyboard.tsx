@@ -1,9 +1,6 @@
 import { Button, Drawer, Group, MANTINE_SIZES, Stack } from "@mantine/core";
 import * as React from "react";
-import {
-	MdBackspace,
-	MdSubdirectoryArrowLeft,
-} from "react-icons/md";
+import { MdBackspace, MdSubdirectoryArrowLeft } from "react-icons/md";
 import { BsShift, BsShiftFill } from "react-icons/bs";
 import { SettingsContext } from "../lib/context";
 
@@ -12,7 +9,7 @@ export default function OnScreenKeyboard({
 	onChange,
 	allowEnter,
 	onClose,
-	closeOnTap
+	closeOnTap,
 }: {
 	text: string;
 	onChange: (value: string) => void;
@@ -23,7 +20,8 @@ export default function OnScreenKeyboard({
 	const [input, setInput] = React.useState(text);
 	const [shift, setShift] = React.useState(false);
 	const [symbols, setSymbols] = React.useState(false);
-	const { OSKButtonSize: buttonSize, OSKButtonRadius: buttonRadius } = React.useContext(SettingsContext);
+	const { OSKButtonSize: buttonSize, OSKButtonRadius: buttonRadius } =
+		React.useContext(SettingsContext);
 
 	React.useEffect(() => {
 		onChange(input);
@@ -44,6 +42,9 @@ export default function OnScreenKeyboard({
 				if (allowEnter) {
 					setInput(input + "\n");
 				}
+				break;
+			case "space":
+				setInput(input + " ");
 				break;
 			default:
 				setInput(input + key);
@@ -168,7 +169,7 @@ export default function OnScreenKeyboard({
 				{keyButton("€", "€")}
 				{keyButton("&", "&")}
 				{keyButton("@", "@")}
-				{keyButton("\"", "\"")}
+				{keyButton('"', '"')}
 				{keyButton("#", "#")}
 			</Group>
 			<Group position="center">
