@@ -46,9 +46,7 @@ export default function ConnectivityPage() {
                     <SettingsStatus label={"OpenDrop Status"} status={openDropStatus}/>
                     <Divider />
                     <SettingsTextInput label={"OpenDrop Display Name"} text={openDropDisplayName} onChange={(text) => {
-						console.log("OpenDrop Display Name");
 						setOpenDropDisplayName(text);
-						console.log(text);
 					}}/>
                 </SettingsContainer>
 			</SettingsPage>
