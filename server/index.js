@@ -172,7 +172,9 @@ app.get('/api/wifi/connect', (req, res) => {
 
         } else {
           res.send(JSON.stringify({ value: "Connected" }));
-          writeSavedNetworks([{ ssid: req.query.ssid, password: req.query.password }, ...readSavedNetworks()]);
+          if (!readSavedNetworks().find(netwo => netwo.ssid === req.query.ssid)) {
+            writeSavedNetworks([{ ssid: req.query.ssid, password: req.query.password }, ...readSavedNetworks()]);
+          }
         }
       });
     });

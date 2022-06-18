@@ -6,8 +6,8 @@ import {
 	Title,
 	Stack,
 	Divider,
-    Button,
-    TextInput,
+	Button,
+	TextInput,
 } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
@@ -37,7 +37,7 @@ export default function WifiSelectionPage() {
 		refetchSavedWifiNetworks,
 		savedWifiNetworks,
 		connectedNetworks,
-        connect,
+		connect,
 		start,
 		removeNetwork,
 		disconnect,
@@ -75,7 +75,7 @@ export default function WifiSelectionPage() {
 		setMyNetworks(arr);
 	}, 5000);
 
-    const [input, setInput] = React.useState("");
+	const [input, setInput] = React.useState("");
 	const inputField = React.useRef<HTMLInputElement>(null);
 
 	const NetworkNode = (network: WifiNetwork) => {
@@ -85,7 +85,7 @@ export default function WifiSelectionPage() {
 					pl="xs"
 					pr="xs"
 					onClick={() => {
-						modals.openModal({
+						const id1 = modals.openModal({
 							title: <Title>{network.ssid}</Title>,
 							size: "xl",
 							centered: false,
@@ -115,48 +115,68 @@ export default function WifiSelectionPage() {
 												<SettingsButton
 													label={"Connect"}
 													onClick={() => {
-														const id = modals.openModal({
-															title: <Title>Connect to {network.ssid}</Title>,
-															size: "xl",
-															centered: false,
-															children: (
-                                                                <Stack spacing="xl">
-                                                                    <TextInput
-                                                                        ref={inputField}
-                                                                        size="xl"
-                                                                        radius="md"
-                                                                        placeholder={"Password"}
-                                                                        defaultValue={input}
-                                                                        onChange={(event: InputEvent) => {
-                                                                            setInput((event.currentTarget as HTMLInputElement).value);
-                                                                            console.log((event.currentTarget as HTMLInputElement).value);
-                                                                        }}
-                                                                        mt="xl"
-                                                                        readOnly
-                                                                    />
-                                                                    <Button
-                                                                        mt="xl"
-                                                                        radius="md"
-                                                                        variant="default"
-                                                                        fullWidth
-                                                                        onClick={() => {
-                                                                            modals.closeModal(id);
-                                                                            connect({ssid: network.ssid, password: inputField.current.value});
-                                                                        }}
-                                                                        size="xl"
-                                                                    >
-                                                                        Connect
-                                                                    </Button>
-                                                                    <OnScreenKeyboard
-                                                                        text={""}
-                                                                        onChange={(newText) => {
-                                                                            inputField.current.value = newText;
-                                                                            setInput(newText);
-                                                                        }}
-                                                                    />
-                                                                </Stack>
-                                                            ),
-														});
+														if (
+															savedWifiNetworks.find(
+																(v) => v.ssid === network.ssid
+															)
+														) {
+                                                            connect(savedWifiNetworks.find((v) => v.ssid === network.ssid));
+                                                            modals.closeModal(id1);
+														} else {
+															const id = modals.openModal({
+																title: <Title>Connect to {network.ssid}</Title>,
+																size: "xl",
+																centered: false,
+																children: (
+																	<Stack spacing="xl">
+																		<TextInput
+																			ref={inputField}
+																			size="xl"
+																			radius="md"
+																			placeholder={"Password"}
+																			defaultValue={input}
+																			onChange={(event: InputEvent) => {
+																				setInput(
+																					(
+																						event.currentTarget as HTMLInputElement
+																					).value
+																				);
+																				console.log(
+																					(
+																						event.currentTarget as HTMLInputElement
+																					).value
+																				);
+																			}}
+																			mt="xl"
+																			readOnly
+																		/>
+																		<Button
+																			mt="xl"
+																			radius="md"
+																			variant="default"
+																			fullWidth
+																			onClick={() => {
+																				modals.closeModal(id);
+																				connect({
+																					ssid: network.ssid,
+																					password: inputField.current.value,
+																				});
+																			}}
+																			size="xl"
+																		>
+																			Connect
+																		</Button>
+																		<OnScreenKeyboard
+																			text={""}
+																			onChange={(newText) => {
+																				inputField.current.value = newText;
+																				setInput(newText);
+																			}}
+																		/>
+																	</Stack>
+																),
+															});
+														}
 													}}
 												/>
 											</>
