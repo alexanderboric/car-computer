@@ -1,6 +1,6 @@
 import { Group, UnstyledButton, Text } from "@mantine/core";
 import * as React from "react";
-import { MdCheck, MdChevronRight, MdInfo } from "react-icons/md";
+import { MdCheck, MdChevronRight, MdInfo, MdLock, MdPublic } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { WifiContext } from "../../../lib/context";
 import { WifiNetwork } from "../../../lib/types";
@@ -29,7 +29,7 @@ export default function WifiSelectionPage() {
 							<MdCheck size={20} />
 							<Text size="xl">{network.ssid}</Text>
 						</Group>
-						<MdInfo size={20} />
+                        {network.security === "WPA2" ? <MdLock size={20} /> : <MdPublic size={20} />}
 					</Group>
 				</UnstyledButton>
 			</>
