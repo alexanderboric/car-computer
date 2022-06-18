@@ -13,9 +13,11 @@ import { useNavigate } from "react-router-dom";
 export default function SettingsPage({
 	title,
 	children,
+	backLink,
 }: {
 	title: string;
 	children: React.ReactNode;
+	backLink?: string;
 }) {
 	const theme = useMantineTheme();
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ export default function SettingsPage({
 		<>
 			<Stack ml={"xl"} mr={"xl"} mb={"xl"}>
 				<Group mt={"md"}>
-					<UnstyledButton onClick={() => navigate("../")}>
+					<UnstyledButton onClick={() => navigate(backLink ? backLink : "../")}>
 						<Group noWrap spacing={"xs"}>
 							<MdChevronLeft
 								style={{ color: theme.colors.blue[6] }}
