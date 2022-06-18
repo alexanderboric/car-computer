@@ -2,10 +2,8 @@ import {
 	Group,
 	UnstyledButton,
 	Text,
-	Loader,
 	Title,
 	Stack,
-	Divider,
 	Button,
 	TextInput,
 } from "@mantine/core";
@@ -14,12 +12,9 @@ import { useModals } from "@mantine/modals";
 import * as React from "react";
 import {
 	MdCheck,
-	MdChevronRight,
-	MdInfo,
 	MdLock,
 	MdPublic,
 } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { WifiContext } from "../../../lib/context";
 import { WifiNetwork } from "../../../lib/types";
 import OnScreenKeyboard from "../../OnScreenKeyboard";
@@ -29,7 +24,6 @@ import SettingsPage from "../organization/SettingsPage";
 
 export default function WifiSelectionPage() {
 	const {
-		getStatus,
 		networks,
 		filteredNetworks,
 		refetchNetworks,
@@ -38,7 +32,6 @@ export default function WifiSelectionPage() {
 		savedWifiNetworks,
 		connectedNetworks,
 		connect,
-		start,
 		removeNetwork,
 		disconnect,
 	} = React.useContext(WifiContext);
