@@ -13,10 +13,11 @@ export default function ConnectivityPage() {
 
 	const [openDropStatus, setOpenDropStatus] = React.useState("Unknown");
 	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName, enableWifi, setEnableWifi } = React.useContext(SettingsContext);
-	const { getStatus, start, stop } = React.useContext(WifiContext);
+	const { getStatus, start, stop, connectedNetworks, refetchConnectedNetworks } = React.useContext(WifiContext);
 
 	React.useEffect(() => {
 		openDropStatusInterval.start();
+		refetchConnectedNetworks();
 		return function cleanup() {
 			openDropStatusInterval.stop();
 		}
@@ -45,7 +46,7 @@ export default function ConnectivityPage() {
 						}
 					}} />
 					<Divider />
-					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
+					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status={connectedNetworks.length === 0 ? "Disconnected" : connectedNetworks[0].ssid} pageLink="wifi" />
 					<Divider />
 					<SettingsStatus label="Status" status={getStatus() ? "true" : "false"} />
 				</SettingsContainer>

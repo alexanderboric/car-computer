@@ -181,8 +181,8 @@ export default function App() {
                     arr.push(data.value[i]);
                   }
                 }
-                setFilteredNetworks(arr.
-                  filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid))
+                setFilteredNetworks(arr
+                  .filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid))
                   .filter((v) => !savedNetworks.find((w) => w.ssid === v.ssid))
                   );
               });
@@ -216,12 +216,21 @@ export default function App() {
           saveNetwork: (network) => {
             fetch('/api/wifi/save?network=' + JSON.stringify(network));
           },
+          removeNetwork: (ssid) => {
+            fetch('/api/wifi/remove?ssid=' + ssid);
+          },
+          connect: (network) => {
+            fetch('/api/wifi/connect?ssid=' + network.ssid + '&password=' + network.password);
+          },
           start: () => {
             fetch('/api/wifi/start');
           },
           stop: () => {
             fetch('/api/wifi/stop');
           },
+          disconnect: () => {
+            fetch('/api/wifi/disconnect');
+          }
         }}>
           <MantineProvider theme={{
             colorScheme,

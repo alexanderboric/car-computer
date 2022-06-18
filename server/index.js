@@ -146,6 +146,40 @@ app.get('/api/wifi/save', (req, res) => {
   }
 });
 
+app.get('/api/wifi/remove', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (req.query.ssid) {
+    let savedNetworks = readSavedNetworks();
+    let newSavedNetworks = savedNetworks.filter(network => network.ssid !== req.query.ssid);
+    writeSavedNetworks(newSavedNetworks);
+    res.send(JSON.stringify({ value: "Removed" }));
+  } else {
+    res.send(JSON.stringify({ error: "No network provided" }));
+  }
+});
+
+app.get('/api/wifi/connect', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (req.query.ssid && req.query.password) {
+    if (!isWifiRunning()) {
+      res.send(JSON.stringify({ error: "Not running" }));
+      return;
+    }
+    wifi.connect({ ssid: req.query.ssid, password: req.query.password }, () => {
+      wifi.getCurrentConnections((error, currentConnections) => {
+        if (error) {
+          res.send(JSON.stringify({ error: "Failed to connect" }));
+
+        } else {
+          res.send(JSON.stringify({ value: "Connected" }));
+          writeSavedNetworks([{ ssid: req.query.ssid, password: req.query.password }, ...readSavedNetworks()]);
+        }
+      });
+    });
+  } else {
+    res.send(JSON.stringify({ error: "No network provided" }));
+  }
+});
 
 function isWifiRunning() {
   return wifiStatus;
@@ -174,11 +208,11 @@ function writeSettings(settings) {
 }
 
 function readSavedNetworks() {
-  return JSON.parse(fs.readFileSync('./savedNetworks.json'));
+  return JSON.parse(fs.readFileSync('./savedNetworks.json')).networks;
 }
 
 function writeSavedNetworks(networks) {
-  fs.writeFileSync('./savedNetworks.json', JSON.stringify(networks));
+  fs.writeFileSync('./savedNetworks.json', JSON.stringify({ networks: networks }));
 }
 
 let openDropThread;

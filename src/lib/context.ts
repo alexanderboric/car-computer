@@ -51,8 +51,11 @@ export const WifiContext = createContext<{
     savedWifiNetworks: SavedWifiNetwork[];
     refetchSavedWifiNetworks: () => void;
     saveNetwork: (network: SavedWifiNetwork) => void;
+    removeNetwork: (ssid: string) => void;
+    connect: (network: SavedWifiNetwork) => void;
     start: () => void;
     stop: () => void;
+    disconnect: () => void;
 }>({ 
     getStatus: () => { 
         return false;
@@ -65,6 +68,9 @@ export const WifiContext = createContext<{
     savedWifiNetworks: [],
     refetchSavedWifiNetworks: () => { },
     saveNetwork: (network: SavedWifiNetwork) => { },
+    removeNetwork: (ssid: string) => { },
+    connect: (network: SavedWifiNetwork) => { },
     start: () => { },
     stop: () => { },
+    disconnect: () => { }
  });
