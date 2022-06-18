@@ -13,7 +13,7 @@ export default function ConnectivityPage() {
 
 	const [openDropStatus, setOpenDropStatus] = React.useState("Unknown");
 	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName, enableWifi, setEnableWifi } = React.useContext(SettingsContext);
-	const { getStatus, getNetworks, getConnectedNetworks, start, stop } = React.useContext(WifiContext);
+	const { getStatus, start, stop } = React.useContext(WifiContext);
 
 	React.useEffect(() => {
 		openDropStatusInterval.start();
