@@ -12,7 +12,7 @@ import SettingsTextInput from "../elements/SettingsTextInput";
 export default function ConnectivityPage() {
 
 	const [openDropStatus, setOpenDropStatus] = React.useState("Unknown");
-	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName} = React.useContext(SettingsContext);
+	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName, enableWifi, setEnableWifi } = React.useContext(SettingsContext);
 
 	React.useEffect(() => {
 		openDropStatusInterval.start();
@@ -35,9 +35,9 @@ export default function ConnectivityPage() {
 		<>
 			<SettingsPage title={"Connectivity"}>
 				<SettingsContainer label="WLAN">
-					<SettingsSwitch label="Enable WLAN" checked={true} onSwitch={() => {}} />
+					<SettingsSwitch label="Enable WLAN" checked={enableWifi} onSwitch={setEnableWifi} />
 					<Divider />
-					<SettingsStatusPageButton disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
+					<SettingsStatusPageButton disabled={!enableWifi} disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
 				</SettingsContainer>
 
 				<SettingsContainer label="OpenDrop" bottomText="OpenDrop is an open AirDrop implementation. Please note that this feature is experimental and might have to be restarted to work correctly.">
