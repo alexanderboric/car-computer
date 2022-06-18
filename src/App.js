@@ -26,6 +26,8 @@ export default function App() {
   const [enableOpenDrop, setEnableOpenDrop] = useState(false);
   const [openDropDisplayName, setOpenDropDisplayName] = useState("Jarvis");
 
+  const [enableWifi, setEnableWifi] = useState(false);
+
   useEffect(() => {
     fetch('/api/settings/getAll')
       .then(res => res.json())
@@ -60,6 +62,10 @@ export default function App() {
         setEnableOpenDrop(data.enableOpenDrop === 'true');
         setOpenDropDisplayName(data.openDropDisplayName);
         /* -- Open Drop -- */
+
+        /* -- Wifi -- */
+        setEnableWifi(data.enableWifi === 'true');
+        /* -- Wifi -- */
 
 
         /* -- Insert Settings Here -- */
@@ -100,6 +106,9 @@ export default function App() {
   useEffect(() => {
     fetch('/api/settings/set?setting=openDropDisplayName&value=' + openDropDisplayName);
   }, [openDropDisplayName]);
+  useEffect(() => {
+    fetch('/api/settings/set?setting=enableWifi&value=' + enableWifi);
+  }, [enableWifi]);
   /* -- Insert Settings Effects Here -- */
 
 
@@ -137,6 +146,11 @@ export default function App() {
         openDropDisplayName: openDropDisplayName,
         setOpenDropDisplayName: setOpenDropDisplayName,
         /* -- Open Drop -- */
+
+        /* -- Wifi -- */
+        enableWifi: enableWifi,
+        setEnableWifi: setEnableWifi,
+        /* -- Wifi -- */
 
         /* -- Misc -- */
         settingsLoaded: settingsLoaded

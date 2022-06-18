@@ -29,6 +29,11 @@ export const SettingsContext = createContext({
     setOpenDropDisplayName: (displayName: string) => { },
     /* -- OpenDrop -- */
 
+    /* -- Wifi -- */
+    enableWifi: false,
+    setEnableWifi: (enable: boolean) => { },
+    /* -- Wifi -- */
+
     /* -- Misc -- */
     settingsLoaded: false
     /* -- Misc -- */
