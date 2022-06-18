@@ -17,6 +17,7 @@ import Component404 from './pages/404';
 import Settings from './components/settings/Settings';
 import AppearanceSettings from './components/settings/settingspages/Appearance';
 import ConnectivityPage from './components/settings/settingspages/Connectivity';
+import WifiSelectionPage from './components/settings/settingspages/WifiSelection';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +31,7 @@ ReactDOM.render(
           <Route path="settings" element={<Settings />} >
             <Route path="appearance" element={<AppearanceSettings />} />
             <Route path="connectivity" element={<ConnectivityPage />} />
+            <Route path="wifi" element={<WifiSelectionPage />} />
           </Route>
           <Route path="*" element={<Component404 />} />
         </Route>
