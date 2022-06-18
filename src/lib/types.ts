@@ -8,6 +8,6 @@ export type WifiNetwork = {
     signal_level: number,
     quality: number,
     security: string,
-    security_flags: string,
+    security_flags: string[],
     mode: string,
 }
