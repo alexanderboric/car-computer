@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "../../App.css";
 import './Navbar.css';
 import { Box, useMantineColorScheme } from '@mantine/core';
 import { Link } from "react-router-dom";

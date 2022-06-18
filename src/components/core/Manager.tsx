@@ -1,4 +1,4 @@
-import '../App.css';
+import '../../App.css';
 import { useContext } from 'react';
 
 import Navbar from './Navbar';
