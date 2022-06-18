@@ -47,6 +47,7 @@ export default function ConnectivityPage() {
                     <Divider />
                     <SettingsTextInput label={"OpenDrop Display Name"} text={openDropDisplayName} onChange={(text) => {
 						setOpenDropDisplayName(text);
+						fetch("/api/opendrop/restart");
 					}}/>
                 </SettingsContainer>
 			</SettingsPage>
