@@ -89,23 +89,19 @@ app.get('api/wifi/start', (req, res) => {
 
 app.get('/api/wifi/stop', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  if(!isWifiRunning()) {
+  if (!isWifiRunning()) {
     res.send(JSON.stringify({ error: "Not running" }));
     return;
   }
   wifi.disconnect(error => {
-    if (error) {
-      res.send(JSON.stringify({ error: error }));
-    } else {
-      wifi.init = null;
-      res.send(JSON.stringify({ value: "Stopped" }));
-    }
+    wifi.init = null;
+    res.send(JSON.stringify({ value: "Stopped" }));
   });
 });
 
 app.get('/api/wifi/networks', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  if(!isWifiRunning()) {
+  if (!isWifiRunning()) {
     res.send(JSON.stringify({ error: "Not running" }));
     return;
   }
@@ -120,7 +116,7 @@ app.get('/api/wifi/networks', (req, res) => {
 
 app.get('/api/wifi/current', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  if(!isWifiRunning()) {
+  if (!isWifiRunning()) {
     res.send(JSON.stringify({ error: "Not running" }));
     return;
   }
@@ -135,7 +131,7 @@ app.get('/api/wifi/current', (req, res) => {
 
 
 function isWifiRunning() {
-  return wifi.init? true : false;
+  return wifi.init ? true : false;
 }
 
 
