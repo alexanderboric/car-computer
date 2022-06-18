@@ -27,6 +27,9 @@ export default function App() {
   const [openDropDisplayName, setOpenDropDisplayName] = useState("Jarvis");
 
   const [enableWifi, setEnableWifi] = useState(false);
+  const [networks, setNetworks] = useState([]);
+  const [filteredNetworks, setFilteredNetworks] = useState([]);
+  const [currentNetworks, setCurrentNetworks] = useState([]);
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -163,19 +166,33 @@ export default function App() {
             request.send(null);
             return JSON.parse(request.responseText).value;
           },
-          getNetworks: () => {
-            const request = new XMLHttpRequest();
-            request.open('GET', '/api/wifi/networks', false);
-            request.send(null);
-            return JSON.parse(request.responseText).value;
+          refetchNetworks: () => {
+            fetch('/api/wifi/networks')
+              .then(res => res.json())
+              .then(data => {
+                console.log(data.value);
+                setNetworks(data.value);
+
+                var arr = [];
+                for (var i = 0; i < data.value.length; i++) {
+                  // eslint-disable-next-line no-loop-func
+                  if (!arr.find((v) => v.ssid === data.value[i].ssid)) {
+                    arr.push(data.value[i]);
+                  }
+                }
+                setFilteredNetworks(arr);
+              });
           },
-          getConnectedNetworks: () => {
+          networks: networks,
+          filteredNetworks: filteredNetworks,
+          refetchConnectedNetworks: () => {
             const request = new XMLHttpRequest();
             request.open('GET', '/api/wifi/current', false);
             request.send(null);
-            return JSON.parse(request.responseText).value;
+            setCurrentNetworks(JSON.parse(request.responseText).value);
           },
-          start: () => { 
+          connectedNetworks: currentNetworks,
+          start: () => {
             fetch('/api/wifi/start');
           },
           stop: () => {

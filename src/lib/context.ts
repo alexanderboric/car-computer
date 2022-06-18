@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { WifiNetwork } from "./types";
 
 export const SettingsContext = createContext({
     /* -- Background Image -- */
@@ -42,20 +43,22 @@ export const SettingsContext = createContext({
 
 export const WifiContext = createContext<{
     getStatus: () => boolean;
-    getNetworks: () => any[];
-    getConnectedNetworks: () => any[];
+    refetchNetworks: () => void;
+    networks: WifiNetwork[];
+    filteredNetworks: WifiNetwork[];
+    refetchConnectedNetworks: () => void;
+    connectedNetworks: any[];
     start: () => void;
     stop: () => void;
 }>({ 
     getStatus: () => { 
         return false;
     },
-    getNetworks: () => { 
-        return [];
-    },
-    getConnectedNetworks: () => { 
-        return [];
-    },
+    refetchNetworks: () => {},
+    networks: [],
+    filteredNetworks: [],
+    refetchConnectedNetworks: () => { },
+    connectedNetworks: [],
     start: () => { },
     stop: () => { },
  });
