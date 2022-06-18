@@ -4,7 +4,6 @@ import * as React from "react";
 import { SettingsContext } from "../../../lib/context";
 import SettingsContainer from "../SettingsContainer";
 import SettingsPage from "../SettingsPage";
-import SettingsPageButton from "../SettingsPageButton";
 import SettingsStatus from "../SettingsStatus";
 import SettingsStatusPageButton from "../SettingsStatusPageButton";
 import SettingsSwitch from "../SettingsSwitch";
