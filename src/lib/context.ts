@@ -40,4 +40,22 @@ export const SettingsContext = createContext({
 });
 
 
-export const WifiContext = createContext({});
+export const WifiContext = createContext<{
+    getStatus: () => boolean;
+    getNetworks: () => any[];
+    getConnectedNetworks: () => any[];
+    start: () => void;
+    stop: () => void;
+}>({ 
+    getStatus: () => { 
+        return false;
+    },
+    getNetworks: () => { 
+        return [];
+    },
+    getConnectedNetworks: () => { 
+        return [];
+    },
+    start: () => { },
+    stop: () => { },
+ });

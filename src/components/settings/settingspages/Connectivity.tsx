@@ -1,7 +1,7 @@
 import { Divider } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
 import * as React from "react";
-import { SettingsContext } from "../../../lib/context";
+import { SettingsContext, WifiContext } from "../../../lib/context";
 import SettingsContainer from "../organization/SettingsContainer";
 import SettingsPage from "../organization/SettingsPage";
 import SettingsStatus from "../elements/SettingsStatus";
@@ -13,6 +13,7 @@ export default function ConnectivityPage() {
 
 	const [openDropStatus, setOpenDropStatus] = React.useState("Unknown");
 	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName, enableWifi, setEnableWifi } = React.useContext(SettingsContext);
+	const { getStatus, getNetworks, getConnectedNetworks, start, stop } = React.useContext(WifiContext);
 
 	React.useEffect(() => {
 		openDropStatusInterval.start();
@@ -37,7 +38,9 @@ export default function ConnectivityPage() {
 				<SettingsContainer label="WLAN">
 					<SettingsSwitch label="Enable WLAN" checked={enableWifi} onSwitch={setEnableWifi} />
 					<Divider />
-					<SettingsStatusPageButton disabled={!enableWifi} disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
+					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status="Disconnected" pageLink="wifi" />
+					<Divider />
+					<SettingsStatus label="Status" status={getStatus() ? "true" : "false"} />
 				</SettingsContainer>
 
 				<SettingsContainer label="OpenDrop" bottomText="OpenDrop is an open AirDrop implementation. Please note that this feature is experimental and might have to be restarted to work correctly.">

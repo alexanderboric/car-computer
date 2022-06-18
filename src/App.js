@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Manager from './components/core/Manager';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
-import { SettingsContext } from './lib/context';
+import { SettingsContext, WifiContext } from './lib/context';
 
 
 export default function App() {
@@ -156,17 +156,44 @@ export default function App() {
         settingsLoaded: settingsLoaded
         /* -- Misc -- */
       }}>
-        <MantineProvider theme={{
-          colorScheme,
-          fontFamily: fontFamily !== "default" ? fontFamily : undefined,
-        }} withGlobalStyles defaultProps={{
-          Notification: { radius: "lg" },
-          Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
+        <WifiContext.Provider value={{
+          getStatus: () => {
+            const request = new XMLHttpRequest();
+            request.open('GET', '/api/wifi/status', false);
+            request.send(null);
+            return JSON.parse(request.responseText).value;
+          },
+          getNetworks: () => {
+            const request = new XMLHttpRequest();
+            request.open('GET', '/api/wifi/networks', false);
+            request.send(null);
+            return JSON.parse(request.responseText).value;
+          },
+          getConnectedNetworks: () => {
+            const request = new XMLHttpRequest();
+            request.open('GET', '/api/wifi/current', false);
+            request.send(null);
+            return JSON.parse(request.responseText).value;
+          },
+          start: () => { 
+            fetch('/api/wifi/start');
+          },
+          stop: () => {
+            fetch('/api/wifi/stop');
+          },
         }}>
-          <ModalsProvider>
-            <Manager />
-          </ModalsProvider>
-        </MantineProvider>
+          <MantineProvider theme={{
+            colorScheme,
+            fontFamily: fontFamily !== "default" ? fontFamily : undefined,
+          }} withGlobalStyles defaultProps={{
+            Notification: { radius: "lg" },
+            Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
+          }}>
+            <ModalsProvider>
+              <Manager />
+            </ModalsProvider>
+          </MantineProvider>
+        </WifiContext.Provider>
       </SettingsContext.Provider>
     </ColorSchemeProvider>
   );
