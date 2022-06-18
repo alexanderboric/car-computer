@@ -1,6 +1,6 @@
 import * as React from "react";
-import SettingsContainer from "../SettingsContainer";
-import SettingsPage from "../SettingsPage";
+import SettingsContainer from "../organization/SettingsContainer";
+import SettingsPage from "../organization/SettingsPage";
 
 export default function WifiSelectionPage() {
 	return (

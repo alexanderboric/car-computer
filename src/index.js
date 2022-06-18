@@ -14,7 +14,7 @@ import Music from './pages/Music';
 import Navigation from './pages/Navigation';
 import Radio from './pages/Radio';
 import Component404 from './pages/404';
-import Settings from './components/settings/Settings';
+import Settings from './components/settings/settingspages/Settings';
 import AppearanceSettings from './components/settings/settingspages/Appearance';
 import ConnectivityPage from './components/settings/settingspages/Connectivity';
 import WifiSelectionPage from './components/settings/settingspages/WifiSelection';
