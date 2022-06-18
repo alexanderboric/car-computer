@@ -9,7 +9,7 @@ import { Outlet } from "react-router-dom";
 import SettingsPageButton from "./SettingsPageButton";
 import SettingsContainer from "./SettingsContainer";
 import ActionlessIcon from "../ActionlessIcon";
-import { MdPalette } from "react-icons/md";
+import { MdPalette, MdWifi } from "react-icons/md";
 
 export default function Settings() {
 
@@ -20,12 +20,13 @@ export default function Settings() {
 					<Title>Settings</Title>
 					<SettingsContainer>
 						<SettingsPageButton
-							icon={<ActionlessIcon color="blue" icon={<MdPalette />} />}
+							icon={<ActionlessIcon color="indigo" icon={<MdPalette size={15} />} />}
 							pageLink={"appearance"}
 							label={"Appearance"} /* icon={<MdPreview />} */
 						/>
 						<Divider />
 						<SettingsPageButton
+							icon={<ActionlessIcon color="green" icon={<MdWifi size={15} />} />}
 							pageLink={"connectivity"}
 							label={"Connectivity"} /* icon={<MdWifi />} */
 							/>
