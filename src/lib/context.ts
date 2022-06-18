@@ -47,7 +47,7 @@ export const WifiContext = createContext<{
     networks: WifiNetwork[];
     filteredNetworks: WifiNetwork[];
     refetchConnectedNetworks: () => void;
-    connectedNetworks: any[];
+    connectedNetworks: WifiNetwork[];
     start: () => void;
     stop: () => void;
 }>({ 

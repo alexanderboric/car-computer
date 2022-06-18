@@ -180,16 +180,25 @@ export default function App() {
                     arr.push(data.value[i]);
                   }
                 }
-                setFilteredNetworks(arr);
+                setFilteredNetworks(arr.filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid)));
               });
           },
           networks: networks,
           filteredNetworks: filteredNetworks,
           refetchConnectedNetworks: () => {
-            const request = new XMLHttpRequest();
-            request.open('GET', '/api/wifi/current', false);
-            request.send(null);
-            setCurrentNetworks(JSON.parse(request.responseText).value);
+            fetch('/api/wifi/current')
+              .then(res => res.json())
+              .then(data => {
+
+                var arr = [];
+                for (var i = 0; i < data.value.length; i++) {
+                  // eslint-disable-next-line no-loop-func
+                  if (!arr.find((v) => v.ssid === data.value[i].ssid)) {
+                    arr.push(data.value[i]);
+                  }
+                }
+                setCurrentNetworks(arr);
+              });
           },
           connectedNetworks: currentNetworks,
           start: () => {
