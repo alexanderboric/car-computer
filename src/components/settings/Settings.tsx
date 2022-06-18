@@ -8,6 +8,8 @@ import * as React from "react";
 import { Outlet } from "react-router-dom";
 import SettingsPageButton from "./SettingsPageButton";
 import SettingsContainer from "./SettingsContainer";
+import ActionlessIcon from "../ActionlessIcon";
+import { MdPalette } from "react-icons/md";
 
 export default function Settings() {
 
@@ -18,6 +20,7 @@ export default function Settings() {
 					<Title>Settings</Title>
 					<SettingsContainer>
 						<SettingsPageButton
+							icon={<ActionlessIcon color="blue" icon={<MdPalette />} />}
 							pageLink={"appearance"}
 							label={"Appearance"} /* icon={<MdPreview />} */
 						/>
