@@ -56,6 +56,11 @@ export default function AppearanceSettings() {
 					}}
 				/>
 				<Divider />
+				<SettingsSelect label={"Background Image"} value={buttonRadius} values={[
+					{label: "", value: 0 },
+					
+				]} onChange={setButtonRadius} />
+				<Divider />
 				<SettingsSwitch label={"HomeScreen only"} disabled={!useBackgroundImage} checked={backgroundImageHomeScreenOnly} onSwitch={setBackgroundImageHomeScreenOnly} />
 				<Divider />
 				<SettingsSlider label={"Background Blur"} disabled={!useBackgroundImage} min={0} max={100} value={backgroundImageBlur} onChange={(num) => {
