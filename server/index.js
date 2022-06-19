@@ -160,12 +160,16 @@ app.get('/api/wifi/remove', (req, res) => {
 
 app.get('/api/wifi/connect', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  if (req.query.ssid && req.query.password) {
+  if (req.query.ssid) {
     if (!isWifiRunning()) {
       res.send(JSON.stringify({ error: "Not running" }));
       return;
     }
-    wifi.connect({ ssid: req.query.ssid, password: req.query.password }, () => {
+    let params = { ssid: req.query.ssid };
+    if (req.query.password) {
+      params = { ...params, password: req.query.password };
+    }
+    wifi.connect(params, () => {
       wifi.getCurrentConnections((error, currentConnections) => {
         if (error) {
           res.send(JSON.stringify({ error: "Failed to connect" }));
@@ -173,7 +177,7 @@ app.get('/api/wifi/connect', (req, res) => {
         } else {
           res.send(JSON.stringify({ value: "Connected" }));
           if (!readSavedNetworks().find(netwo => netwo.ssid === req.query.ssid)) {
-            writeSavedNetworks([{ ssid: req.query.ssid, password: req.query.password }, ...readSavedNetworks()]);
+            writeSavedNetworks([params, ...readSavedNetworks()]);
           }
         }
       });

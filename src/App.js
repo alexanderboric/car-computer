@@ -220,7 +220,7 @@ export default function App() {
             fetch('/api/wifi/remove?ssid=' + ssid);
           },
           connect: (network) => {
-            fetch('/api/wifi/connect?ssid=' + network.ssid + '&password=' + network.password);
+            fetch('/api/wifi/connect?ssid=' + network.ssid + (network.password && network.password.length !== 0 && ('&password=' + network.password)));
           },
           start: () => {
             fetch('/api/wifi/start');
