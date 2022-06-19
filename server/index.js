@@ -13,6 +13,8 @@ app.get('/api/greeting', (req, res) => {
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
+/* -- Settings -- */
+
 app.get('/api/settings/get', (req, res) => {
   const setting = req.query.setting;
   res.setHeader('Content-Type', 'application/json');
@@ -50,6 +52,18 @@ app.get('/api/settings/getAll', (req, res) => {
   res.send(readSettings());
 });
 
+function readSettings() {
+  return JSON.parse(fs.readFileSync('./settings.json'));
+}
+
+function writeSettings(settings) {
+  fs.writeFileSync('./settings.json', JSON.stringify(settings));
+}
+
+/* -- Settings -- */
+
+/* -- OpenDrop -- */
+
 app.get('/api/opendrop/status', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   if (!openDropThread) {
@@ -66,7 +80,50 @@ app.get('/api/opendrop/restart', (req, res) => {
   res.send(JSON.stringify({ value: "Restarted" }));
 });
 
+let openDropThread;
+let openDropStatus = "Offline";
 
+function startOpenDrop() {
+
+  openDropStatus = "Booting";
+
+  const { spawn } = require("child_process");
+
+  openDropThread = spawn("opendrop", ["receive", "-n", String(readSettings()["openDropDisplayName"])]);
+
+  openDropThread.stdout.on("data", data => {
+    console.log(`OpenDrop: ${data}`);
+  });
+
+  openDropThread.stderr.on("data", data => {
+    console.log(`OpenDrop: ${data}`);
+    openDropStatus = "Online";
+  });
+
+  openDropThread.on('error', (error) => {
+    console.log(`OpenDrop: ${error.message}`);
+    openDropStatus = "Errored";
+  });
+
+  openDropThread.on("close", code => {
+    console.log(`OpenDrop exited with code ${code}`);
+    openDropStatus = "Offline";
+  });
+
+
+}
+
+function stopOpenDrop() {
+  openDropThread.kill();
+}
+
+if (readSettings()["enableOpenDrop"] === "true") {
+  startOpenDrop();
+}
+
+/* -- OpenDrop -- */
+
+/* -- WiFi -- */
 
 let wifiStatus = false;
 const wifi = require('node-wifi');
@@ -199,20 +256,6 @@ if (readSettings()["enableWifi"] === "true") {
   wifiStatus = true;
 }
 
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
-);
-
-
-
-function readSettings() {
-  return JSON.parse(fs.readFileSync('./settings.json'));
-}
-
-function writeSettings(settings) {
-  fs.writeFileSync('./settings.json', JSON.stringify(settings));
-}
-
 function readSavedNetworks() {
   return JSON.parse(fs.readFileSync('./savedNetworks.json')).networks;
 }
@@ -221,46 +264,14 @@ function writeSavedNetworks(networks) {
   fs.writeFileSync('./savedNetworks.json', JSON.stringify({ networks: networks }));
 }
 
-let openDropThread;
-let openDropStatus = "Offline";
+/* -- WiFi -- */
 
-function startOpenDrop() {
-
-  openDropStatus = "Booting";
-
-  const { spawn } = require("child_process");
-
-  openDropThread = spawn("opendrop", ["receive", "-n", String(readSettings()["openDropDisplayName"])]);
-
-  openDropThread.stdout.on("data", data => {
-    console.log(`OpenDrop: ${data}`);
-  });
-
-  openDropThread.stderr.on("data", data => {
-    console.log(`OpenDrop: ${data}`);
-    openDropStatus = "Online";
-  });
-
-  openDropThread.on('error', (error) => {
-    console.log(`OpenDrop: ${error.message}`);
-    openDropStatus = "Errored";
-  });
-
-  openDropThread.on("close", code => {
-    console.log(`OpenDrop exited with code ${code}`);
-    openDropStatus = "Offline";
-  });
+app.listen(3001, () =>
+  console.log('Express server is running on localhost:3001')
+);
 
 
-}
 
-function stopOpenDrop() {
-  openDropThread.kill();
-}
-
-if (readSettings()["enableOpenDrop"] === "true") {
-  startOpenDrop();
-}
 
 function processSettingsEvents(setting, value) {
   if (setting === "enableOpenDrop") {
