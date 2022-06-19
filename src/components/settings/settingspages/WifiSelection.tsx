@@ -116,7 +116,7 @@ export default function WifiSelectionPage() {
 															);
 															modals.closeModal(id1);
 														} else {
-															if (network.security === "WPA2") {
+															if (network.security !== "NONE") {
 																const id = modals.openModal({
 																	title: (
 																		<Title>Connect to {network.ssid}</Title>
@@ -180,7 +180,7 @@ export default function WifiSelectionPage() {
 																	size: "xl",
 																	centered: false,
 																	children: (<Stack spacing="xl">
-																		<Text size="lg">Wifi network {network.ssid} is not using a secure WPA2 encryption and can be used by hackers to steal sensitive information and face a higher security risk.</Text>
+																		<Text size="lg">Wifi network {network.ssid} is not using a secure encryption and can be used by hackers to steal sensitive information and face a higher security risk.</Text>
 																		<Stack spacing="xs" mt="xl">
 																		<Button
 																				radius="md"
@@ -248,7 +248,7 @@ export default function WifiSelectionPage() {
 							)}
 							<Text size="xl">{network.ssid}</Text>
 						</Group>
-						{network.security === "WPA2" ? (
+						{network.security !== "NONE" ? (
 							<MdLock size={20} />
 						) : (
 							<MdPublic size={20} />
