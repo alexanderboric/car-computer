@@ -77,6 +77,10 @@ export default function App() {
 
         setSettingsLoaded(true);
       });
+
+      /* -- OpenDrop feed -- */
+      /* -- OpenDrop feed -- */
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
