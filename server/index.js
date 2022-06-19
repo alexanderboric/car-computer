@@ -171,7 +171,7 @@ app.get('/api/wifi/connect', (req, res) => {
     }
     wifi.connect(params, () => {
       wifi.getCurrentConnections((error, currentConnections) => {
-        if (error) {
+        if (error || !currentConnections.find(connection => connection.ssid === req.query.ssid)) {
           res.send(JSON.stringify({ error: "Failed to connect" }));
 
         } else {
