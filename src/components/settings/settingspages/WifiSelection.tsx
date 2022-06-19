@@ -10,12 +10,7 @@ import {
 import { useInterval } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import * as React from "react";
-import {
-	MdCheck,
-	MdLock,
-	MdPublic,
-	MdSave,
-} from "react-icons/md";
+import { MdCheck, MdLock, MdPublic, MdSave } from "react-icons/md";
 import { WifiContext } from "../../../lib/context";
 import { WifiNetwork } from "../../../lib/types";
 import OnScreenKeyboard from "../../OnScreenKeyboard";
@@ -114,62 +109,110 @@ export default function WifiSelectionPage() {
 																(v) => v.ssid === network.ssid
 															)
 														) {
-                                                            connect(savedWifiNetworks.find((v) => v.ssid === network.ssid));
-                                                            modals.closeModal(id1);
+															connect(
+																savedWifiNetworks.find(
+																	(v) => v.ssid === network.ssid
+																)
+															);
+															modals.closeModal(id1);
 														} else {
-															const id = modals.openModal({
-																title: <Title>Connect to {network.ssid}</Title>,
-																size: "xl",
-																centered: false,
-																children: (
-																	<Stack spacing="xl">
-																		<TextInput
-																			ref={inputField}
-																			size="xl"
-																			radius="md"
-																			placeholder={"Password"}
-																			defaultValue={input}
-																			onChange={(event: InputEvent) => {
-																				setInput(
-																					(
-																						event.currentTarget as HTMLInputElement
-																					).value
-																				);
-																				console.log(
-																					(
-																						event.currentTarget as HTMLInputElement
-																					).value
-																				);
-																			}}
-																			mt="xl"
-																			readOnly
-																		/>
+															if (network.security === "WPA2") {
+																const id = modals.openModal({
+																	title: (
+																		<Title>Connect to {network.ssid}</Title>
+																	),
+																	size: "xl",
+																	centered: false,
+																	children: (
+																		<Stack spacing="xl">
+																			<TextInput
+																				ref={inputField}
+																				size="xl"
+																				radius="md"
+																				placeholder={"Password"}
+																				defaultValue={input}
+																				onChange={(event: InputEvent) => {
+																					setInput(
+																						(
+																							event.currentTarget as HTMLInputElement
+																						).value
+																					);
+																					console.log(
+																						(
+																							event.currentTarget as HTMLInputElement
+																						).value
+																					);
+																				}}
+																				mt="xl"
+																				readOnly
+																			/>
+																			<Button
+																				mt="xl"
+																				radius="md"
+																				variant="default"
+																				fullWidth
+																				onClick={() => {
+																					modals.closeModal(id);
+																					connect({
+																						ssid: network.ssid,
+																						password: inputField.current.value,
+																					});
+																				}}
+																				size="xl"
+																			>
+																				Connect
+																			</Button>
+																			<OnScreenKeyboard
+																				text={""}
+																				onChange={(newText) => {
+																					inputField.current.value = newText;
+																					setInput(newText);
+																				}}
+																			/>
+																		</Stack>
+																	),
+																});
+															} else {
+																const id = modals.openModal({
+																	title: (
+																		<Title>Connect to {network.ssid}</Title>
+																	),
+																	size: "xl",
+																	centered: false,
+																	children: (<Stack spacing="xl">
+																		<Text size="lg">Wifi network {network.ssid} is not using a secure WPA2 encryption and can be used by hackers to steal sensitive information and face a higher security risk.</Text>
+																		<Stack spacing="xs" mt="xl">
 																		<Button
-																			mt="xl"
-																			radius="md"
-																			variant="default"
-																			fullWidth
-																			onClick={() => {
-																				modals.closeModal(id);
-																				connect({
-																					ssid: network.ssid,
-																					password: inputField.current.value,
-																				});
-																			}}
-																			size="xl"
-																		>
-																			Connect
-																		</Button>
-																		<OnScreenKeyboard
-																			text={""}
-																			onChange={(newText) => {
-																				inputField.current.value = newText;
-																				setInput(newText);
-																			}}
-																		/>
-																	</Stack>
-																),
-															});
+																				radius="md"
+																				variant="filled"
+																				color="red"
+																				fullWidth
+																				onClick={() => {
+																					modals.closeModal(id);
+																					connect({
+																						ssid: network.ssid,
+																						password: "",
+																					});
+																				}}
+																				size="xl"
+																			>
+																				Connect
+																			</Button>
+																			<Button
+																				radius="md"
+																				variant="default"
+																				fullWidth
+																				onClick={() => {
+																					modals.closeModal(id);
+																				}}
+																				size="xl"
+																			>
+																				Cancel
+																			</Button>
+																			</Stack>
+																	</Stack>),
+																});
+															}
 														}
 													}}
 												/>
@@ -198,7 +241,11 @@ export default function WifiSelectionPage() {
 						<Group>
 							{connectedNetworks.find((v) => v.ssid === network.ssid) ? (
 								<MdCheck size={20} />
-							) : (savedWifiNetworks.find((v) => v.ssid === network.ssid) && <MdSave size={20} />)}
+							) : (
+								savedWifiNetworks.find((v) => v.ssid === network.ssid) && (
+									<MdSave size={20} />
+								)
+							)}
 							<Text size="xl">{network.ssid}</Text>
 						</Group>
 						{network.security === "WPA2" ? (
