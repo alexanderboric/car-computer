@@ -14,6 +14,7 @@ import {
 	MdCheck,
 	MdLock,
 	MdPublic,
+	MdSave,
 } from "react-icons/md";
 import { WifiContext } from "../../../lib/context";
 import { WifiNetwork } from "../../../lib/types";
@@ -195,9 +196,9 @@ export default function WifiSelectionPage() {
 				>
 					<Group position="apart" noWrap mb={3} mt={3}>
 						<Group>
-							{connectedNetworks.find((v) => v.ssid === network.ssid) && (
+							{connectedNetworks.find((v) => v.ssid === network.ssid) ? (
 								<MdCheck size={20} />
-							)}
+							) : (savedWifiNetworks.find((v) => v.ssid === network.ssid) && <MdSave size={20} />)}
 							<Text size="xl">{network.ssid}</Text>
 						</Group>
 						{network.security === "WPA2" ? (
