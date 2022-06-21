@@ -6,9 +6,12 @@ import SettingsButton from "../elements/SettingsButton";
 import SettingsContainer from "../organization/SettingsContainer";
 import SettingsPage from "../organization/SettingsPage";
 import SettingsSelect from "../elements/SettingsSelect";
+import SettingsImageSelect from '../elements/SettingsImageSelect'
 import SettingsSlider from "../elements/SettingsSlider";
 import SettingsStatus from "../elements/SettingsStatus";
 import SettingsSwitch from "../elements/SettingsSwitch";
+
+import images from '../../../assets/images/background.png'
 
 export default function AppearanceSettings() {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -56,8 +59,15 @@ export default function AppearanceSettings() {
 					}}
 				/>
 				<Divider />
-				<SettingsSelect label={"Background Image"} value={buttonRadius} values={[
-					{label: "", value: 0 },
+				<SettingsImageSelect label={"Background Image"} value={buttonRadius} values={[
+					{label: "Bild 1", value: images },
+					{label: "Bild 2", value: images},
+					{label: "Bild 3", value: images },
+					{label: "Bild 4", value: images },
+					{label: "Bild 1", value: images },
+					{label: "Bild 2", value: images},
+					{label: "Bild 3", value: images },
+					{label: "Bild 4", value: images },
 					
 				]} onChange={setButtonRadius} />
 				<Divider />

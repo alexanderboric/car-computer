@@ -9,6 +9,9 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.(jpe?g|gif|png|svg)$/, loader: "file-loader?name=./images/[name].[ext]"
+      }
     ],
   },
   resolve: {
