@@ -19,3 +19,9 @@ Inspiration:
 https://codepen.io/iiiiiiiiiiiiiiiiiiiiii/pen/RwRRQjJ
 https://codepen.io/fariztiger/pen/JjrPgLw
 https://themes.getbootstrap.com
+
+Namensideen: 
+
+Eos (gr. Dämmerung)  als Akronym für z.B
+    End of Silence,
+    Era of Sound,
