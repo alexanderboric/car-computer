@@ -8,6 +8,8 @@ Sprachassistent
     tts (voice cloning)
 python api für die Input
 
+airdroppen von links : spotify, soundcloud playlists 
+    soundcloud auto sync von playlists und auto download von allen playlsits eines users => Scdl
     
     
 
