@@ -1,3 +1,5 @@
+import * as React from "react"
+
 export type WifiNetwork = {
     iface?: string,
     ssid: string,
@@ -15,4 +17,21 @@ export type WifiNetwork = {
 export type SavedWifiNetwork = {
     ssid: string,
     password: string,
+}
+
+export type AppScript = {
+    name: string,
+    script: (args?: any) => void
+}
+
+export type InfotainmentApp = {
+    id: string,
+    name: string,
+    homeName: string,
+    iconPath: string,
+    startFilePath: string,
+    startComponentName: string,
+    dependencies?: { npm: string[], pip: string[] },
+    installScripts?: AppScript[],
+    uninstallScripts?: AppScript[],
 }
