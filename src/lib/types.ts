@@ -36,3 +36,8 @@ export type InfotainmentApp = {
     installScripts?: AppScript[],
     uninstallScripts?: AppScript[],
 }
+
+export type AppInstance = {
+    appInfo: InfotainmentApp,
+    appRuntime: React.ReactNode
+}
