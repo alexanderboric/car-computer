@@ -8,6 +8,8 @@ Sprachassistent
     tts (voice cloning)
 python api für die Input
 
+airdroppen von links : spotify, soundcloud playlists 
+    soundcloud auto sync von playlists und auto download von allen playlsits eines users => Scdl
     
     
 
@@ -19,3 +21,9 @@ Inspiration:
 https://codepen.io/iiiiiiiiiiiiiiiiiiiiii/pen/RwRRQjJ
 https://codepen.io/fariztiger/pen/JjrPgLw
 https://themes.getbootstrap.com
+
+Namensideen: 
+
+Eos (gr. Dämmerung)  als Akronym für z.B
+    End of Silence,
+    Era of Sound,
