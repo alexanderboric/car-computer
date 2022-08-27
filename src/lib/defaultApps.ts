@@ -8,5 +8,15 @@ export const defaultApps: InfotainmentApp[] = [
         homeName: "Error",
         iconPath: "error.png",
         systemApp: true,
+        hideInNav: true,
+    },
+    {
+        id: "builtin-settings",
+        startUiPath: "settings",
+        name: "Settings",
+        homeName: "Settings",
+        iconPath: "settings-light.png",
+        iconPathDark: "settings-dark.png",
+        systemApp: true,
     }
 ];

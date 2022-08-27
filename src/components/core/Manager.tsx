@@ -31,7 +31,7 @@ export default function Manager() {
     <>
       {settingsLoaded ? (
         <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
-          <Navbar></Navbar>
+          <Navbar currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp}></Navbar>
 
 
           {/* <div style={{ justifyContent:'center',position:'absolute',right:0,top:0, width:"91%", height:"100%"}}>
