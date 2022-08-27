@@ -15,12 +15,14 @@ export default function SettingsStatusPageButton({
 	pageLink,
     disabled,
     disabledAlternative,
+	setCurrentPage,
 }: {
 	label: string;
 	status: string;
 	pageLink: string;
     disabled?: boolean;
     disabledAlternative?: string;
+	setCurrentPage: (pageLink: string) => void;
 }) {
 	const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
@@ -30,7 +32,11 @@ export default function SettingsStatusPageButton({
 				pl="xs"
 				pr="xs"
 				style={{ borderRadius: theme.radius.md }}
-				component={!disabled && Link} to={"/settings/" + pageLink}
+				onClick={() => {
+					if (!disabled) {
+						setCurrentPage(pageLink);
+					}
+				}}
 			>
 				<Group position="apart" noWrap mb={3} mt={3}>
 					<Group>

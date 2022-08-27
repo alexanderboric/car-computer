@@ -18,7 +18,7 @@ import SettingsButton from "../elements/SettingsButton";
 import SettingsContainer from "../organization/SettingsContainer";
 import SettingsPage from "../organization/SettingsPage";
 
-export default function WifiSelectionPage() {
+export default function WifiSelectionPage({ setCurrentPage }: { setCurrentPage: (pageLink: string) => void }) {
 	const {
 		networks,
 		filteredNetworks,
@@ -261,7 +261,7 @@ export default function WifiSelectionPage() {
 
 	return (
 		<>
-			<SettingsPage title={"WLAN Selection"} backLink="/settings/connectivity">
+			<SettingsPage title={"WLAN Selection"} backLink={"connectivity"} setCurrentPage={setCurrentPage}>
 				<SettingsContainer
 					label={"My Networks (" + myNetworks.length + ")"}
 					bottomText="Here you can find WLAN networks, which credentials are already saved in the system."

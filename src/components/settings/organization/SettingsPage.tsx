@@ -14,19 +14,20 @@ export default function SettingsPage({
 	title,
 	children,
 	backLink,
+	setCurrentPage,
 }: {
 	title: string;
 	children: React.ReactNode;
 	backLink?: string;
+	setCurrentPage: (pageLink: string) => void;
 }) {
 	const theme = useMantineTheme();
-    const navigate = useNavigate();
 
 	return (
 		<>
 			<Stack ml={"xl"} mr={"xl"} mb={"xl"}>
 				<Group mt={"md"}>
-					<UnstyledButton onClick={() => navigate(backLink ? backLink : "../")}>
+					<UnstyledButton onClick={() => setCurrentPage(backLink ? backLink : "")}>
 						<Group noWrap spacing={"xs"}>
 							<MdChevronLeft
 								style={{ color: theme.colors.blue[6] }}

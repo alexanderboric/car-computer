@@ -9,7 +9,7 @@ import SettingsStatusPageButton from "../elements/SettingsStatusPageButton";
 import SettingsSwitch from "../elements/SettingsSwitch";
 import SettingsTextInput from "../elements/SettingsTextInput";
 
-export default function ConnectivityPage() {
+export default function ConnectivityPage({ setCurrentPage }: { setCurrentPage: (page: string) => void }) {
 
 	const [openDropStatus, setOpenDropStatus] = React.useState("Unknown");
 	const { enableOpenDrop, setEnableOpenDrop, openDropDisplayName, setOpenDropDisplayName, enableWifi, setEnableWifi } = React.useContext(SettingsContext);
@@ -35,7 +35,7 @@ export default function ConnectivityPage() {
 
 	return (
 		<>
-			<SettingsPage title={"Connectivity"}>
+			<SettingsPage title={"Connectivity"} backLink={""} setCurrentPage={setCurrentPage}>
 				<SettingsContainer label="WLAN">
 					<SettingsSwitch label="Enable WLAN" checked={enableWifi} onSwitch={(val) => {
 						setEnableWifi(val);
@@ -46,7 +46,7 @@ export default function ConnectivityPage() {
 						}
 					}} />
 					<Divider />
-					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status={connectedNetworks.length === 0 ? "Disconnected" : connectedNetworks[0].ssid} pageLink="wifi" />
+					<SettingsStatusPageButton disabled={!enableWifi || !getStatus()} disabledAlternative="Disabled" label="Network" status={connectedNetworks.length === 0 ? "Disconnected" : connectedNetworks[0].ssid} pageLink="wifi" setCurrentPage={setCurrentPage} />
 					<Divider />
 					<SettingsStatus label="Status" status={getStatus() ? "true" : "false"} />
 				</SettingsContainer>

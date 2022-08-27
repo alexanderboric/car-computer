@@ -13,7 +13,7 @@ import SettingsSwitch from "../elements/SettingsSwitch";
 
 import images from '../../../assets/images/background.png'
 
-export default function AppearanceSettings() {
+export default function AppearanceSettings({ setCurrentPage }: { setCurrentPage: (page: string) => void }) {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 	const { backgroundImageBlur, setBackgroundImageBlur, useBackgroundImage, setUseBackgroundImage, backgroundImageHomeScreenOnly, setBackgroundImageHomeScreenOnly, OSKButtonSize: buttonSize, setOSKButtonSize: setButtonSize, OSKButtonRadius: buttonRadius, setOSKButtonRadius: setButtonRadius, fontFamily, setFontFamily } = React.useContext(SettingsContext);
 	const [showOSK, setShowOSK] = React.useState(false);
@@ -32,7 +32,7 @@ export default function AppearanceSettings() {
 	}, []);
 
 	return (
-		<SettingsPage title={"Appearance"}>
+		<SettingsPage title={"Appearance"} backLink={""} setCurrentPage={setCurrentPage}>
 			<SettingsContainer label="Theme">
 				<SettingsSwitch
 					label={"Dark Mode"}
