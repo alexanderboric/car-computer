@@ -7,7 +7,7 @@ export default function AppView({ app }: { app: InfotainmentApp }) {
 
     React.useEffect(() => {
         async function fetchData() {
-            const component = await import(`/apps/${app.id}/${app.startUiPath}`).then((module) => module.default).catch(() => import(`/apps/${"builtin-error"}/notFound`).then((module) => module.default));
+            const component = await import(`/apps/${app.id}/${app.startUiPath}`).then((module) => module.default);
             setAppComponent(component);
         }
         fetchData();
