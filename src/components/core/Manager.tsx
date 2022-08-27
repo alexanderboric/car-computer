@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { BackgroundImage, LoadingOverlay } from '@mantine/core';
 import { SettingsContext } from '../../lib/context';
 import * as React from 'react';
+import AppView from './AppView';
 
 export default function Manager() {
 
@@ -27,7 +28,16 @@ export default function Manager() {
           <div style={{ height: "100%" }}>
             {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
             <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
-              <Outlet />
+              {/* <Outlet /> */}
+              <AppView app={{
+                id: "builtin-error",
+                startUiPath: "notFound",
+                name: "Error",
+                homeName: "Error",
+                iconPath: "/error.png",
+                startComponentName: "notFound",
+                systemApp: true,
+              }} />
             </div>
           </div>
         </div>

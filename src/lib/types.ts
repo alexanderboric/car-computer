@@ -30,7 +30,6 @@ export type InfotainmentApp = {
     homeName: string,
     iconPath: string,
     startUiPath: string,
-    startComponentName: string,
     systemApp?: boolean,
     startNodePath?: string,
     dependencies?: { npm: string[], pip: string[] },
