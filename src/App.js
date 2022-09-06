@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Manager from './components/core/Manager';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
-import { SettingsContext, WifiContext } from './lib/context';
+import { AppContext, SettingsContext, WifiContext } from './lib/context';
 
 
 export default function App() {
@@ -78,8 +78,8 @@ export default function App() {
         setSettingsLoaded(true);
       });
 
-      /* -- OpenDrop feed -- */
-      /* -- OpenDrop feed -- */
+    /* -- OpenDrop feed -- */
+    /* -- OpenDrop feed -- */
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -188,7 +188,7 @@ export default function App() {
                 setFilteredNetworks(arr
                   .filter((v) => !currentNetworks.find((w) => w.ssid === v.ssid))
                   .filter((v) => !savedNetworks.find((w) => w.ssid === v.ssid))
-                  );
+                );
               });
           },
           networks: networks,
@@ -236,17 +236,19 @@ export default function App() {
             fetch('/api/wifi/disconnect');
           }
         }}>
-          <MantineProvider theme={{
-            colorScheme,
-            fontFamily: fontFamily !== "default" ? fontFamily : undefined,
-          }} withGlobalStyles defaultProps={{
-            Notification: { radius: "lg" },
-            Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
-          }}>
-            <ModalsProvider>
-              <Manager />
-            </ModalsProvider>
-          </MantineProvider>
+          <AppContext.Provider>
+            <MantineProvider theme={{
+              colorScheme,
+              fontFamily: fontFamily !== "default" ? fontFamily : undefined,
+            }} withGlobalStyles defaultProps={{
+              Notification: { radius: "lg" },
+              Paper: { radius: "lg", p: "md", shadow: "md", withBorder: true },
+            }}>
+              <ModalsProvider>
+                <Manager />
+              </ModalsProvider>
+            </MantineProvider>
+          </AppContext.Provider>
         </WifiContext.Provider>
       </SettingsContext.Provider>
     </ColorSchemeProvider>
