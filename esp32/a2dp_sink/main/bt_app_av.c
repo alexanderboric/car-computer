@@ -99,6 +99,7 @@ static void bt_av_new_track(void)
                         ESP_AVRC_MD_ATTR_ALBUM |
                         ESP_AVRC_MD_ATTR_GENRE;
     esp_avrc_ct_send_metadata_cmd(APP_RC_CT_TL_GET_META_DATA, attr_mask);
+    esp_avrc_features_flag_t(0x0080)
 
     if (esp_avrc_rn_evt_bit_mask_operation(ESP_AVRC_BIT_MASK_OP_TEST, &s_avrc_peer_rn_cap,
                                            ESP_AVRC_RN_TRACK_CHANGE)) {
