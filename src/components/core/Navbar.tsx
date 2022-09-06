@@ -19,7 +19,7 @@ export default function Navbar({ currentApp, openedApps, setCurrentApp }: { curr
         sx={(theme) => ({
           backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
         })}>
-            {Array.from(new Set(navbarApps.concat(openedApps.map((a) => a.appInfo.id)))).map((app) => <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={app} />)}
+            {Array.from(new Set(navbarApps.concat(openedApps.map((a) => a.appInfo.id)))).map((app) => <NavbarButton key={app} currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={app} />)}
 
         </Box>
     )

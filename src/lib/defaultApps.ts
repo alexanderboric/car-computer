@@ -49,5 +49,15 @@ export const defaultApps: InfotainmentApp[] = [
         iconPath: "appview-light.png",
         systemApp: true,
         hideInNav: false,
+    },
+    {
+        id: "builtin-appstore",
+        startUiPath: "appStore",
+        name: "App Store",
+        version: "1.0 Alpha",
+        homeName: "App Store",
+        iconPath: "appstore.png",
+        systemApp: true,
+        hideInNav: false,
     }
 ];
