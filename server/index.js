@@ -283,3 +283,20 @@ function processSettingsEvents(setting, value) {
     }
   }
 }
+
+
+/* -- Apps -- */
+app.get('/api/apps/list', (req, res) => {
+  const appList = [];
+
+  fs.readdirSync('./apps').forEach(file => {
+    if (fs.lstatSync(`./apps/${file}`).isDirectory()) {
+      if (fs.existsSync(`./apps/${file}/appInfo.js`) || fs.existsSync(`./apps/${file}/appInfo.ts`)) {
+        appList.push(file);
+      }
+    }
+  });
+  console.log("Found apps:", appList);
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ value: appList }));
+});

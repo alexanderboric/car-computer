@@ -86,6 +86,24 @@ export default function App() {
     /* -- OpenDrop feed -- */
     /* -- OpenDrop feed -- */
 
+
+    /* -- AppList -- */
+    fetch('/api/apps/list')
+      .then(res => res.json())
+      .then(data => {
+        //setInstalledApps(data.value);
+        setInstalledApps([]);
+        data.value.forEach(element => {
+          const fetchData = async () => {
+            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
+            console.log(appInfo);
+            setInstalledApps(installedApps => [...installedApps, appInfo()]);
+          };
+          fetchData();
+        });
+      });
+    /* -- AppList -- */
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
