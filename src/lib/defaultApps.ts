@@ -5,6 +5,7 @@ export const defaultApps: InfotainmentApp[] = [
         id: "builtin-error",
         startUiPath: "notFound",
         name: "Error",
+        version: "1.0 Alpha",
         homeName: "Error",
         iconPath: "error.png",
         systemApp: true,
@@ -14,6 +15,7 @@ export const defaultApps: InfotainmentApp[] = [
         id: "builtin-settings",
         startUiPath: "settings",
         name: "Settings",
+        version: "1.0 Alpha",
         homeName: "Settings",
         iconPath: "settings-light.png",
         iconPathDark: "settings-dark.png",
@@ -23,6 +25,7 @@ export const defaultApps: InfotainmentApp[] = [
         id: "builtin-home",
         startUiPath: "home",
         name: "Home",
+        version: "1.0 Alpha",
         homeName: "Home",
         iconPath: "home-light.png",
         iconPathDark: "home-dark.png",
@@ -32,8 +35,12 @@ export const defaultApps: InfotainmentApp[] = [
         id: "builtin-music",
         startUiPath: "music",
         name: "Music",
+        version: "1.0 Alpha",
         homeName: "Music",
         iconPath: "music-light.png",
         systemApp: true,
     }
 ];
+
+// Todo: fill in folder appInfo content
+export let installedApps: InfotainmentApp[] = [];

@@ -29,6 +29,7 @@ export type InfotainmentApp = {
     name: string,
     homeName: string,
     iconPath: string,
+    version: string,
     iconPathDark?: string,
     startUiPath: string,
     systemApp?: boolean,
