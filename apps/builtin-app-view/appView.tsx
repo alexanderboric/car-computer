@@ -15,8 +15,8 @@ export default function AppViewApp() {
                         if (ctx.openedApps.filter((app) => !["builtin-home", "builtin-app-view"].includes(app.appInfo.id)).length === 0) {
                                 ctx.setCurrentApp("builtin-home");
                         }
-                        return (<Group position="center">
-                                {ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).length > 0 && ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).map((app, index) => (<Card key={app.appInfo.id}>
+                        return (<Group position="center" mt="xl">
+                                {ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).length > 0 && ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).map((app, index) => (<Card pt="xl" key={app.appInfo.id}>
                                         <Card.Section>
                                                 <Group position="apart" pr="lg" pl="lg">
                                                         <Group>
