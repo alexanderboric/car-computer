@@ -32,7 +32,8 @@ export default function Manager() {
         data.value.forEach((element: string) => {
           const fetchData = async () => {
             const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
-            setInstalledApps([...installedApps, appInfo()]);
+            console.log(appInfo());
+            setInstalledApps([appInfo(), ...installedApps]);
           };
           fetchData();
         });
