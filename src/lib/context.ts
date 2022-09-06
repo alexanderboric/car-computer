@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { SavedWifiNetwork, WifiNetwork } from "./types";
+import { InfotainmentApp, SavedWifiNetwork, WifiNetwork } from "./types";
 
 export const SettingsContext = createContext({
     /* -- Background Image -- */
@@ -73,4 +73,20 @@ export const WifiContext = createContext<{
     start: () => { },
     stop: () => { },
     disconnect: () => { }
+ });
+
+ export const AppContext = createContext<{
+    installedApps: InfotainmentApp[];
+    setInstalledApps: (apps: InfotainmentApp[]) => void;
+    currentApp: string;
+    setCurrentApp: (app: string) => void;
+    openedApps: InfotainmentApp[];
+    setOpenedApps: (apps: InfotainmentApp[]) => void;
+ }>({
+    installedApps: [],
+    setInstalledApps: (apps: InfotainmentApp[]) => { },
+    currentApp: null,
+    setCurrentApp: (app: string) => { },
+    openedApps: [],
+    setOpenedApps: (apps: InfotainmentApp[]) => { }
  });
