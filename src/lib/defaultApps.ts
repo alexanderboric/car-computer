@@ -51,6 +51,3 @@ export const defaultApps: InfotainmentApp[] = [
         hideInNav: false,
     }
 ];
-
-// Todo: fill in folder appInfo content
-export let installedApps: InfotainmentApp[] = [];
