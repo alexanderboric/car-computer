@@ -22,7 +22,7 @@ export default function AppViewApp() {
                                                         }} />
                                                 </Group>
                                         </Card.Section>
-                                        <Box style={{ position: "relative" }}>
+                                        <Box style={{ position: "relative" }} onClick={() => ctx.setCurrentApp(app.appInfo.id)}>
                                                 <Group>
                                                         {app.appRuntime}
                                                         <Overlay  opacity={0}/>
