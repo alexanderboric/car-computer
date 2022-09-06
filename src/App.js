@@ -5,6 +5,8 @@ import Manager from './components/core/Manager';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { AppContext, SettingsContext, WifiContext } from './lib/context';
+import { defaultApps } from './lib/defaultApps';
+import { AppInstance } from './lib/types';
 
 
 export default function App() {
@@ -31,6 +33,10 @@ export default function App() {
   const [filteredNetworks, setFilteredNetworks] = useState([]);
   const [currentNetworks, setCurrentNetworks] = useState([]);
   const [savedNetworks, setSavedNetworks] = useState([]);
+
+  const [installedApps, setInstalledApps] = useState(defaultApps);
+  const [currentApp, setCurrentApp] = useState("builtin-home");
+  const [openedApps, setOpenedApps] = useState([]);
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -236,7 +242,14 @@ export default function App() {
             fetch('/api/wifi/disconnect');
           }
         }}>
-          <AppContext.Provider>
+          <AppContext.Provider value={{
+            installedApps: installedApps,
+            setInstalledApps: setInstalledApps,
+            currentApp: currentApp,
+            setCurrentApp: setCurrentApp,
+            openedApps: openedApps,
+            setOpenedApps: setOpenedApps
+          }}>
             <MantineProvider theme={{
               colorScheme,
               fontFamily: fontFamily !== "default" ? fontFamily : undefined,
