@@ -11,7 +11,7 @@ import { defaultApps } from "../../lib/defaultApps";
 
 export default function Navbar({ currentApp, openedApps, setCurrentApp }: { currentApp: string, openedApps: AppInstance[], setCurrentApp: (app: string) => void }) {
 
-  const navbarApps = ["builtin-home", "builtin-music", "builtin-settings"];
+  const navbarApps = ["builtin-home", "builtin-music", "builtin-settings", "builtin-app-view"];
 
     return(
 
