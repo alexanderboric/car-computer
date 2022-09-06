@@ -99,7 +99,6 @@ export default function App() {
         data.value.forEach(element => {
           const fetchData = async () => {
             const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
-            console.log(appInfo());
             setTempInstalledApps(installedApps => [...installedApps, appInfo()]);
           };
           fetchData();
@@ -113,7 +112,7 @@ export default function App() {
   useEffect(() => {
     if (!appAmount === 0) {
       if (tempInstalledApps.length === appAmount) {
-        setInstalledApps(tempInstalledApps);
+        setInstalledApps([]);
       }
     }
   }, [tempInstalledApps]);
