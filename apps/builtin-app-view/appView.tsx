@@ -1,8 +1,11 @@
-import { Box, Card, CloseButton, Group, Overlay, Text } from "@mantine/core";
+import { Box, Card, CloseButton, Group, Overlay, Text, Image, useMantineColorScheme } from "@mantine/core";
 import * as React from "react";
 import { AppContext } from "../../src/lib/context";
 
 export default function AppViewApp() {
+
+        const { colorScheme } = useMantineColorScheme();
+	let dark = colorScheme === "dark";
 
 	return <AppContext.Consumer>
                 {ctx => {
@@ -16,7 +19,12 @@ export default function AppViewApp() {
                                 {ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).length > 0 && ctx.openedApps.filter(a => !["builtin-app-view", "builtin-home"].includes(a.appInfo.id)).map((app, index) => (<Card key={app.appInfo.id}>
                                         <Card.Section>
                                                 <Group position="apart" pr="lg" pl="lg">
-                                                        <Text weight={700}>{app.appInfo.name}</Text>
+                                                        <Group>
+                                                                <Image  src={require(`/apps/${app.appInfo.id}/${
+								dark && app.appInfo.iconPathDark ? app.appInfo.iconPathDark : app.appInfo.iconPath
+							}`)} width={32} height={32} />
+                                                                <Text weight={700}>{app.appInfo.name}</Text>
+                                                        </Group>
                                                         <CloseButton onClick={() => {
                                                                 ctx.setOpenedApps(ctx.openedApps.filter(a => a.appInfo.id !== app.appInfo.id));
                                                         }} />
