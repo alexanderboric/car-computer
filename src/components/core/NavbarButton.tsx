@@ -1,6 +1,6 @@
 import "../../App.css";
 import './Navbar.css';
-import { Box, useMantineColorScheme } from '@mantine/core';
+import { Box, Button, Group, Image, useMantineColorScheme } from '@mantine/core';
 import { Link } from "react-router-dom";
 import { AppInstance, InfotainmentApp } from "../../lib/types";
 import { defaultApps } from "../../lib/defaultApps";
@@ -19,12 +19,13 @@ export default function NavbarButton({ currentApp, openedApps, setCurrentApp, ap
 
   return (
 
-    <Box className="Navbar-Buttons" onClick={() => setCurrentApp(app)}>
-      <img src={require(`/apps/${app}/${(dark && info.iconPathDark) ? info.iconPathDark : info.iconPath}`)} className="Navbar-Button-Images" /* style={{ filter: dark ? "invert(1)" : "invert(0)" }} */ alt="Navbar Button"></img>
+    <Button variant={openedApps.find((a) => a.appInfo.id === app) ? "light" : "subtle"} color="dark" style={{ height: "75px", width: "75px" }} pr={0} pl={0} onClick={() => setCurrentApp(app)}>
+      <Group position="center">
+        <Image width={50} height={50} src={require(`/apps/${app}/${(dark && info.iconPathDark) ? info.iconPathDark : info.iconPath}`)} /* style={{ filter: dark ? "invert(1)" : "invert(0)" }} */ alt=""/>
+      </Group>
 
 
-
-    </Box>
+    </Button>
   )
 
 
