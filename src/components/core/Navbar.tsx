@@ -5,7 +5,6 @@ import NavbarButton from './NavbarButton';
 import { Box } from '@mantine/core';
 import { AppInstance } from '../../lib/types';
 import * as React from "react";
-import { defaultApps } from "../../lib/defaultApps";
 
 
 

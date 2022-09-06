@@ -6,7 +6,6 @@ import { BackgroundImage, Group, LoadingOverlay } from '@mantine/core';
 import { AppContext, SettingsContext } from '../../lib/context';
 import * as React from 'react';
 import AppView from './AppView';
-import { defaultApps } from '../../lib/defaultApps';
 
 export default function Manager() {
 
@@ -19,7 +18,7 @@ export default function Manager() {
     if (openedApps.find(app => app.appInfo.id === currentApp)) {
       return;
     } else {
-      setOpenedApps([...openedApps, { appInfo: defaultApps.find(app => app.id === currentApp), appRuntime: <AppView app={defaultApps.find(app => app.id === currentApp)} /> }]);
+      setOpenedApps([...openedApps, { appInfo: installedApps.find(app => app.id === currentApp), appRuntime: <AppView app={installedApps.find(app => app.id === currentApp)} /> }]);
     }
   }, [currentApp]);
 
