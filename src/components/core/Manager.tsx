@@ -11,7 +11,7 @@ export default function Manager() {
 
 
   const { settingsLoaded, useBackgroundImage, backgroundImageHomeScreenOnly, backgroundImageBlur } = useContext(SettingsContext);
-  const { installedApps, currentApp, setCurrentApp, openedApps, setOpenedApps} = useContext(AppContext);
+  const { installedApps, setInstalledApps, currentApp, setCurrentApp, openedApps, setOpenedApps} = useContext(AppContext);
 
 
   React.useEffect(() => {
@@ -21,6 +21,24 @@ export default function Manager() {
       setOpenedApps([...openedApps, { appInfo: installedApps.find(app => app.id === currentApp), appRuntime: <AppView app={installedApps.find(app => app.id === currentApp)} /> }]);
     }
   }, [currentApp]);
+
+  React.useEffect(() => {
+    /* -- AppList -- */
+    fetch('/api/apps/list')
+      .then(res => res.json())
+      .then(data => {
+        //setInstalledApps(data.value);
+        setInstalledApps([]);
+        data.value.forEach((element: string) => {
+          const fetchData = async () => {
+            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
+            setInstalledApps([...installedApps, appInfo()]);
+          };
+          fetchData();
+        });
+      });
+    /* -- AppList -- */
+  }, []);
 
 
   return (

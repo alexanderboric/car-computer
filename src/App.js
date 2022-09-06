@@ -36,8 +36,6 @@ export default function App() {
   const [installedApps, setInstalledApps] = useState(defaultApps);
   const [currentApp, setCurrentApp] = useState("builtin-home");
   const [openedApps, setOpenedApps] = useState([]);
-  const [tempInstalledApps, setTempInstalledApps] = useState([]);
-  const [appAmount, setAppAmount] = useState(0);
 
   useEffect(() => {
     fetch('/api/settings/getAll')
@@ -88,34 +86,9 @@ export default function App() {
     /* -- OpenDrop feed -- */
     /* -- OpenDrop feed -- */
 
-
-    /* -- AppList -- */
-    fetch('/api/apps/list')
-      .then(res => res.json())
-      .then(data => {
-        //setInstalledApps(data.value);
-        setAppAmount(data.value.length);
-        setTempInstalledApps([]);
-        data.value.forEach(element => {
-          const fetchData = async () => {
-            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
-            setTempInstalledApps(installedApps => [...installedApps, appInfo()]);
-          };
-          fetchData();
-        });
-      });
-    /* -- AppList -- */
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (!appAmount === 0) {
-      if (tempInstalledApps.length === appAmount) {
-        setInstalledApps([]);
-      }
-    }
-  }, [tempInstalledApps]);
 
 
 
