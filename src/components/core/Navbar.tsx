@@ -11,6 +11,8 @@ import { defaultApps } from "../../lib/defaultApps";
 
 export default function Navbar({ currentApp, openedApps, setCurrentApp }: { currentApp: string, openedApps: AppInstance[], setCurrentApp: (app: string) => void }) {
 
+  const navbarApps = ["builtin-home", "builtin-music", "builtin-settings"];
+
     return(
 
         <Box 
@@ -18,14 +20,7 @@ export default function Navbar({ currentApp, openedApps, setCurrentApp }: { curr
         sx={(theme) => ({
           backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
         })}>
-            {!defaultApps.find(app => app.id === currentApp).hideInNav && <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={currentApp}></NavbarButton>}
-            <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-home"}></NavbarButton>
-            <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-settings"}></NavbarButton>
-            <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-music"}></NavbarButton>
-            {/* <NavbarButton src={icons.music} link="music"></NavbarButton>
-            <NavbarButton src={icons.map} link="navigation"></NavbarButton>
-            <NavbarButton src={icons.home} link="/"></NavbarButton>
-            <NavbarButton src={icons.settings} link="settings"></NavbarButton> */}
+            {Array.from(new Set(navbarApps.concat(openedApps.map((a) => a.appInfo.id)))).map((app) => <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={app} />)}
 
         </Box>
     )
