@@ -6,6 +6,7 @@ import { BackgroundImage, Group, LoadingOverlay } from '@mantine/core';
 import { AppContext, SettingsContext } from '../../lib/context';
 import * as React from 'react';
 import AppView from './AppView';
+import { InfotainmentApp } from '../../lib/types';
 
 export default function Manager() {
 
@@ -31,9 +32,9 @@ export default function Manager() {
         setInstalledApps([]);
         data.value.forEach((element: string) => {
           const fetchData = async () => {
-            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default);
+            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default) as () => InfotainmentApp;
             console.log(appInfo());
-            setInstalledApps([appInfo(), ...installedApps]);
+            setInstalledApps([...installedApps, appInfo()]);
           };
           fetchData();
         });
