@@ -1,7 +1,8 @@
 import "../App.css";
-import { SettingsContext } from "../lib/context";
+import { AppContext, SettingsContext } from "../lib/context";
 import { BackgroundImage } from "@mantine/core";
 import * as React from "react";
+import NavbarButton from "../components/core/NavbarButton";
 
 
 export default function Home() {
@@ -12,7 +13,9 @@ export default function Home() {
     <div style={{height: "100%"}}>
       {useBackgroundImage && backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
       <div style={{ width: "100%", height: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2, position: "absolute" }}>
-        <h1>This will be the Home</h1>
+        <AppContext.Consumer>
+          {ctx => ctx.installedApps.map(app => <NavbarButton currentApp={ctx.currentApp} openedApps={ctx.openedApps} setCurrentApp={ctx.setCurrentApp} app={app.id} />)}
+        </AppContext.Consumer>
       </div>
     </div>
   )
