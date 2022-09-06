@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
 import { BackgroundImage, Group, LoadingOverlay } from '@mantine/core';
-import { SettingsContext } from '../../lib/context';
+import { AppContext, SettingsContext } from '../../lib/context';
 import * as React from 'react';
 import AppView from './AppView';
 import { AppInstance } from '../../lib/types';
@@ -14,8 +14,7 @@ export default function Manager() {
 
 
   const { settingsLoaded, useBackgroundImage, backgroundImageHomeScreenOnly, backgroundImageBlur } = useContext(SettingsContext);
-  const [currentApp, setCurrentApp] = React.useState<string | null>("builtin-home");
-  const [openedApps, setOpenedApps] = React.useState<AppInstance[]>([]);
+  const { installedApps, currentApp, setCurrentApp, openedApps, setOpenedApps} = useContext(AppContext);
 
 
   React.useEffect(() => {
