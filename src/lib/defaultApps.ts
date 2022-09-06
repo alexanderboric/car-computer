@@ -27,5 +27,13 @@ export const defaultApps: InfotainmentApp[] = [
         iconPath: "home-light.png",
         iconPathDark: "home-dark.png",
         systemApp: true,
+    },
+    {
+        id: "builtin-music",
+        startUiPath: "music",
+        name: "Music",
+        homeName: "Music",
+        iconPath: "music-light.png",
+        systemApp: true,
     }
 ];

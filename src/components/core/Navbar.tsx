@@ -21,6 +21,7 @@ export default function Navbar({ currentApp, openedApps, setCurrentApp }: { curr
             {!defaultApps.find(app => app.id === currentApp).hideInNav && <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={currentApp}></NavbarButton>}
             <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-home"}></NavbarButton>
             <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-settings"}></NavbarButton>
+            <NavbarButton currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={"builtin-music"}></NavbarButton>
             {/* <NavbarButton src={icons.music} link="music"></NavbarButton>
             <NavbarButton src={icons.map} link="navigation"></NavbarButton>
             <NavbarButton src={icons.home} link="/"></NavbarButton>
