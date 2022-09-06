@@ -6,7 +6,6 @@ import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { AppContext, SettingsContext, WifiContext } from './lib/context';
 import { defaultApps } from './lib/defaultApps';
-import { AppInstance } from './lib/types';
 
 
 export default function App() {

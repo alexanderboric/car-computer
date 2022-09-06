@@ -2,12 +2,10 @@ import '../../App.css';
 import { useContext } from 'react';
 
 import Navbar from './Navbar';
-import { Outlet } from 'react-router-dom';
 import { BackgroundImage, Group, LoadingOverlay } from '@mantine/core';
 import { AppContext, SettingsContext } from '../../lib/context';
 import * as React from 'react';
 import AppView from './AppView';
-import { AppInstance } from '../../lib/types';
 import { defaultApps } from '../../lib/defaultApps';
 
 export default function Manager() {
