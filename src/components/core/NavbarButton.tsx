@@ -9,8 +9,8 @@ import {
 } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { AppInstance, InfotainmentApp } from "../../lib/types";
-import { defaultApps } from "../../lib/defaultApps";
 import * as React from "react";
+import { AppContext } from "../../lib/context";
 
 export default function NavbarButton({
 	currentApp,
@@ -26,7 +26,9 @@ export default function NavbarButton({
 	const { colorScheme } = useMantineColorScheme();
 	let dark = colorScheme === "dark";
 
-	const info = defaultApps.find((a) => a.id === app);
+  const { installedApps } = React.useContext(AppContext);
+
+	const info = installedApps.find((a) => a.id === app);
 
 	return (
 		<>
