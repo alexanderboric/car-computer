@@ -12,7 +12,7 @@ export default function Manager() {
 
 
   const { settingsLoaded, useBackgroundImage, backgroundImageHomeScreenOnly, backgroundImageBlur } = useContext(SettingsContext);
-  const { installedApps, setInstalledApps, currentApp, setCurrentApp, openedApps, setOpenedApps} = useContext(AppContext);
+  const { installedApps, openedApps, currentApp, setOpenedApps} = useContext(AppContext);
 
 
   React.useEffect(() => {
@@ -23,31 +23,12 @@ export default function Manager() {
     }
   }, [currentApp]);
 
-  React.useEffect(() => {
-    /* -- AppList -- */
-    fetch('/api/apps/list')
-      .then(res => res.json())
-      .then(data => {
-        //setInstalledApps(data.value);
-        setInstalledApps([]);
-        data.value.forEach((element: string) => {
-          const fetchData = async () => {
-            const appInfo = await import(`/apps/${element}/appInfo`).then((module) => module.default) as () => InfotainmentApp;
-            console.log(appInfo());
-            setInstalledApps([...installedApps, appInfo()]);
-          };
-          fetchData();
-        });
-      });
-    /* -- AppList -- */
-  }, []);
-
 
   return (
     <>
       {settingsLoaded ? (
         <div className="App" style={{ display: 'flex', userSelect: "none", WebkitUserSelect: "none" }}  >
-          <Navbar currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp}></Navbar>
+          <Navbar />
 
 
           {/* <div style={{ justifyContent:'center',position:'absolute',right:0,top:0, width:"91%", height:"100%"}}>
@@ -58,13 +39,15 @@ export default function Manager() {
             {useBackgroundImage && !backgroundImageHomeScreenOnly && <BackgroundImage style={{ height: "100%", position: "absolute", filter: `blur(${(15 * (backgroundImageBlur / 100))}px)` }} src="/background.png" />}
             <div style={{ justifyContent: 'center', position: 'absolute', right: 0, top: 0, width: "91%", height: "100%", zIndex: 2 }}>
               {/* <Outlet /> */}
-              {openedApps.length > 0 && openedApps.map((app, index) => (<Group key={app.appInfo.id} style={{ display: currentApp !== app.appInfo.id ? "none" : "block" }}>{app.appRuntime}</Group>))}
+              {openedApps.length > 0 && openedApps.map((app, index) => {
+                console.log(app);
+                return (<Group key={app.appInfo.id} style={{ display: currentApp !== app.appInfo.id ? "none" : "block" }}>{app.appRuntime}</Group>)})}
             </div>
           </div>
         </div>
       ) : (
         <>
-          <LoadingOverlay />
+          <LoadingOverlay visible loaderProps={{ size: 'xl' }}/>
         </>
       )}
     </>

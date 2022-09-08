@@ -3,14 +3,15 @@ import './Navbar.css'
 
 import NavbarButton from './NavbarButton';
 import { Box } from '@mantine/core';
-import { AppInstance } from '../../lib/types';
 import * as React from "react";
+import { AppContext } from "../../lib/context";
 
 
 
-export default function Navbar({ currentApp, openedApps, setCurrentApp }: { currentApp: string, openedApps: AppInstance[], setCurrentApp: (app: string) => void }) {
+export default function Navbar() {
 
   const navbarApps = ["builtin-home", "builtin-music", "builtin-settings", "builtin-app-view"];
+  const { currentApp, setCurrentApp, openedApps, installedApps } = React.useContext(AppContext);
 
     return(
 
@@ -19,7 +20,7 @@ export default function Navbar({ currentApp, openedApps, setCurrentApp }: { curr
         sx={(theme) => ({
           backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
         })}>
-            {Array.from(new Set(navbarApps.concat(openedApps.map((a) => a.appInfo.id)))).map((app) => <NavbarButton key={app} currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={app} />)}
+            {installedApps.length > 0 && Array.from(new Set(navbarApps.concat(openedApps.map((a) => a.appInfo.id)))).map((app) => <NavbarButton key={app} currentApp={currentApp} openedApps={openedApps} setCurrentApp={setCurrentApp} app={app} />)}
 
         </Box>
     )
