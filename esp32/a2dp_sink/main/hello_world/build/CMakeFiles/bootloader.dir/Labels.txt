@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/CMakeFiles/bootloader
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/CMakeFiles/bootloader.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/CMakeFiles/bootloader-complete.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

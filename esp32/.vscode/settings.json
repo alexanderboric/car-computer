@@ -4,5 +4,5 @@
         "interface/ftdi/esp32_devkitj_v1.cfg",
         "target/esp32.cfg"
     ],
-    "idf.port": "/dev/cu.usbserial-110"
+    "idf.port": "/dev/cu.usbserial-10"
 }

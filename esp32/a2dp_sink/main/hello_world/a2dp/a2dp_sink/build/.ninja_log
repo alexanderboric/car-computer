@@ -1,0 +1,5 @@
+# ninja log v5
+1	2099	1662753057387274176	build.ninja	a14533b0dd10c7dc
+1	35	0	/Users/alexanderboric/esp/esp-idf/examples/bluetooth/bluedroid/classic_bt/a2dp_sink/build/esp-idf/efuse/CMakeFiles/show-efuse-table	1e000f1bc0ce0a9f
+1	35	0	esp-idf/efuse/CMakeFiles/show-efuse-table	1e000f1bc0ce0a9f
+1	2254	1662753057387274176	build.ninja	a14533b0dd10c7dc

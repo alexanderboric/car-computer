@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/a2dp/a2dp_sink'
+ 
+Makefile:8: /make/project.mk: No such file or directory
+make: *** No rule to make target `/make/project.mk'.
+make: Failed to remake makefile `/make/project.mk'.
+make: *** No targets specified and no makefile found.  Stop.
+
+make: Leaving directory `/Users/alexanderboric/Desktop/Projeket Auto/car-computer/esp32/a2dp_sink/main/hello_world/a2dp/a2dp_sink'
+ 
