@@ -1,19 +1,20 @@
 Web Interface von Jarvis
 
-Dieses Repository ist für den Boardcomputer und das Media Center eines Autos, welche über folgende Features verfügen werden 
+Dieses Repository ist für den Boardcomputer und das Media Center eines Autos, welche über folgende Features verfügen werden:
 
-webInterface
-Sprachassistent
-    stt
-    tts (voice cloning)
-python api für die Input
+    webInterface
+    Sprachassistent
+        stt
+        tts (voice cloning)
+    python api für die Inputs
 
-airdroppen von links : spotify, soundcloud playlists 
-    soundcloud auto sync von playlists und auto download von allen playlsits eines users => Scdl
+    airdroppen von links : spotify, soundcloud und youtube playlists 
+        soundcloud auto sync von playlists und auto download von allen playlsits eines users => Scdl
     
     
 
 esp32 ist seperat von der jetzigen Website, welche später als Web-App auf dem Pi laufen wird und ist ausschliesslich für den esp
+
 
 
 Inspiration: 
@@ -27,3 +28,5 @@ Namensideen:
 Eos (gr. Dämmerung)  als Akronym für z.B
     End of Silence,
     Era of Sound,
+
+
