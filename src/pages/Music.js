@@ -17,6 +17,7 @@ export default class Music extends Component {
     super(props);
 
     // Der State wird hinterher mit den Daten vom Esp 32 erneuert
+    //Die jetzigen Daten dienen nur als platzhalter
     this.state = {
       title:"2055",
       artist:"Sleepy Hallow",
@@ -34,7 +35,7 @@ export default class Music extends Component {
     
      
     return(
-      <div  style={{width:"100%", height:"100%", position:'absolute',}}>
+      <div  style={{flex:1}}>
          <div className='Music-Background-Image-Container' >
            <img className="Music-Background-Image" src={this.state.image} alt="Music background"></img>
          </div>
