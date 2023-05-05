@@ -63,6 +63,9 @@ export default function OnScreenKeyboard({
 				size={MANTINE_SIZES[buttonSize]}
 				radius={MANTINE_SIZES[buttonRadius]}
 				variant="default"
+				style={{
+					[key === "space" && "width"]: "65%"
+				}}
 				onClick={() => {
 					if (key) {
 						keyPress(key);
